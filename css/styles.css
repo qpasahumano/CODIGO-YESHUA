@@ -22,7 +22,7 @@ body {
   align-items: center;
 }
 
-/* Contenedor del Rostro y SVG */
+/* Contenedor del Rostro e Imagen PNG Transparente */
 .rostro-container {
   margin-bottom: 24px;
   display: flex;
@@ -31,43 +31,17 @@ body {
   width: 100%;
 }
 
-.rostro-svg {
-  width: 140px;
-  height: 140px;
-  background-color: #1a1a1e;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  border: 1px solid #2a2a30;
-}
-
-/* Estados de revelación del SVG */
-.trazo-rostro {
-  fill: none;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.rostro-imagen-estatica {
+  width: 160px;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
   transition: all 0.5s ease;
 }
 
-.estado-oculto {
-  stroke: #2a2a30;
-  opacity: 0.3;
-}
-
-.estado-light {
-  stroke: #c29b38;
-  opacity: 0.6;
-}
-
-.estado-pleno {
-  stroke: #f2c94c;
-  opacity: 1;
-  filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.4));
-}
-
 .progreso-texto {
-  margin-top: 10px;
+  margin-top: 14px;
   font-size: 0.85rem;
   color: #a0a0ab;
   letter-spacing: 0.5px;
