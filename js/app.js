@@ -2,7 +2,7 @@ import { codigoYeshuaPreguntas } from './content.js';
 
 let indiceActual = 0;
 let puntajeAcumulado = 0;
-const puntajeMaximo = codigoYeshuaPreguntas.length * 2; // 54 puntos totales
+const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
 
 function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
@@ -11,7 +11,6 @@ function iniciarAplicacion() {
   
   if (!preguntasDiv || !topSlot) return;
 
-  // Restauramos la visibilidad de la firma institucional en la pantalla principal
   if (footerContainer) {
     footerContainer.style.display = 'block';
   }
@@ -36,12 +35,10 @@ function iniciarAplicacion() {
       indiceActual = 0;
       puntajeAcumulado = 0;
 
-      // Ocultamos la firma al iniciar el quiz para dar espacio al rostro ampliado
       if (footerContainer) {
         footerContainer.style.display = 'none';
       }
 
-      // Cargamos el rostro de Yeshúa ampliado en el slot superior sin texto de porcentaje numérico
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       `;
@@ -75,7 +72,7 @@ function renderizarPregunta() {
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.9rem; font-style: italic;">"${p.espejo}"</span>
+        <span style="font-size: 0.88rem; font-style: italic;">"${p.espejo}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
       <div class="opciones-lista">
