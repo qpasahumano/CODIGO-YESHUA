@@ -37,7 +37,7 @@
       width: 100%;
     }
 
-    /* Sin círculo, sin fondo y más grande */
+    /* Rostro sin círculo, sin fondo y más grande */
     .rostro-imagen-estatica {
       width: 210px;
       height: auto;
@@ -101,24 +101,22 @@
       margin-top: 10px;
     }
 
-    .sello-umbral {
-      background: transparent;
-      color: #f2c94c;
-      border: 1px solid #c29b38;
-      padding: 14px 28px;
-      font-size: 1rem;
-      border-radius: 30px;
+    /* Estilo interactivo para el cántaro de agua (reemplaza al botón tradicional) */
+    .sello-cantaro {
+      width: 110px;
+      height: auto;
       cursor: pointer;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(194, 155, 56, 0.1);
+      background: transparent;
+      border: none;
+      padding: 0;
       display: inline-block;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(194, 155, 56, 0.2));
     }
 
-    .sello-umbral:hover {
-      background: rgba(242, 201, 76, 0.1);
-      box-shadow: 0 0 20px rgba(242, 201, 76, 0.3);
-      transform: translateY(-2px);
+    .sello-cantaro:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 20px rgba(242, 201, 76, 0.5));
     }
 
     .bloque-info {
@@ -215,12 +213,12 @@
     <!-- Contenedor dinámico del quiz y bienvenida -->
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
-        <!-- Pantalla de bienvenida con el umbral -->
+        <!-- Pantalla de bienvenida con el cántaro interactivo -->
         <div class="pantalla-bienvenida">
           <h2>Tu huella de Yeshúa</h2>
           <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
           <div class="contenedor-umbral">
-            <button id="btn-comenzar" class="sello-umbral">Revelar mi código huella</button>
+            <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
           </div>
         </div>
       </div>
