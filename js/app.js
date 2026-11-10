@@ -8,19 +8,19 @@ function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   if (!preguntasDiv) return;
 
-  // Renderizamos la pantalla inicial con la vasija interactiva
+  // Renderizamos la pantalla inicial con el cántaro grande, centralizado y la leyenda descriptiva
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
       <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
       <div class="contenedor-umbral">
         <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
-        <span class="subtitulo-cantaro">Tocar para iniciar</span>
+        <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
       </div>
     </div>
   `;
 
-  // Aseguramos la captura del botón (imagen) ni bien se dibuja en el DOM
+  // Aseguramos la captura del evento sobre la imagen del cántaro
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
@@ -28,11 +28,11 @@ function iniciarAplicacion() {
       puntajeAcumulado = 0;
       actualizarRostroVisual();
       
-      // Activar la música ambiental tenue y sutil al iniciar la experiencia
+      // Activar música ambiental tenue y sutil (30% de volumen)
       const audioFondo = document.getElementById('audio-fondo');
       if (audioFondo) {
-        audioFondo.volume = 0.3; // Volumen tenue (30%)
-        audioFondo.play().catch(e => console.log("Audio autoplay bloqueado o restringido por el navegador", e));
+        audioFondo.volume = 0.3;
+        audioFondo.play().catch(e => console.log("Audio restringido por el navegador", e));
       }
 
       renderizarPregunta();
@@ -52,8 +52,13 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
+  // Integración completa: Referencia bíblica + Descripción/Espejo conceptual
   preguntasDiv.innerHTML = `
     <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
+    <div class="referencia-biblica">
+      <strong>📖 ${p.referenciaBiblica}</strong><br>
+      <span style="font-size: 0.9em; opacity: 0.9;">"${p.espejo}"</span>
+    </div>
     <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
     <div class="opciones-lista">
       ${p.opciones.map((op) => `
@@ -81,8 +86,6 @@ function procesarRespuesta(peso) {
 
 function actualizarRostroVisual() {
   const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
-  
-  // Con la imagen estática png, manejamos la opacidad y los filtros en base al porcentaje
   const rostroImg = document.getElementById('rostro-yeshua');
   const textoProgreso = document.getElementById('progreso-texto');
 
@@ -91,16 +94,16 @@ function actualizarRostroVisual() {
   }
 
   if (rostroImg) {
-    // Cálculo dinámico de opacidad y brillo según el progreso (de 0.25 a 1.0)
-    const opacidadCalculada = Math.max(0.25, porcentaje / 100);
+    // Revelado progresivo profundo: parte casi invisible (0.05) y solo se revela fuerte si hay alta alineación práctica
+    let opacidadCalculada = 0.05 + (porcentaje / 100) * 0.95;
     rostroImg.style.opacity = opacidadCalculada;
 
     if (porcentaje >= 80) {
-      rostroImg.style.filter = 'drop-shadow(0 0 16px rgba(242, 201, 76, 0.6)) grayscale(0%)';
-    } else if (porcentaje >= 40) {
-      rostroImg.style.filter = 'drop-shadow(0 0 8px rgba(194, 155, 56, 0.3)) grayscale(30%)';
+      rostroImg.style.filter = 'drop-shadow(0 0 16px rgba(242, 201, 76, 0.65)) grayscale(0%)';
+    } else if (porcentaje >= 45) {
+      rostroImg.style.filter = 'drop-shadow(0 0 8px rgba(194, 155, 56, 0.35)) grayscale(40%)';
     } else {
-      rostroImg.style.filter = 'drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6)) grayscale(80%)';
+      rostroImg.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) grayscale(90%)';
     }
   }
 }
@@ -128,7 +131,7 @@ function mostrarHuellaYeshua() {
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
       <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
-      <button id="btn-reiniciar" class="sello-umbral">Volver a realizar el recorrido</button>
+      <button id="btn-reiniciar" class="sello-umbral" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 14px 28px; font-size: 1rem; border-radius: 30px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
     </div>
   `;
 
