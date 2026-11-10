@@ -22,6 +22,33 @@
       height: 100vh;
       overflow: hidden;
       box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Botón flotante para pausar / reproducir audio */
+    #btn-control-audio {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 100;
+      background: rgba(20, 20, 25, 0.6);
+      border: 1px solid rgba(194, 155, 56, 0.4);
+      color: #f2c94c;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    #btn-control-audio:active {
+      transform: scale(0.9);
+      border-color: #f2c94c;
     }
 
     #app-container {
@@ -146,7 +173,6 @@
       text-align: center;
     }
 
-    /* Fondo de pergamino preservado intacto con tipografía marrón y estilo hebraico/clásico (EB Garamond) */
     .tarjeta-pergamino {
       background-image: url('assets/icons/pergamino.png');
       background-size: 100% 100%;
@@ -273,6 +299,9 @@
 </head>
 <body>
 
+  <!-- Botón de control de reproducción de audio -->
+  <button id="btn-control-audio" title="Pausar / Reproducir música">🔊</button>
+
   <div id="app-container">
     <div id="top-slot-container" class="rostro-container"></div>
 
@@ -293,8 +322,8 @@
     <div id="footer-container" class="firma-autor">Carlos Amado Selim</div>
   </div>
 
-  <audio id="audio-fondo" loop>
-    <source src="assets/audio/fondo-espiritual.mp3" type="audio/mpeg">
+  <audio id="audio-fondo" loop preload="auto">
+    <source src="assets/audio/Yeshua (Versión Piano).mp3" type="audio/mpeg">
   </audio>
 
   <script type="module" src="js/app.js"></script>
