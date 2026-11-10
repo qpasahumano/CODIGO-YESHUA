@@ -4,6 +4,23 @@ let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
 
+function configurarControlAudio() {
+  const audioFondo = document.getElementById('audio-fondo');
+  const btnAudio = document.getElementById('btn-control-audio');
+
+  if (btnAudio && audioFondo) {
+    btnAudio.addEventListener('click', () => {
+      if (audioFondo.paused) {
+        audioFondo.play();
+        btnAudio.textContent = '🔊';
+      } else {
+        audioFondo.pause();
+        btnAudio.textContent = '🔇';
+      }
+    });
+  }
+}
+
 function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   const topSlot = document.getElementById('top-slot-container');
@@ -29,6 +46,8 @@ function iniciarAplicacion() {
     </div>
   `;
 
+  configurarControlAudio();
+
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
@@ -46,9 +65,15 @@ function iniciarAplicacion() {
       actualizarRostroVisual();
       
       const audioFondo = document.getElementById('audio-fondo');
+      const btnAudio = document.getElementById('btn-control-audio');
+
       if (audioFondo) {
-        audioFondo.volume = 0.3;
-        audioFondo.play().catch(e => console.log("Audio restringido por el navegador", e));
+        audioFondo.volume = 0.35;
+        audioFondo.play().then(() => {
+          if (btnAudio) btnAudio.textContent = '🔊';
+        }).catch(e => {
+          console.log("Audio restringido por el navegador", e);
+        });
       }
 
       renderizarPregunta();
