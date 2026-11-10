@@ -21,7 +21,11 @@ function renderizarPregunta() {
 
   const p = codigoYeshuaPreguntas[indiceActual];
 
-  contenedor.innerHTML = `
+  // Mantenemos el contenedor del quiz separado o aseguramos que no pise el rostro
+  // Nota: Lo ideal en el HTML es separar el área del rostro del área de las preguntas.
+  const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
+
+  preguntasDiv.innerHTML = `
     <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
     <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
     <div class="opciones-lista">
@@ -34,7 +38,7 @@ function renderizarPregunta() {
   `;
 
   // Asignar eventos a los botones de opción
-  contenedor.querySelectorAll('.opcion-btn').forEach(btn => {
+  preguntasDiv.querySelectorAll('.opcion-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const pesoSeleccionado = parseInt(e.currentTarget.getAttribute('data-peso'));
       procesarRespuesta(pesoSeleccionado);
@@ -76,10 +80,10 @@ function actualizarRostroVisual() {
 }
 
 function mostrarLecturaEvolutiva() {
-  const contenedor = document.getElementById('quiz-container');
-  if (!contenedor) return;
+  const preguntasDiv = document.getElementById('preguntas-dinamicas') || document.getElementById('quiz-container');
+  if (!preguntasDiv) return;
 
-  contenedor.innerHTML = `
+  preguntasDiv.innerHTML = `
     <div class="resultado-final">
       <h2>Evaluación Concluida</h2>
       <p>Has completado el recorrido por el Código Yeshúa.</p>
@@ -88,7 +92,6 @@ function mostrarLecturaEvolutiva() {
   `;
 
   document.getElementById('btn-lectura-evolutiva').addEventListener('click', () => {
-    // Aquí se despliegan los espejos bíblicos y la devolución detallada
     alert("Mostrando detalles de la Lectura evolutiva y espejos bíblicos...");
   });
 }
