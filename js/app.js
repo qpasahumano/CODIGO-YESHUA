@@ -4,12 +4,32 @@ let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
 
+function iniciarCieloNocturno() {
+  const cielo = document.getElementById('cielo-nocturno');
+  if (!cielo) return;
+  cielo.innerHTML = '';
+  
+  for (let i = 0; i < 14; i++) {
+    const estrella = document.createElement('div');
+    estrella.className = 'estrella-nocturna';
+    
+    const size = Math.random() * 2 + 1;
+    estrella.style.width = `${size}px`;
+    estrella.style.height = `${size}px`;
+    estrella.style.top = `${Math.random() * 100}%`;
+    estrella.style.left = `${Math.random() * 100}%`;
+    estrella.style.animationDuration = `${3 + Math.random() * 4}s`;
+    estrella.style.animationDelay = `${Math.random() * 3}s`;
+    
+    cielo.appendChild(estrella);
+  }
+}
+
 function configurarControlAudio() {
   const audioFondo = document.getElementById('audio-fondo');
   const btnAudio = document.getElementById('btn-control-audio');
 
   if (btnAudio && audioFondo) {
-    // Limpiamos eventos previos para evitar duplicados
     const nuevoBtn = btnAudio.cloneNode(true);
     btnAudio.parentNode.replaceChild(nuevoBtn, btnAudio);
 
@@ -29,14 +49,10 @@ function configurarControlAudio() {
 function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   const topSlot = document.getElementById('top-slot-container');
-  const footerContainer = document.getElementById('footer-container');
   
   if (!preguntasDiv || !topSlot) return;
 
-  if (footerContainer) {
-    footerContainer.style.display = 'block';
-  }
-
+  iniciarCieloNocturno();
   topSlot.innerHTML = '';
 
   preguntasDiv.innerHTML = `
@@ -44,7 +60,7 @@ function iniciarAplicacion() {
       <h2>Tu huella de Yeshúa</h2>
       <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
       <div class="contenedor-umbral">
-        <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
+        <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi huella" class="sello-cantaro">
         <span class="texto-tocar-iniciar">Tocar para iniciar</span>
         <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
       </div>
@@ -58,10 +74,6 @@ function iniciarAplicacion() {
     btnComenzar.addEventListener('click', () => {
       indiceActual = 0;
       puntajeAcumulado = 0;
-
-      if (footerContainer) {
-        footerContainer.style.display = 'none';
-      }
 
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
@@ -103,7 +115,7 @@ function renderizarPregunta() {
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.88rem; font-style: italic;">"${p.espejo}"</span>
+        <span style="font-size: 0.84rem; font-style: italic;">"${p.espejo}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
       <div class="opciones-lista">
@@ -153,12 +165,7 @@ function actualizarRostroVisual() {
 
 function mostrarHuellaYeshua() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || document.getElementById('quiz-container');
-  const footerContainer = document.getElementById('footer-container');
   if (!preguntasDiv) return;
-
-  if (footerContainer) {
-    footerContainer.style.display = 'block';
-  }
 
   const porcentajeTotal = Math.round((puntajeAcumulado / puntajeMaximo) * 100);
 
@@ -179,7 +186,7 @@ function mostrarHuellaYeshua() {
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
       <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
-      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 8px 18px; font-size: 0.85rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
+      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 7px 16px; font-size: 0.82rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
     </div>
   `;
 
