@@ -60,10 +60,9 @@
       opacity: 0.02;
       filter: grayscale(100%) brightness(0.4);
       transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
-    /* Contenedor dinámico de preguntas (sin recuadro marrón, textura limpia) */
     #quiz-container {
       width: 100%;
       flex-grow: 1;
@@ -148,7 +147,7 @@
       text-align: center;
     }
 
-    /* Tarjeta de pergamino sin recuadro pesado, tipografía marrón tipo hebraica/clásica (EB Garamond) */
+    /* Sin recuadro marrón, tipografía marrón hebraica/clásica (EB Garamond) */
     .tarjeta-pergamino {
       background: transparent;
       padding: 4px 6px;
@@ -160,9 +159,9 @@
 
     .referencia-biblica {
       font-size: 0.9rem;
-      color: #2b170c;
-      background-color: rgba(74, 40, 16, 0.08);
-      border-left: 3px solid #5c3a21;
+      color: #b8860b;
+      background-color: rgba(184, 134, 11, 0.08);
+      border-left: 3px solid #c29b38;
       padding: 6px 10px;
       border-radius: 0 4px 4px 0;
       margin-bottom: 10px;
@@ -174,14 +173,14 @@
 
     .referencia-biblica strong {
       font-family: 'Cinzel', serif;
-      color: #1a0a03;
+      color: #f2c94c;
       font-size: 0.92rem;
     }
 
     .pregunta-enunciado h3 {
       font-family: 'EB Garamond', serif;
       font-size: 1.05rem;
-      color: #2b170c;
+      color: #f0f0f5;
       line-height: 1.4;
       margin-top: 0;
       margin-bottom: 12px;
@@ -197,9 +196,9 @@
     }
 
     .opcion-btn {
-      background-color: rgba(59, 34, 19, 0.06);
-      color: #2b170c;
-      border: 1px solid rgba(92, 58, 33, 0.35);
+      background-color: rgba(26, 26, 30, 0.9);
+      color: #d0d0dc;
+      border: 1px solid #3a3a45;
       padding: 8px 12px;
       border-radius: 6px;
       font-size: 0.84rem;
@@ -214,9 +213,9 @@
     }
 
     .opcion-btn:hover, .opcion-btn:active {
-      background-color: rgba(92, 58, 33, 0.18);
-      border-color: #5c3a21;
-      color: #1a0a03;
+      background-color: #25252b;
+      border-color: #c29b38;
+      color: #ffffff;
     }
 
     .resultado-final {
@@ -252,18 +251,18 @@
       text-align: center;
     }
 
-    /* Firma manuscrita institucional al pie */
+    /* AUDITADO: Definición formal de la firma institucional con Great Vibes y color marrón cálido */
     .firma-autor {
-      margin-top: 2px;
-      margin-bottom: 2px;
+      margin-top: 4px;
+      margin-bottom: 4px;
       font-family: 'Great Vibes', cursive;
-      font-size: 1.3rem;
-      color: #8c5a33;
+      font-size: 1.5rem;
+      color: #c29b38;
       letter-spacing: 1px;
       text-align: center;
       width: 100%;
       flex-shrink: 0;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
       opacity: 0.95;
     }
   </style>
@@ -287,7 +286,7 @@
       </div>
     </div>
 
-    <!-- Créditos institucionales visibles únicamente en la interfaz principal (bienvenida) -->
+    <!-- Crédito institucional visible en la interfaz principal -->
     <div id="footer-container" class="firma-autor">Carlos Amado Selim</div>
   </div>
 
