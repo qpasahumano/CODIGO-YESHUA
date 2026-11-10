@@ -6,15 +6,8 @@ const puntajeMaximo = codigoYeshuaPreguntas.length * 2; // 54 puntos totales
 
 function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
-  const topSlot = document.getElementById('top-slot-container');
-  if (!preguntasDiv || !topSlot) return;
+  if (!preguntasDiv) return;
 
-  // En la interfaz principal restauramos el emblema de presentación superior (sin rastro de la cara de Cristo)
-  topSlot.innerHTML = `
-    <img src="assets/icons/cantaro-agua.png" alt="Símbolo Yeshúa" class="emblema-presentacion">
-  `;
-
-  // Renderizamos la pantalla de bienvenida limpia
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
@@ -32,13 +25,6 @@ function iniciarAplicacion() {
     btnComenzar.addEventListener('click', () => {
       indiceActual = 0;
       puntajeAcumulado = 0;
-
-      // Al iniciar el quiz, reemplazamos el slot superior por el rostro oculto de Yeshúa y su medidor
-      topSlot.innerHTML = `
-        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
-        <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
-      `;
-
       actualizarRostroVisual();
       
       const audioFondo = document.getElementById('audio-fondo');
@@ -64,12 +50,13 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
+  // Renderizado montado sobre la tarjeta de pergamino con tipografía manuscrita y referencias
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
       <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.84rem; font-style: italic;">"${p.espejo}"</span>
+        <span style="font-size: 0.88em; font-style: italic; opacity: 0.95;">"${p.espejo}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
       <div class="opciones-lista">
@@ -107,16 +94,20 @@ function actualizarRostroVisual() {
   }
 
   if (rostroImg) {
-    // Revelado profundo: parte casi invisible y solo escala con respuestas altamente positivas hacia el final
-    let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 2.2) * 0.98;
+    // Revelado Progresivo Profundo + Lógica de la Mirada:
+    // Inicia casi imperceptible en 0.02. Solo crece si hay puntuación positiva real.
+    let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 1.8) * 0.98;
     rostroImg.style.opacity = opacidadCalculada;
 
     if (porcentaje >= 80) {
-      rostroImg.style.filter = 'drop-shadow(0 0 16px rgba(242, 201, 76, 0.75)) grayscale(0%) contrast(1.15) brightness(1.1)';
+      // Revelación plena y resplandor dorado hacia el final del recorrido
+      rostroImg.style.filter = 'drop-shadow(0 0 20px rgba(242, 201, 76, 0.75)) grayscale(0%) contrast(1.1) brightness(1.1)';
     } else if (porcentaje >= 40) {
-      rostroImg.style.filter = 'drop-shadow(0 0 8px rgba(194, 155, 56, 0.4)) grayscale(30%) contrast(1.3)';
+      // Iluminación media tibia
+      rostroImg.style.filter = 'drop-shadow(0 0 10px rgba(194, 155, 56, 0.4)) grayscale(30%) contrast(1.25)';
     } else {
-      rostroImg.style.filter = 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8)) grayscale(100%) contrast(1.7) brightness(0.55)';
+      // En puntajes bajos o iniciales: los ojos se acentúan por contraste y penumbra (efecto mirada)
+      rostroImg.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)) grayscale(100%) contrast(1.6) brightness(0.6)';
     }
   }
 }
@@ -144,7 +135,7 @@ function mostrarHuellaYeshua() {
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
       <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
-      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 10px 22px; font-size: 0.9rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
+      <button id="btn-reiniciar" class="sello-umbral" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 14px 28px; font-size: 1rem; border-radius: 30px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
     </div>
   `;
 
