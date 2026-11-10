@@ -9,13 +9,18 @@ function configurarControlAudio() {
   const btnAudio = document.getElementById('btn-control-audio');
 
   if (btnAudio && audioFondo) {
-    btnAudio.addEventListener('click', () => {
+    // Limpiamos eventos previos para evitar duplicados
+    const nuevoBtn = btnAudio.cloneNode(true);
+    btnAudio.parentNode.replaceChild(nuevoBtn, btnAudio);
+
+    document.getElementById('btn-control-audio').addEventListener('click', () => {
       if (audioFondo.paused) {
-        audioFondo.play();
-        btnAudio.textContent = '🔊';
+        audioFondo.play().then(() => {
+          document.getElementById('btn-control-audio').textContent = '🔊';
+        }).catch(err => console.log("Error al reproducir audio:", err));
       } else {
         audioFondo.pause();
-        btnAudio.textContent = '🔇';
+        document.getElementById('btn-control-audio').textContent = '🔇';
       }
     });
   }
@@ -72,7 +77,8 @@ function iniciarAplicacion() {
         audioFondo.play().then(() => {
           if (btnAudio) btnAudio.textContent = '🔊';
         }).catch(e => {
-          console.log("Audio restringido por el navegador", e);
+          console.log("Audio restringido por políticas del navegador", e);
+          if (btnAudio) btnAudio.textContent = '🔇';
         });
       }
 
