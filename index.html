@@ -37,38 +37,16 @@
       width: 100%;
     }
 
-    .rostro-svg {
+    .rostro-imagen-estatica {
       width: 140px;
       height: 140px;
+      object-fit: contain;
       background-color: #1a1a1e;
       border-radius: 50%;
       padding: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       border: 1px solid #2a2a30;
-    }
-
-    .trazo-rostro {
-      fill: none;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
       transition: all 0.5s ease;
-    }
-
-    .estado-oculto {
-      stroke: #2a2a30;
-      opacity: 0.3;
-    }
-
-    .estado-light {
-      stroke: #c29b38;
-      opacity: 0.6;
-    }
-
-    .estado-pleno {
-      stroke: #f2c94c;
-      opacity: 1;
-      filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.4));
     }
 
     .progreso-texto {
@@ -225,13 +203,9 @@
   <!-- Contenedor principal de la aplicación -->
   <div id="app-container">
     
-    <!-- Contenedor del Rostro Progresivo de Yeshúa -->
+    <!-- Contenedor del Rostro Transparente de Yeshúa -->
     <div class="rostro-container">
-      <svg id="rostro-yeshua" viewBox="0 0 200 200" class="rostro-svg">
-        <path class="trazo-rostro capa-base estado-oculto" d="M100,20 C60,20 40,50 40,90 C40,140 70,170 100,180 C130,170 160,140 160,90 C160,50 140,20 100,20 Z" />
-        <path class="trazo-rostro capa-ojos estado-oculto" d="M70,85 Q85,75 100,85 Q115,75 130,85" />
-        <path class="trazo-rostro capa-luz estado-oculto" d="M100,95 L100,145 M80,130 Q100,150 120,130" />
-      </svg>
+      <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
     </div>
 
