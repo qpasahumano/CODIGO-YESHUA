@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu huella de Yeshúa</title>
   
-  <!-- Tipografía Histórica -->
+  <!-- Fuente histórica / clásica inspirada en inscripciones y manuscritos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Uncial+Antiqua&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -19,41 +19,36 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
       box-sizing: border-box;
-      overflow-x: hidden;
     }
 
     #app-container {
       width: 100%;
-      max-width: 440px;
-      padding: 8px 14px 14px 14px;
+      max-width: 480px;
+      padding: 12px 16px 28px 16px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      min-height: 100vh;
     }
 
-    .top-slot {
-      margin-top: 2px;
-      margin-bottom: 4px;
+    .rostro-container {
+      margin-top: 6px;
+      margin-bottom: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      min-height: 145px;
-      justify-content: center;
     }
 
-    /* Rostro dinámico del test */
+    /* Rostro: casi invisible al 0% (0.02) */
     .rostro-imagen-estatica {
-      width: 130px;
+      width: 180px;
       height: auto;
-      max-height: 155px;
+      max-height: 220px;
       object-fit: contain;
       background: transparent;
       border: none;
@@ -63,17 +58,10 @@
       transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Imagen o emblema de presentación para la interfaz principal */
-    .emblema-presentacion {
-      width: 85px;
-      height: auto;
-      filter: drop-shadow(0 0 12px rgba(242, 201, 76, 0.4));
-    }
-
     .progreso-texto {
-      margin-top: 2px;
-      font-size: 0.75rem;
-      color: #9a9aab;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #8a8a95;
       letter-spacing: 0.8px;
     }
 
@@ -82,8 +70,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex-grow: 1;
-      justify-content: center;
     }
 
     #preguntas-dinamicas {
@@ -99,19 +85,19 @@
     }
 
     .pantalla-bienvenida h2 {
-      font-family: 'Cinzel Decorative', serif !important;
-      font-size: 1.35rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.55rem;
       color: #f2c94c;
-      margin-top: 2px;
-      margin-bottom: 4px;
+      margin-top: 6px;
+      margin-bottom: 6px;
       letter-spacing: 1px;
     }
 
     .subtitulo-bienvenida {
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       color: #b0b0bc;
-      line-height: 1.3;
-      margin-bottom: 10px;
+      line-height: 1.4;
+      margin-bottom: 18px;
       padding: 0 10px;
     }
 
@@ -123,8 +109,9 @@
       justify-content: center;
     }
 
+    /* Cántaro ampliado a 165px */
     .sello-cantaro {
-      width: 130px;
+      width: 165px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -133,117 +120,111 @@
       display: block;
       margin: 0 auto;
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 14px rgba(194, 155, 56, 0.35));
+      filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.35));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
       transform: scale(1.05);
-      filter: drop-shadow(0 0 22px rgba(242, 201, 76, 0.7));
+      filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.7));
     }
 
+    /* Texto "Tocar para iniciar" achicado y sutil */
     .texto-tocar-iniciar {
-      font-size: 0.68rem;
-      color: #bfa575;
+      font-size: 0.72rem;
+      color: #9a8866;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 4px;
-      margin-bottom: 8px;
-      opacity: 0.9;
+      margin-top: 8px;
+      margin-bottom: 14px;
+      opacity: 0.85;
     }
 
     .subtitulo-explicacion {
-      margin-top: 4px;
-      font-size: 0.78rem;
+      margin-top: 10px;
+      font-size: 0.85rem;
       color: #d4c5a0;
-      line-height: 1.3;
-      padding: 0 10px;
+      line-height: 1.4;
+      padding: 0 14px;
       text-align: center;
     }
 
-    /* TARJETA PERGAMINO COMPACTA DE ALTO CONTRASTE */
+    /* Tarjeta Pergamino Manuscrito */
     .tarjeta-pergamino {
       background-image: url('assets/icons/pergamino.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
-      padding: 22px 18px 24px 18px;
+      padding: 32px 24px 36px 24px;
       box-sizing: border-box;
       width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.85);
-      color: #0d0502; /* Tinta sepia súper oscura para máxima visibilidad */
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      color: #2b1810; /* Tinta sepia oscura de alto contraste */
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .bloque-info {
-      font-family: 'Cinzel', serif !important;
-      font-size: 0.7rem;
-      color: #3b1b08 !important;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: #5c3a21;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       font-weight: 700;
     }
 
     .referencia-biblica {
-      font-family: 'Uncial Antiqua', 'Cinzel', serif !important;
-      font-size: 0.78rem;
-      color: #1a0802 !important;
-      background-color: rgba(59, 27, 8, 0.14);
-      border: 1px solid rgba(59, 27, 8, 0.3);
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin-bottom: 8px;
+      font-size: 0.82rem;
+      color: #3b2213;
+      background-color: rgba(92, 58, 33, 0.08);
+      border: 1px solid rgba(92, 58, 33, 0.22);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
       text-align: center;
-      line-height: 1.3;
-      font-weight: bold;
+      line-height: 1.35;
     }
 
     .referencia-biblica strong {
-      font-family: 'Cinzel Decorative', serif !important;
-      color: #0d0301 !important;
-      font-size: 0.82rem;
+      font-family: 'Cinzel', serif;
+      color: #2b1810;
     }
 
     .pregunta-enunciado h3 {
-      font-family: 'Uncial Antiqua', 'Cinzel', serif !important;
-      font-size: 0.95rem;
-      color: #080201 !important;
-      line-height: 1.35;
-      margin-top: 2px;
-      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: #1c0e07;
+      line-height: 1.4;
+      margin-top: 0;
+      margin-bottom: 18px;
       font-weight: 700;
     }
 
     .opciones-lista {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 10px;
       width: 100%;
     }
 
     .opcion-btn {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: rgba(20, 8, 2, 0.96);
-      color: #faeed7;
-      border: 1px solid #4a2810;
-      padding: 9px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
+      background-color: rgba(43, 24, 16, 0.92);
+      color: #f2e3c6;
+      border: 1px solid #5c3a21;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
       line-height: 1.3;
       width: 100%;
       box-sizing: border-box;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
     }
 
     .opcion-btn:hover, .opcion-btn:active {
-      background-color: #4a2810;
+      background-color: #5c3a21;
       color: #ffffff;
       border-color: #8c5a33;
     }
@@ -256,36 +237,36 @@
     .tarjeta-resumen {
       background-color: #1a1a1e;
       border: 1px solid #2a2a30;
-      border-radius: 12px;
-      padding: 14px;
-      margin: 10px 0;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 18px 0;
       text-align: center;
     }
 
     .puntaje-final {
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
     }
 
     .mensaje-evolutivo {
-      font-size: 0.85rem;
+      font-size: 0.93rem;
       color: #b0b0bc;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .texto-invitacion {
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       color: #8c8c9a;
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-bottom: 20px;
+      line-height: 1.4;
       text-align: center;
     }
 
     .firma-autor {
-      margin-top: 6px;
-      font-size: 0.68rem;
+      margin-top: 24px;
+      font-size: 0.75rem;
       color: #787885;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
       width: 100%;
@@ -296,12 +277,13 @@
 
   <div id="app-container">
     
-    <!-- Slot superior dinámico (Muestra emblema en bienvenida y rostro oculto en el quiz) -->
-    <div id="top-slot-container" class="top-slot">
-      <img src="assets/icons/cantaro-agua.png" alt="Símbolo Yeshúa" class="emblema-presentacion">
+    <!-- Rostro de Yeshúa -->
+    <div class="rostro-container">
+      <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
+      <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
     </div>
 
-    <!-- Contenedor principal de pantallas -->
+    <!-- Contenedor dinámico -->
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
         <div class="pantalla-bienvenida">
@@ -316,7 +298,7 @@
       </div>
     </div>
 
-    <!-- Firma institucional al pie -->
+    <!-- Firma de autoría -->
     <div class="firma-autor">Creado por Carlos Amado Selim</div>
 
   </div>
