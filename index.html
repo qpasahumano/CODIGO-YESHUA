@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu huella de Yeshúa</title>
+  
+  <!-- Fuente histórica / clásica inspirada en inscripciones y manuscritos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #121214 !important;
+      background-color: #0d0d0f !important;
       color: #e1e1e6 !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
@@ -21,7 +27,7 @@
     #app-container {
       width: 100%;
       max-width: 480px;
-      padding: 12px 20px 24px 20px;
+      padding: 12px 16px 28px 16px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
@@ -30,35 +36,33 @@
     }
 
     .rostro-container {
-      margin-top: 10px;
-      margin-bottom: 12px;
+      margin-top: 6px;
+      margin-bottom: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
 
-    /* Rostro optimizado en tamaño y revelado progresivo profundo (inicia casi imperceptible) */
+    /* Rostro: casi invisible al 0% (0.02) */
     .rostro-imagen-estatica {
-      width: 175px;
+      width: 180px;
       height: auto;
       max-height: 220px;
       object-fit: contain;
       background: transparent;
       border: none;
-      box-shadow: none;
       padding: 0;
-      border-radius: 0;
-      opacity: 0.05; 
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) grayscale(100%);
-      transition: all 0.6s ease;
+      opacity: 0.02;
+      filter: grayscale(100%) brightness(0.4);
+      transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .progreso-texto {
-      margin-top: 8px;
-      font-size: 0.82rem;
-      color: #a0a0ab;
-      letter-spacing: 0.5px;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #8a8a95;
+      letter-spacing: 0.8px;
     }
 
     #quiz-container {
@@ -81,19 +85,19 @@
     }
 
     .pantalla-bienvenida h2 {
-      font-size: 1.45rem;
-      color: #f0f0f5;
-      margin-top: 4px;
-      margin-bottom: 8px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.55rem;
+      color: #f2c94c;
+      margin-top: 6px;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
     }
 
     .subtitulo-bienvenida {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #b0b0bc;
       line-height: 1.4;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       padding: 0 10px;
     }
 
@@ -103,12 +107,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: 5px;
     }
 
-    /* Cántaro ampliado, centralizado y estético sin texto lateral */
+    /* Cántaro ampliado a 165px */
     .sello-cantaro {
-      width: 135px;
+      width: 165px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -116,82 +119,114 @@
       padding: 0;
       display: block;
       margin: 0 auto;
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 0 14px rgba(194, 155, 56, 0.3));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.35));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
-      transform: scale(1.06);
-      filter: drop-shadow(0 0 24px rgba(242, 201, 76, 0.65));
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.7));
+    }
+
+    /* Texto "Tocar para iniciar" achicado y sutil */
+    .texto-tocar-iniciar {
+      font-size: 0.72rem;
+      color: #9a8866;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 8px;
+      margin-bottom: 14px;
+      opacity: 0.85;
     }
 
     .subtitulo-explicacion {
-      margin-top: 14px;
+      margin-top: 10px;
       font-size: 0.85rem;
-      color: #c5b898;
+      color: #d4c5a0;
       line-height: 1.4;
-      padding: 0 12px;
+      padding: 0 14px;
+      text-align: center;
+    }
+
+    /* Tarjeta Pergamino Manuscrito */
+    .tarjeta-pergamino {
+      background-image: url('assets/icons/pergamino.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 32px 24px 36px 24px;
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      color: #2b1810; /* Tinta sepia oscura de alto contraste */
       text-align: center;
     }
 
     .bloque-info {
-      font-size: 0.78rem;
-      color: #8c8c9a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: #5c3a21;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-      text-align: center;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+      font-weight: 700;
     }
 
-    /* Estilo para la referencia bíblica en tonos pasteles beige/lino */
     .referencia-biblica {
-      font-size: 0.8rem;
-      color: #d6c597;
-      background-color: rgba(194, 155, 56, 0.08);
-      border: 1px solid rgba(194, 155, 56, 0.2);
-      padding: 6px 12px;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      font-size: 0.82rem;
+      color: #3b2213;
+      background-color: rgba(92, 58, 33, 0.08);
+      border: 1px solid rgba(92, 58, 33, 0.22);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
       text-align: center;
-      font-style: italic;
-      letter-spacing: 0.3px;
+      line-height: 1.35;
+    }
+
+    .referencia-biblica strong {
+      font-family: 'Cinzel', serif;
+      color: #2b1810;
     }
 
     .pregunta-enunciado h3 {
-      font-size: 1.1rem;
-      color: #f0f0f5;
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: #1c0e07;
       line-height: 1.4;
-      margin-bottom: 20px;
-      font-weight: 400;
-      text-align: center;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-weight: 700;
     }
 
     .opciones-lista {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
     }
 
     .opcion-btn {
-      background-color: #1a1a1e;
-      color: #d0d0dc;
-      border: 1px solid #2a2a30;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-size: 0.93rem;
+      background-color: rgba(43, 24, 16, 0.92);
+      color: #f2e3c6;
+      border: 1px solid #5c3a21;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
       line-height: 1.3;
       width: 100%;
       box-sizing: border-box;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
     }
 
-    .opcion-btn:hover {
-      background-color: #25252b;
-      border-color: #c29b38;
+    .opcion-btn:hover, .opcion-btn:active {
+      background-color: #5c3a21;
       color: #ffffff;
+      border-color: #8c5a33;
     }
 
     .resultado-final {
@@ -227,12 +262,11 @@
       text-align: center;
     }
 
-    /* Firma institucional al pie */
     .firma-autor {
       margin-top: 24px;
       font-size: 0.75rem;
       color: #787885;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
       width: 100%;
@@ -241,36 +275,34 @@
 </head>
 <body>
 
-  <!-- Contenedor principal de la aplicación -->
   <div id="app-container">
     
-    <!-- Contenedor del Rostro Transparente de Yeshúa -->
+    <!-- Rostro de Yeshúa -->
     <div class="rostro-container">
       <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
     </div>
 
-    <!-- Contenedor dinámico del quiz y bienvenida -->
+    <!-- Contenedor dinámico -->
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
-        <!-- Pantalla de bienvenida con el cántaro centrado y ampliado -->
         <div class="pantalla-bienvenida">
           <h2>Tu huella de Yeshúa</h2>
           <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
           <div class="contenedor-umbral">
             <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
+            <span class="texto-tocar-iniciar">Tocar para iniciar</span>
             <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Firma de autoría al pie -->
+    <!-- Firma de autoría -->
     <div class="firma-autor">Creado por Carlos Amado Selim</div>
 
   </div>
 
-  <!-- Audio de fondo ambiental -->
   <audio id="audio-fondo" loop>
     <source src="assets/audio/fondo-espiritual.mp3" type="audio/mpeg">
   </audio>
