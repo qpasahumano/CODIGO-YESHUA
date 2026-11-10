@@ -1,21 +1,181 @@
-.contenedor-revelacion {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
+/* Estilos generales y fondo */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121214; /* Fondo oscuro cálido y elegante */
+  color: #e1e1e6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.contenedor-revelacion img {
+#app-container {
   width: 100%;
-  height: auto;
-  display: block;
+  max-width: 480px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.imagen-capa.nitida {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* La opacidad cambia dinámicamente con JavaScript según el porcentaje de avance (de 0 a 1) */
-  opacity: var(--porcentaje-avance, 0);
-  transition: opacity 0.6s ease-in-out;
+/* Contenedor del Rostro y SVG */
+.rostro-container {
+  margin-bottom: 24px;
+}
+
+.rostro-svg {
+  width: 140px;
+  height: 140px;
+  background-color: #1a1a1e;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a30;
+}
+
+/* Estados de revelación del SVG */
+.trazo-rostro {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.5s ease;
+}
+
+.estado-oculto {
+  stroke: #2a2a30;
+  opacity: 0.3;
+}
+
+.estado-light {
+  stroke: #c29b38; /* Tono dorado sutil */
+  opacity: 0.6;
+}
+
+.estado-pleno {
+  stroke: #f2c94c; /* Dorado vivo y luminoso */
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.4));
+}
+
+.progreso-texto {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #a0a0ab;
+  letter-spacing: 0.5px;
+}
+
+/* Pantalla de bienvenida y tipografías */
+.pantalla-bienvenida h2 {
+  font-size: 1.6rem;
+  color: #f0f0f5;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.subtitulo-bienvenida {
+  font-size: 1.05rem;
+  color: #b0b0bc;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  padding: 0 10px;
+}
+
+/* El Sello / Umbral de Inicio */
+.contenedor-umbral {
+  margin-top: 20px;
+}
+
+.sello-umbral {
+  background: transparent;
+  color: #f2c94c;
+  border: 1px solid #c29b38;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(194, 155, 56, 0.1);
+}
+
+.sello-umbral:hover {
+  background: rgba(242, 201, 76, 0.1);
+  box-shadow: 0 0 20px rgba(242, 201, 76, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Estilos para las preguntas del Quiz */
+.bloque-info {
+  font-size: 0.8rem;
+  color: #8c8c9a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.pregunta-enunciado h3 {
+  font-size: 1.15rem;
+  color: #f0f0f5;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.opciones-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opcion-btn {
+  background-color: #1a1a1e;
+  color: #d0d0dc;
+  border: 1px solid #2a2a30;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.3;
+}
+
+.opcion-btn:hover {
+  background-color: #25252b;
+  border-color: #c29b38;
+  color: #ffffff;
+}
+
+/* Tarjeta de resultados finales */
+.resultado-final {
+  padding: 10px;
+}
+
+.tarjeta-resumen {
+  background-color: #1a1a1e;
+  border: 1px solid #2a2a30;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.puntaje-final {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.mensaje-evolutivo {
+  font-size: 0.95rem;
+  color: #b0b0bc;
+  line-height: 1.5;
+}
+
+.texto-invitacion {
+  font-size: 0.85rem;
+  color: #8c8c9a;
+  margin-bottom: 24px;
+  line-height: 1.4;
 }
