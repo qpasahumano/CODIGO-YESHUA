@@ -5,9 +5,26 @@ let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2; // 54 puntos totales
 
 export function iniciarAplicacion() {
-  indiceActual = 0;
-  puntajeAcumulado = 0;
-  renderizarPregunta();
+  const preguntasDiv = document.getElementById('preguntas-dinamicas');
+  if (!preguntasDiv) return;
+
+  // Renderizamos la pantalla inicial con el umbral de entrada
+  preguntasDiv.innerHTML = `
+    <div class="pantalla-bienvenida">
+      <h2>Tu huella de Yeshúa</h2>
+      <p class="subtitulo-bienvenida">Un espejo para observar tu andar cotidiano, más allá de todo dogma.</p>
+      <div class="contenedor-umbral">
+        <button id="btn-comenzar" class="sello-umbral">Revelar mi código huella</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('btn-comenzar').addEventListener('click', () => {
+    indiceActual = 0;
+    puntajeAcumulado = 0;
+    actualizarRostroVisual(); // Limpia el rostro al comenzar
+    renderizarPregunta();
+  });
 }
 
 function renderizarPregunta() {
@@ -101,7 +118,7 @@ function mostrarHuellaYeshua() {
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
       <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
-      <button id="btn-reiniciar" class="btn-principal">Volver a realizar el recorrido</button>
+      <button id="btn-reiniciar" class="sello-umbral">Volver a realizar el recorrido</button>
     </div>
   `;
 
@@ -110,5 +127,5 @@ function mostrarHuellaYeshua() {
   });
 }
 
-// Inicializar al cargar la página
+// Inicializar la pantalla de bienvenida al cargar la página
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
