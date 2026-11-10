@@ -4,7 +4,7 @@ let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2; // 54 puntos totales
 
-export function iniciarAplicacion() {
+function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   if (!preguntasDiv) return;
 
@@ -12,19 +12,23 @@ export function iniciarAplicacion() {
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
-      <p class="subtitulo-bienvenida">Un espejo para observar tu andar cotidiano, más allá de todo dogma.</p>
+      <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
       <div class="contenedor-umbral">
         <button id="btn-comenzar" class="sello-umbral">Revelar mi código huella</button>
       </div>
     </div>
   `;
 
-  document.getElementById('btn-comenzar').addEventListener('click', () => {
-    indiceActual = 0;
-    puntajeAcumulado = 0;
-    actualizarRostroVisual(); // Limpia el rostro al comenzar
-    renderizarPregunta();
-  });
+  // Aseguramos la captura del botón ni bien se dibuja en el DOM
+  const btnComenzar = document.getElementById('btn-comenzar');
+  if (btnComenzar) {
+    btnComenzar.addEventListener('click', () => {
+      indiceActual = 0;
+      puntajeAcumulado = 0;
+      actualizarRostroVisual();
+      renderizarPregunta();
+    });
+  }
 }
 
 function renderizarPregunta() {
@@ -37,15 +41,13 @@ function renderizarPregunta() {
   }
 
   const p = codigoYeshuaPreguntas[indiceActual];
-
-  // Mantenemos el contenedor del quiz separado o aseguramos que no pise el rostro
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
   preguntasDiv.innerHTML = `
     <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
     <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
     <div class="opciones-lista">
-      ${p.opciones.map((op, idx) => `
+      ${p.opciones.map((op) => `
         <button class="opcion-btn" data-peso="${op.peso}">
           ${op.texto}
         </button>
@@ -53,7 +55,6 @@ function renderizarPregunta() {
     </div>
   `;
 
-  // Asignar eventos a los botones de opción
   preguntasDiv.querySelectorAll('.opcion-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const pesoSeleccionado = parseInt(e.currentTarget.getAttribute('data-peso'));
@@ -127,5 +128,5 @@ function mostrarHuellaYeshua() {
   });
 }
 
-// Inicializar la pantalla de bienvenida al cargar la página
+// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
