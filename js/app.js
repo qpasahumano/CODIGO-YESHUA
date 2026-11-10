@@ -15,14 +15,13 @@ function renderizarPregunta() {
   if (!contenedor) return;
 
   if (indiceActual >= codigoYeshuaPreguntas.length) {
-    mostrarLecturaEvolutiva();
+    mostrarHuellaYeshua();
     return;
   }
 
   const p = codigoYeshuaPreguntas[indiceActual];
 
   // Mantenemos el contenedor del quiz separado o aseguramos que no pise el rostro
-  // Nota: Lo ideal en el HTML es separar el área del rostro del área de las preguntas.
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
   preguntasDiv.innerHTML = `
@@ -79,20 +78,35 @@ function actualizarRostroVisual() {
   });
 }
 
-function mostrarLecturaEvolutiva() {
+function mostrarHuellaYeshua() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || document.getElementById('quiz-container');
   if (!preguntasDiv) return;
 
+  const porcentajeTotal = Math.round((puntajeAcumulado / puntajeMaximo) * 100);
+
+  let mensajeReflexivo = "";
+  if (porcentajeTotal >= 80) {
+    mensajeReflexivo = "Tu andar refleja una profunda sintonía con las enseñanzas y el espíritu de los Evangelios en tu vida cotidiana.";
+  } else if (porcentajeTotal >= 50) {
+    mensajeReflexivo = "Te encontrás en un camino consciente de crecimiento, con un equilibrio firme y áreas abiertas a seguir transformando.";
+  } else {
+    mensajeReflexivo = "Este recorrido te invita a pausar y contemplar nuevos horizontes de empatía, servicio y transformación interior.";
+  }
+
   preguntasDiv.innerHTML = `
     <div class="resultado-final">
-      <h2>Evaluación Concluida</h2>
-      <p>Has completado el recorrido por el Código Yeshúa.</p>
-      <button id="btn-lectura-evolutiva" class="btn-principal">Lectura evolutiva</button>
+      <h2>Tu huella de Yeshúa</h2>
+      <div class="tarjeta-resumen">
+        <p class="puntaje-final">Alineación espiritual global: <strong>${porcentajeTotal}%</strong></p>
+        <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
+      </div>
+      <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
+      <button id="btn-reiniciar" class="btn-principal">Volver a realizar el recorrido</button>
     </div>
   `;
 
-  document.getElementById('btn-lectura-evolutiva').addEventListener('click', () => {
-    alert("Mostrando detalles de la Lectura evolutiva y espejos bíblicos...");
+  document.getElementById('btn-reiniciar').addEventListener('click', () => {
+    iniciarAplicacion();
   });
 }
 
