@@ -13,7 +13,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Subimos la estructura completa hacia arriba */
+      align-items: flex-start;
       min-height: 100vh;
       box-sizing: border-box;
     }
@@ -21,7 +21,7 @@
     #app-container {
       width: 100%;
       max-width: 480px;
-      padding: 10px 20px 20px 20px; /* Reducimos padding superior de 20px a 10px */
+      padding: 12px 20px 24px 20px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
@@ -30,32 +30,33 @@
     }
 
     .rostro-container {
-      margin-top: 5px; /* Control fino del margen superior */
-      margin-bottom: 12px; /* Reducimos distancia con los títulos inferiores */
+      margin-top: 10px;
+      margin-bottom: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
 
-    /* Rostro optimizado en tamaño y elevado */
+    /* Rostro optimizado en tamaño y revelado progresivo profundo (inicia casi imperceptible) */
     .rostro-imagen-estatica {
-      width: 170px; /* Tamaño equilibrado para despejar aire vertical */
+      width: 175px;
       height: auto;
-      max-height: 210px;
+      max-height: 220px;
       object-fit: contain;
       background: transparent;
       border: none;
       box-shadow: none;
       padding: 0;
       border-radius: 0;
-      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
-      transition: all 0.5s ease;
+      opacity: 0.05; 
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) grayscale(100%);
+      transition: all 0.6s ease;
     }
 
     .progreso-texto {
-      margin-top: 6px;
-      font-size: 0.85rem;
+      margin-top: 8px;
+      font-size: 0.82rem;
       color: #a0a0ab;
       letter-spacing: 0.5px;
     }
@@ -80,9 +81,9 @@
     }
 
     .pantalla-bienvenida h2 {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       color: #f0f0f5;
-      margin-top: 6px;
+      margin-top: 4px;
       margin-bottom: 8px;
       font-weight: 500;
       letter-spacing: 0.5px;
@@ -92,7 +93,7 @@
       font-size: 0.95rem;
       color: #b0b0bc;
       line-height: 1.4;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       padding: 0 10px;
     }
 
@@ -105,46 +106,62 @@
       margin-top: 5px;
     }
 
-    /* Vasija interactiva estética */
+    /* Cántaro ampliado, centralizado y estético sin texto lateral */
     .sello-cantaro {
-      width: 95px;
+      width: 135px;
       height: auto;
       cursor: pointer;
       background: transparent;
       border: none;
       padding: 0;
       display: block;
+      margin: 0 auto;
       transition: all 0.3s ease;
-      filter: drop-shadow(0 0 12px rgba(194, 155, 56, 0.25));
+      filter: drop-shadow(0 0 14px rgba(194, 155, 56, 0.3));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
       transform: scale(1.06);
-      filter: drop-shadow(0 0 22px rgba(242, 201, 76, 0.6));
+      filter: drop-shadow(0 0 24px rgba(242, 201, 76, 0.65));
     }
 
-    .subtitulo-cantaro {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: #c29b38;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .bloque-info {
-      font-size: 0.8rem;
-      color: #8c8c9a;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+    .subtitulo-explicacion {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #c5b898;
+      line-height: 1.4;
+      padding: 0 12px;
       text-align: center;
     }
 
+    .bloque-info {
+      font-size: 0.78rem;
+      color: #8c8c9a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    /* Estilo para la referencia bíblica en tonos pasteles beige/lino */
+    .referencia-biblica {
+      font-size: 0.8rem;
+      color: #d6c597;
+      background-color: rgba(194, 155, 56, 0.08);
+      border: 1px solid rgba(194, 155, 56, 0.2);
+      padding: 6px 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
     .pregunta-enunciado h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: #f0f0f5;
       line-height: 1.4;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       font-weight: 400;
       text-align: center;
     }
@@ -162,7 +179,7 @@
       border: 1px solid #2a2a30;
       padding: 14px 18px;
       border-radius: 12px;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -187,7 +204,7 @@
       border: 1px solid #2a2a30;
       border-radius: 16px;
       padding: 20px;
-      margin: 20px 0;
+      margin: 18px 0;
       text-align: center;
     }
 
@@ -197,17 +214,28 @@
     }
 
     .mensaje-evolutivo {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: #b0b0bc;
       line-height: 1.5;
     }
 
     .texto-invitacion {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #8c8c9a;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       line-height: 1.4;
       text-align: center;
+    }
+
+    /* Firma institucional al pie */
+    .firma-autor {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: #787885;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-align: center;
+      width: 100%;
     }
   </style>
 </head>
@@ -216,7 +244,7 @@
   <!-- Contenedor principal de la aplicación -->
   <div id="app-container">
     
-    <!-- Contenedor del Rostro Transparente de Yeshúa elevado -->
+    <!-- Contenedor del Rostro Transparente de Yeshúa -->
     <div class="rostro-container">
       <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
@@ -225,19 +253,27 @@
     <!-- Contenedor dinámico del quiz y bienvenida -->
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
-        <!-- Pantalla de bienvenida con la vasija interactiva -->
+        <!-- Pantalla de bienvenida con el cántaro centrado y ampliado -->
         <div class="pantalla-bienvenida">
           <h2>Tu huella de Yeshúa</h2>
           <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
           <div class="contenedor-umbral">
             <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
-            <span class="subtitulo-cantaro">Tocar para iniciar</span>
+            <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Firma de autoría al pie -->
+    <div class="firma-autor">Creado por Carlos Amado Selim</div>
+
   </div>
+
+  <!-- Audio de fondo ambiental -->
+  <audio id="audio-fondo" loop>
+    <source src="assets/audio/fondo-espiritual.mp3" type="audio/mpeg">
+  </audio>
 
   <script type="module" src="js/app.js"></script>
 </body>
