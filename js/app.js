@@ -7,7 +7,14 @@ const puntajeMaximo = codigoYeshuaPreguntas.length * 2; // 54 puntos totales
 function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   const topSlot = document.getElementById('top-slot-container');
+  const footerContainer = document.getElementById('footer-container');
+  
   if (!preguntasDiv || !topSlot) return;
+
+  // En la pantalla principal mostramos la firma institucional al pie
+  if (footerContainer) {
+    footerContainer.style.display = 'block';
+  }
 
   topSlot.innerHTML = '';
 
@@ -29,9 +36,13 @@ function iniciarAplicacion() {
       indiceActual = 0;
       puntajeAcumulado = 0;
 
+      // Al iniciar el quiz, ocultamos la firma del pie para ganar espacio visual y mostramos solo el rostro grande
+      if (footerContainer) {
+        footerContainer.style.display = 'none';
+      }
+
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
-        <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
       `;
 
       actualizarRostroVisual();
@@ -63,7 +74,7 @@ function renderizarPregunta() {
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.88rem; font-style: italic;">"${p.espejo}"</span>
+        <span style="font-size: 0.9rem; font-style: italic;">"${p.espejo}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
       <div class="opciones-lista">
@@ -94,11 +105,6 @@ function procesarRespuesta(peso) {
 function actualizarRostroVisual() {
   const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
   const rostroImg = document.getElementById('rostro-yeshua');
-  const textoProgreso = document.getElementById('progreso-texto');
-
-  if (textoProgreso) {
-    textoProgreso.textContent = `Alineación espiritual: ${Math.round(porcentaje)}%`;
-  }
 
   if (rostroImg) {
     let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 2.0) * 0.98;
@@ -118,7 +124,13 @@ function actualizarRostroVisual() {
 
 function mostrarHuellaYeshua() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || document.getElementById('quiz-container');
+  const footerContainer = document.getElementById('footer-container');
   if (!preguntasDiv) return;
+
+  // Reactivamos la firma al pie en la pantalla final si se desea, o la dejamos limpia
+  if (footerContainer) {
+    footerContainer.style.display = 'block';
+  }
 
   const porcentajeTotal = Math.round((puntajeAcumulado / puntajeMaximo) * 100);
 
@@ -149,4 +161,3 @@ function mostrarHuellaYeshua() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
-    
