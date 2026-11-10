@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tu huella de Yeshúa</title>
   
-  <!-- Fuente histórica / clásica inspirada en inscripciones y manuscritos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -19,36 +18,41 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
       box-sizing: border-box;
     }
 
     #app-container {
       width: 100%;
-      max-width: 480px;
-      padding: 12px 16px 28px 16px;
+      max-width: 420px;
+      height: 100vh;
+      max-height: 850px;
+      padding: 6px 12px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
     }
 
     .rostro-container {
-      margin-top: 6px;
-      margin-bottom: 10px;
+      margin-top: 2px;
+      margin-bottom: 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      flex-shrink: 0;
     }
 
-    /* Rostro: casi invisible al 0% (0.02) */
+    /* Rostro de Yeshúa optimizado en altura para que nunca se corte */
     .rostro-imagen-estatica {
-      width: 180px;
+      width: 110px;
       height: auto;
-      max-height: 220px;
+      max-height: 130px;
       object-fit: contain;
       background: transparent;
       border: none;
@@ -59,17 +63,20 @@
     }
 
     .progreso-texto {
-      margin-top: 6px;
-      font-size: 0.8rem;
+      margin-top: 2px;
+      font-size: 0.72rem;
       color: #8a8a95;
       letter-spacing: 0.8px;
     }
 
     #quiz-container {
       width: 100%;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      margin: 4px 0;
     }
 
     #preguntas-dinamicas {
@@ -86,18 +93,18 @@
 
     .pantalla-bienvenida h2 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.55rem;
+      font-size: 1.35rem;
       color: #f2c94c;
-      margin-top: 6px;
-      margin-bottom: 6px;
+      margin-top: 2px;
+      margin-bottom: 4px;
       letter-spacing: 1px;
     }
 
     .subtitulo-bienvenida {
-      font-size: 0.92rem;
+      font-size: 0.82rem;
       color: #b0b0bc;
-      line-height: 1.4;
-      margin-bottom: 18px;
+      line-height: 1.3;
+      margin-bottom: 8px;
       padding: 0 10px;
     }
 
@@ -109,9 +116,8 @@
       justify-content: center;
     }
 
-    /* Cántaro ampliado a 165px */
     .sello-cantaro {
-      width: 165px;
+      width: 130px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -120,69 +126,68 @@
       display: block;
       margin: 0 auto;
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.35));
+      filter: drop-shadow(0 0 14px rgba(194, 155, 56, 0.35));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
       transform: scale(1.05);
-      filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.7));
+      filter: drop-shadow(0 0 22px rgba(242, 201, 76, 0.7));
     }
 
-    /* Texto "Tocar para iniciar" achicado y sutil */
     .texto-tocar-iniciar {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: #9a8866;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 8px;
-      margin-bottom: 14px;
+      margin-top: 4px;
+      margin-bottom: 6px;
       opacity: 0.85;
     }
 
     .subtitulo-explicacion {
-      margin-top: 10px;
-      font-size: 0.85rem;
+      margin-top: 4px;
+      font-size: 0.75rem;
       color: #d4c5a0;
-      line-height: 1.4;
-      padding: 0 14px;
+      line-height: 1.3;
+      padding: 0 10px;
       text-align: center;
     }
 
-    /* Tarjeta Pergamino Manuscrito */
+    /* Tarjeta Pergamino optimizada para encajar sin scroll */
     .tarjeta-pergamino {
       background-image: url('assets/icons/pergamino.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
-      padding: 32px 24px 36px 24px;
+      padding: 16px 14px;
       box-sizing: border-box;
       width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
-      color: #2b1810; /* Tinta sepia oscura de alto contraste */
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+      color: #1a0f0a;
       text-align: center;
     }
 
     .bloque-info {
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       color: #5c3a21;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 8px;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
       font-weight: 700;
     }
 
     .referencia-biblica {
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       color: #3b2213;
       background-color: rgba(92, 58, 33, 0.08);
       border: 1px solid rgba(92, 58, 33, 0.22);
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin-bottom: 14px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
       text-align: center;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .referencia-biblica strong {
@@ -192,18 +197,18 @@
 
     .pregunta-enunciado h3 {
       font-family: 'Cinzel', serif;
-      font-size: 1.05rem;
+      font-size: 0.92rem;
       color: #1c0e07;
-      line-height: 1.4;
+      line-height: 1.3;
       margin-top: 0;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
       font-weight: 700;
     }
 
     .opciones-lista {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       width: 100%;
     }
 
@@ -211,16 +216,16 @@
       background-color: rgba(43, 24, 16, 0.92);
       color: #f2e3c6;
       border: 1px solid #5c3a21;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.88rem;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
-      line-height: 1.3;
+      line-height: 1.25;
       width: 100%;
       box-sizing: border-box;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .opcion-btn:hover, .opcion-btn:active {
@@ -237,39 +242,40 @@
     .tarjeta-resumen {
       background-color: #1a1a1e;
       border: 1px solid #2a2a30;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 18px 0;
+      border-radius: 12px;
+      padding: 12px;
+      margin: 10px 0;
       text-align: center;
     }
 
     .puntaje-final {
-      font-size: 1.1rem;
-      margin-bottom: 12px;
+      font-size: 0.98rem;
+      margin-bottom: 8px;
     }
 
     .mensaje-evolutivo {
-      font-size: 0.93rem;
+      font-size: 0.84rem;
       color: #b0b0bc;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .texto-invitacion {
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       color: #8c8c9a;
-      margin-bottom: 20px;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      line-height: 1.3;
       text-align: center;
     }
 
     .firma-autor {
-      margin-top: 24px;
-      font-size: 0.75rem;
+      margin-top: 4px;
+      font-size: 0.68rem;
       color: #787885;
       letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
       width: 100%;
+      flex-shrink: 0;
     }
   </style>
 </head>
