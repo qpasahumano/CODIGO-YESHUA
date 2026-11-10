@@ -1,4 +1,3 @@
-// js/content/preguntas.js
 export const codigoYeshuaPreguntas = [
   {
     id: 1,
@@ -59,7 +58,7 @@ export const codigoYeshuaPreguntas = [
     enunciado: "¿Podés reconocer tus propios errores antes de señalar los de los demás?",
     opciones: [
       { texto: "Me cuesta aceptar mis faltas; suelo ver primero las equivocaciones ajenas.", peso: 0 },
-      { texte: "Reconozco mis errores cuando la evidencia es demasiado clara.", peso: 1 },
+      { texto: "Reconozco mis errores cuando la evidencia es demasiado clara.", peso: 1 },
       { texto: "Examino primero mi conducta y reconozco mis fallas con humildad.", peso: 2 }
     ],
     referenciaBiblica: "Mateo 7:3-5",
