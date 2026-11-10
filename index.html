@@ -11,7 +11,7 @@
   <!-- Contenedor principal de la aplicación -->
   <div id="app-container">
     
-    <!-- Contenedor del Rostro Progresivo de Yeshúa (permanece fijo mientras cambia el quiz) -->
+    <!-- Contenedor del Rostro Progresivo de Yeshúa -->
     <div class="rostro-container">
       <svg id="rostro-yeshua" viewBox="0 0 200 200" class="rostro-svg">
         <path class="trazo-rostro capa-base estado-oculto" d="M100,20 C60,20 40,50 40,90 C40,140 70,170 100,180 C130,170 160,140 160,90 C160,50 140,20 100,20 Z" />
@@ -21,13 +21,13 @@
       <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
     </div>
 
-    <!-- Contenedor donde se despliegan dinámicamente las preguntas del quiz y la bienvenida -->
+    <!-- Contenedor dinámico -->
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
-        <!-- Pantalla de bienvenida con el umbral inicial -->
+        <!-- Pantalla de bienvenida con la frase exacta y el umbral -->
         <div class="pantalla-bienvenida">
           <h2>Tu huella de Yeshúa</h2>
-          <p class="subtitulo-bienvenida">Un espejo para observar tu andar cotidiano, más allá de todo dogma.</p>
+          <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
           <div class="contenedor-umbral">
             <button id="btn-comenzar" class="sello-umbral">Revelar mi código huella</button>
           </div>
@@ -37,7 +37,6 @@
 
   </div>
 
-  <!-- Llamado al script principal como módulo para que conecte con content.js -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
