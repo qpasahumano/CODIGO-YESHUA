@@ -39,7 +39,7 @@
     }
 
     .rostro-container {
-      margin-top: 4px;
+      margin-top: 2px;
       margin-bottom: 2px;
       display: flex;
       flex-direction: column;
@@ -48,7 +48,6 @@
       flex-shrink: 0;
     }
 
-    /* Rostro de Yeshúa más grande y reubicado sutilmente más abajo */
     .rostro-imagen-estatica {
       width: 165px;
       height: auto;
@@ -147,45 +146,50 @@
       text-align: center;
     }
 
-    /* Sin recuadro marrón, tipografía marrón hebraica/clásica (EB Garamond) */
+    /* Fondo de pergamino preservado intacto con tipografía marrón y estilo hebraico/clásico (EB Garamond) */
     .tarjeta-pergamino {
-      background: transparent;
-      padding: 4px 6px;
+      background-image: url('assets/icons/pergamino.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 18px 14px;
       box-sizing: border-box;
       width: 100%;
-      color: #3b2213;
+      border-radius: 6px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.85);
+      color: #2b170c;
       text-align: center;
     }
 
     .referencia-biblica {
-      font-size: 0.9rem;
-      color: #b8860b;
-      background-color: rgba(184, 134, 11, 0.08);
-      border-left: 3px solid #c29b38;
+      font-size: 0.88rem;
+      color: #2b170c;
+      background-color: rgba(74, 40, 16, 0.12);
+      border: 1px solid rgba(74, 40, 16, 0.3);
       padding: 6px 10px;
-      border-radius: 0 4px 4px 0;
-      margin-bottom: 10px;
-      text-align: left;
-      line-height: 1.4;
+      border-radius: 5px;
+      margin-bottom: 8px;
+      text-align: center;
+      line-height: 1.35;
       font-family: 'EB Garamond', serif;
       font-weight: 600;
     }
 
     .referencia-biblica strong {
       font-family: 'Cinzel', serif;
-      color: #f2c94c;
-      font-size: 0.92rem;
+      color: #1a0a03;
+      font-size: 0.9rem;
     }
 
     .pregunta-enunciado h3 {
       font-family: 'EB Garamond', serif;
       font-size: 1.05rem;
-      color: #f0f0f5;
-      line-height: 1.4;
+      color: #1a0a03;
+      line-height: 1.35;
       margin-top: 0;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-weight: 600;
-      text-align: left;
+      text-align: center;
     }
 
     .opciones-lista {
@@ -196,26 +200,27 @@
     }
 
     .opcion-btn {
-      background-color: rgba(26, 26, 30, 0.9);
-      color: #d0d0dc;
-      border: 1px solid #3a3a45;
-      padding: 8px 12px;
+      background-color: rgba(30, 14, 6, 0.94);
+      color: #f7ebcf;
+      border: 1px solid #5c3a21;
+      padding: 8px 10px;
       border-radius: 6px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-family: 'EB Garamond', serif;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
-      line-height: 1.35;
+      line-height: 1.3;
       width: 100%;
       box-sizing: border-box;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
       font-weight: 600;
     }
 
     .opcion-btn:hover, .opcion-btn:active {
-      background-color: #25252b;
-      border-color: #c29b38;
+      background-color: #5c3a21;
       color: #ffffff;
+      border-color: #8c5a33;
     }
 
     .resultado-final {
@@ -251,18 +256,17 @@
       text-align: center;
     }
 
-    /* AUDITADO: Definición formal de la firma institucional con Great Vibes y color marrón cálido */
     .firma-autor {
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin-top: 2px;
+      margin-bottom: 2px;
       font-family: 'Great Vibes', cursive;
-      font-size: 1.5rem;
-      color: #c29b38;
+      font-size: 1.3rem;
+      color: #8c5a33;
       letter-spacing: 1px;
       text-align: center;
       width: 100%;
       flex-shrink: 0;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
       opacity: 0.95;
     }
   </style>
@@ -286,7 +290,6 @@
       </div>
     </div>
 
-    <!-- Crédito institucional visible en la interfaz principal -->
     <div id="footer-container" class="firma-autor">Carlos Amado Selim</div>
   </div>
 
