@@ -8,24 +8,33 @@ function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   if (!preguntasDiv) return;
 
-  // Renderizamos la pantalla inicial con el umbral de entrada
+  // Renderizamos la pantalla inicial con la vasija interactiva
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
       <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
       <div class="contenedor-umbral">
-        <button id="btn-comenzar" class="sello-umbral">Revelar mi código huella</button>
+        <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
+        <span class="subtitulo-cantaro">Tocar para iniciar</span>
       </div>
     </div>
   `;
 
-  // Aseguramos la captura del botón ni bien se dibuja en el DOM
+  // Aseguramos la captura del botón (imagen) ni bien se dibuja en el DOM
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
       indiceActual = 0;
       puntajeAcumulado = 0;
       actualizarRostroVisual();
+      
+      // Activar la música ambiental tenue y sutil al iniciar la experiencia
+      const audioFondo = document.getElementById('audio-fondo');
+      if (audioFondo) {
+        audioFondo.volume = 0.3; // Volumen tenue (30%)
+        audioFondo.play().catch(e => console.log("Audio autoplay bloqueado o restringido por el navegador", e));
+      }
+
       renderizarPregunta();
     });
   }
@@ -72,28 +81,28 @@ function procesarRespuesta(peso) {
 
 function actualizarRostroVisual() {
   const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
-  const capas = document.querySelectorAll('.trazo-rostro');
+  
+  // Con la imagen estática png, manejamos la opacidad y los filtros en base al porcentaje
+  const rostroImg = document.getElementById('rostro-yeshua');
   const textoProgreso = document.getElementById('progreso-texto');
 
   if (textoProgreso) {
     textoProgreso.textContent = `Alineación espiritual: ${Math.round(porcentaje)}%`;
   }
 
-  capas.forEach((capa, index) => {
-    const umbralPleno = (index + 1) * 33;
-    const umbralLight = (index + 1) * 15;
+  if (rostroImg) {
+    // Cálculo dinámico de opacidad y brillo según el progreso (de 0.25 a 1.0)
+    const opacidadCalculada = Math.max(0.25, porcentaje / 100);
+    rostroImg.style.opacity = opacidadCalculada;
 
-    if (porcentaje >= umbralPleno) {
-      capa.classList.remove('estado-oculto', 'estado-light');
-      capa.classList.add('estado-pleno');
-    } else if (porcentaje >= umbralLight) {
-      capa.classList.remove('estado-oculto', 'estado-pleno');
-      capa.classList.add('estado-light');
+    if (porcentaje >= 80) {
+      rostroImg.style.filter = 'drop-shadow(0 0 16px rgba(242, 201, 76, 0.6)) grayscale(0%)';
+    } else if (porcentaje >= 40) {
+      rostroImg.style.filter = 'drop-shadow(0 0 8px rgba(194, 155, 56, 0.3)) grayscale(30%)';
     } else {
-      capa.classList.remove('estado-pleno', 'estado-light');
-      capa.classList.add('estado-oculto');
+      rostroImg.style.filter = 'drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6)) grayscale(80%)';
     }
-  });
+  }
 }
 
 function mostrarHuellaYeshua() {
