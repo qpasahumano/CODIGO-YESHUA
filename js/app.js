@@ -11,7 +11,7 @@ function iniciarAplicacion() {
   
   if (!preguntasDiv || !topSlot) return;
 
-  // En la pantalla principal mostramos la firma institucional al pie
+  // Restauramos la visibilidad de la firma institucional en la pantalla principal
   if (footerContainer) {
     footerContainer.style.display = 'block';
   }
@@ -36,11 +36,12 @@ function iniciarAplicacion() {
       indiceActual = 0;
       puntajeAcumulado = 0;
 
-      // Al iniciar el quiz, ocultamos la firma del pie para ganar espacio visual y mostramos solo el rostro grande
+      // Ocultamos la firma al iniciar el quiz para dar espacio al rostro ampliado
       if (footerContainer) {
         footerContainer.style.display = 'none';
       }
 
+      // Cargamos el rostro de Yeshúa ampliado en el slot superior sin texto de porcentaje numérico
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       `;
@@ -127,7 +128,6 @@ function mostrarHuellaYeshua() {
   const footerContainer = document.getElementById('footer-container');
   if (!preguntasDiv) return;
 
-  // Reactivamos la firma al pie en la pantalla final si se desea, o la dejamos limpia
   if (footerContainer) {
     footerContainer.style.display = 'block';
   }
