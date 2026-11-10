@@ -8,19 +8,18 @@ function iniciarAplicacion() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas');
   if (!preguntasDiv) return;
 
-  // Renderizamos la pantalla inicial con el cántaro grande, centralizado y la leyenda descriptiva
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
       <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
       <div class="contenedor-umbral">
         <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi código huella" class="sello-cantaro">
+        <span class="texto-tocar-iniciar">Tocar para iniciar</span>
         <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
       </div>
     </div>
   `;
 
-  // Aseguramos la captura del evento sobre la imagen del cántaro
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
@@ -28,7 +27,6 @@ function iniciarAplicacion() {
       puntajeAcumulado = 0;
       actualizarRostroVisual();
       
-      // Activar música ambiental tenue y sutil (30% de volumen)
       const audioFondo = document.getElementById('audio-fondo');
       if (audioFondo) {
         audioFondo.volume = 0.3;
@@ -52,20 +50,22 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
-  // Integración completa: Referencia bíblica + Descripción/Espejo conceptual
+  // Renderizado montado sobre la tarjeta de pergamino con tipografía manuscrita y referencias
   preguntasDiv.innerHTML = `
-    <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
-    <div class="referencia-biblica">
-      <strong>📖 ${p.referenciaBiblica}</strong><br>
-      <span style="font-size: 0.9em; opacity: 0.9;">"${p.espejo}"</span>
-    </div>
-    <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
-    <div class="opciones-lista">
-      ${p.opciones.map((op) => `
-        <button class="opcion-btn" data-peso="${op.peso}">
-          ${op.texto}
-        </button>
-      `).join('')}
+    <div class="tarjeta-pergamino">
+      <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
+      <div class="referencia-biblica">
+        <strong>📖 ${p.referenciaBiblica}</strong><br>
+        <span style="font-size: 0.88em; font-style: italic; opacity: 0.95;">"${p.espejo}"</span>
+      </div>
+      <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
+      <div class="opciones-lista">
+        ${p.opciones.map((op) => `
+          <button class="opcion-btn" data-peso="${op.peso}">
+            ${op.texto}
+          </button>
+        `).join('')}
+      </div>
     </div>
   `;
 
@@ -94,16 +94,20 @@ function actualizarRostroVisual() {
   }
 
   if (rostroImg) {
-    // Revelado progresivo profundo: parte casi invisible (0.05) y solo se revela fuerte si hay alta alineación práctica
-    let opacidadCalculada = 0.05 + (porcentaje / 100) * 0.95;
+    // Revelado Progresivo Profundo + Lógica de la Mirada:
+    // Inicia casi imperceptible en 0.02. Solo crece si hay puntuación positiva real.
+    let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 1.8) * 0.98;
     rostroImg.style.opacity = opacidadCalculada;
 
     if (porcentaje >= 80) {
-      rostroImg.style.filter = 'drop-shadow(0 0 16px rgba(242, 201, 76, 0.65)) grayscale(0%)';
-    } else if (porcentaje >= 45) {
-      rostroImg.style.filter = 'drop-shadow(0 0 8px rgba(194, 155, 56, 0.35)) grayscale(40%)';
+      // Revelación plena y resplandor dorado hacia el final del recorrido
+      rostroImg.style.filter = 'drop-shadow(0 0 20px rgba(242, 201, 76, 0.75)) grayscale(0%) contrast(1.1) brightness(1.1)';
+    } else if (porcentaje >= 40) {
+      // Iluminación media tibia
+      rostroImg.style.filter = 'drop-shadow(0 0 10px rgba(194, 155, 56, 0.4)) grayscale(30%) contrast(1.25)';
     } else {
-      rostroImg.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) grayscale(90%)';
+      // En puntajes bajos o iniciales: los ojos se acentúan por contraste y penumbra (efecto mirada)
+      rostroImg.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)) grayscale(100%) contrast(1.6) brightness(0.6)';
     }
   }
 }
@@ -140,5 +144,4 @@ function mostrarHuellaYeshua() {
   });
 }
 
-// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
