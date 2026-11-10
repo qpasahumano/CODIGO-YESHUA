@@ -9,12 +9,8 @@ function iniciarAplicacion() {
   const topSlot = document.getElementById('top-slot-container');
   if (!preguntasDiv || !topSlot) return;
 
-  // En la pantalla principal mostramos la vasija decorativa/emblema superior
-  topSlot.innerHTML = `
-    <img src="assets/icons/cantaro-agua.png" alt="Símbolo Yeshúa" style="width: 85px; height: auto; opacity: 0.85; filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.3));">
-  `;
+  topSlot.innerHTML = '';
 
-  // Renderizamos la bienvenida con la vasija interactiva grande
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
       <h2>Tu huella de Yeshúa</h2>
@@ -33,7 +29,6 @@ function iniciarAplicacion() {
       indiceActual = 0;
       puntajeAcumulado = 0;
 
-      // Al iniciar el quiz, cargamos el rostro de Yeshúa en el slot superior con su medidor
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
         <div id="progreso-texto" class="progreso-texto">Alineación espiritual: 0%</div>
@@ -66,7 +61,6 @@ function renderizarPregunta() {
 
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
-      <div class="bloque-info">Bloque ${p.bloque} - ${p.categoria}</div>
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
         <span style="font-size: 0.88rem; font-style: italic;">"${p.espejo}"</span>
@@ -107,11 +101,9 @@ function actualizarRostroVisual() {
   }
 
   if (rostroImg) {
-    // Revelado progresivo: arranca muy sutil y escala armónicamente desde la mitad en adelante
     let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 2.0) * 0.98;
     rostroImg.style.opacity = opacidadCalculada;
 
-    // Efecto de iluminación y glow en la mirada (incluyendo destello de conciencia en puntajes bajos avanzados)
     if (porcentaje >= 75) {
       rostroImg.style.filter = 'drop-shadow(0 0 18px rgba(242, 201, 76, 0.8)) grayscale(0%) contrast(1.15) brightness(1.12)';
     } else if (porcentaje >= 45) {
@@ -157,3 +149,4 @@ function mostrarHuellaYeshua() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
+    
