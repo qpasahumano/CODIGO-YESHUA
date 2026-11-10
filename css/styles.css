@@ -2,57 +2,71 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #121214;
+  background-color: #0d0d0f;
   color: #e1e1e6;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 #app-container {
   width: 100%;
-  max-width: 480px;
-  padding: 20px;
+  max-width: 430px;
+  height: 100vh;
+  max-height: 900px;
+  padding: 6px 12px 10px 12px;
   box-sizing: border-box;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* Contenedor del Rostro e Imagen PNG Transparente */
 .rostro-container {
-  margin-bottom: 24px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .rostro-imagen-estatica {
-  width: 160px;
+  width: 130px;
   height: auto;
-  max-height: 220px;
+  max-height: 145px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
-  transition: all 0.5s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+  opacity: 0.02;
+  filter: grayscale(100%) brightness(0.4);
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .progreso-texto {
-  margin-top: 14px;
-  font-size: 0.85rem;
-  color: #a0a0ab;
-  letter-spacing: 0.5px;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: #9a9aa8;
+  letter-spacing: 0.8px;
 }
 
 /* Contenedor dinámico y pantalla de bienvenida centrada */
 #quiz-container {
   width: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: 2px 0;
 }
 
 #preguntas-dinamicas {
@@ -68,94 +82,150 @@ body {
 }
 
 .pantalla-bienvenida h2 {
-  font-size: 1.5rem;
-  color: #f0f0f5;
-  margin-bottom: 12px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  color: #f2c94c;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
 }
 
 .subtitulo-bienvenida {
-  font-size: 1.05rem;
+  font-size: 0.84rem;
   color: #b0b0bc;
-  line-height: 1.5;
-  margin-bottom: 28px;
+  line-height: 1.3;
+  margin-bottom: 10px;
   padding: 0 10px;
 }
 
-/* El Sello / Umbral de Inicio Centralizado */
+/* El Sello / Umbral de Inicio Centralizado (Cántaro más grande) */
 .contenedor-umbral {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 10px;
 }
 
-.sello-umbral {
-  background: transparent;
-  color: #f2c94c;
-  border: 1px solid #c29b38;
-  padding: 14px 28px;
-  font-size: 1rem;
-  border-radius: 30px;
+.sello-cantaro {
+  width: 160px;
+  height: auto;
   cursor: pointer;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(194, 155, 56, 0.1);
-  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.4));
 }
 
-.sello-umbral:hover {
-  background: rgba(242, 201, 76, 0.1);
-  box-shadow: 0 0 20px rgba(242, 201, 76, 0.3);
-  transform: translateY(-2px);
+.sello-cantaro:hover, .sello-cantaro:active {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.75));
 }
 
-/* Estilos para las preguntas del Quiz */
+.texto-tocar-iniciar {
+  font-size: 0.7rem;
+  color: #a8946e;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.subtitulo-explicacion {
+  margin-top: 2px;
+  font-size: 0.78rem;
+  color: #d4c5a0;
+  line-height: 1.3;
+  padding: 0 10px;
+  text-align: center;
+}
+
+/* Tarjeta de Pergamino optimizada */
+.tarjeta-pergamino {
+  background-image: url('assets/icons/pergamino.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 18px 14px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.85);
+  color: #120904;
+  text-align: center;
+}
+
 .bloque-info {
-  font-size: 0.8rem;
-  color: #8c8c9a;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: #4a2810;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+
+/* Referencias bíblicas ampliadas y legibles para adultos mayores */
+.referencia-biblica {
+  font-size: 0.86rem;
+  color: #1a0a03;
+  background-color: rgba(74, 40, 16, 0.12);
+  border: 1px solid rgba(74, 40, 16, 0.3);
+  padding: 6px 10px;
+  border-radius: 5px;
   margin-bottom: 8px;
   text-align: center;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.referencia-biblica strong {
+  font-family: 'Cinzel', serif;
+  color: #0d0301;
+  font-size: 0.9rem;
 }
 
 .pregunta-enunciado h3 {
-  font-size: 1.15rem;
-  color: #f0f0f5;
-  line-height: 1.4;
-  margin-bottom: 24px;
-  font-weight: 400;
-  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: #0f0502;
+  line-height: 1.35;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .opciones-lista {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   width: 100%;
 }
 
 .opcion-btn {
-  background-color: #1a1a1e;
-  color: #d0d0dc;
-  border: 1px solid #2a2a30;
-  padding: 14px 18px;
-  border-radius: 12px;
-  font-size: 0.95rem;
+  background-color: rgba(30, 14, 6, 0.94);
+  color: #f7ebcf;
+  border: 1px solid #5c3a21;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
   line-height: 1.3;
   width: 100%;
   box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
-.opcion-btn:hover {
-  background-color: #25252b;
-  border-color: #c29b38;
+.opcion-btn:hover, .opcion-btn:active {
+  background-color: #5c3a21;
   color: #ffffff;
+  border-color: #8c5a33;
 }
 
 /* Tarjeta de resultados finales */
@@ -167,27 +237,42 @@ body {
 .tarjeta-resumen {
   background-color: #1a1a1e;
   border: 1px solid #2a2a30;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 20px 0;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 8px 0;
   text-align: center;
 }
 
 .puntaje-final {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
+  font-size: 0.98rem;
+  margin-bottom: 6px;
 }
 
 .mensaje-evolutivo {
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   color: #b0b0bc;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .texto-invitacion {
-  font-size: 0.85rem;
+  font-size: 0.74rem;
   color: #8c8c9a;
-  margin-bottom: 24px;
-  line-height: 1.4;
+  margin-bottom: 10px;
+  line-height: 1.3;
   text-align: center;
+}
+
+/* Créditos / Firma institucional manuscrita al pie */
+.firma-autor {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3rem;
+  color: #8c5a33;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 100%;
+  flex-shrink: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  opacity: 0.95;
 }
