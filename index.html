@@ -4,7 +4,221 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu huella de Yeshúa</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos directos para asegurar que carguen sin depender de archivos externos */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121214 !important;
+      color: #e1e1e6 !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .rostro-container {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .rostro-svg {
+      width: 140px;
+      height: 140px;
+      background-color: #1a1a1e;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border: 1px solid #2a2a30;
+    }
+
+    .trazo-rostro {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 0.5s ease;
+    }
+
+    .estado-oculto {
+      stroke: #2a2a30;
+      opacity: 0.3;
+    }
+
+    .estado-light {
+      stroke: #c29b38;
+      opacity: 0.6;
+    }
+
+    .estado-pleno {
+      stroke: #f2c94c;
+      opacity: 1;
+      filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.4));
+    }
+
+    .progreso-texto {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #a0a0ab;
+      letter-spacing: 0.5px;
+    }
+
+    #quiz-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #preguntas-dinamicas {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pantalla-bienvenida {
+      text-align: center;
+      width: 100%;
+    }
+
+    .pantalla-bienvenida h2 {
+      font-size: 1.5rem;
+      color: #f0f0f5;
+      margin-bottom: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitulo-bienvenida {
+      font-size: 1.05rem;
+      color: #b0b0bc;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      padding: 0 10px;
+    }
+
+    .contenedor-umbral {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .sello-umbral {
+      background: transparent;
+      color: #f2c94c;
+      border: 1px solid #c29b38;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(194, 155, 56, 0.1);
+      display: inline-block;
+    }
+
+    .sello-umbral:hover {
+      background: rgba(242, 201, 76, 0.1);
+      box-shadow: 0 0 20px rgba(242, 201, 76, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .bloque-info {
+      font-size: 0.8rem;
+      color: #8c8c9a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .pregunta-enunciado h3 {
+      font-size: 1.15rem;
+      color: #f0f0f5;
+      line-height: 1.4;
+      margin-bottom: 24px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .opciones-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .opcion-btn {
+      background-color: #1a1a1e;
+      color: #d0d0dc;
+      border: 1px solid #2a2a30;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.3;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .opcion-btn:hover {
+      background-color: #25252b;
+      border-color: #c29b38;
+      color: #ffffff;
+    }
+
+    .resultado-final {
+      width: 100%;
+      text-align: center;
+    }
+
+    .tarjeta-resumen {
+      background-color: #1a1a1e;
+      border: 1px solid #2a2a30;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .puntaje-final {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .mensaje-evolutivo {
+      font-size: 0.95rem;
+      color: #b0b0bc;
+      line-height: 1.5;
+    }
+
+    .texto-invitacion {
+      font-size: 0.85rem;
+      color: #8c8c9a;
+      margin-bottom: 24px;
+      line-height: 1.4;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
