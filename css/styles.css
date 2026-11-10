@@ -1,1 +1,21 @@
+.contenedor-revelacion {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
 
+.contenedor-revelacion img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imagen-capa.nitida {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* La opacidad cambia dinámicamente con JavaScript según el porcentaje de avance (de 0 a 1) */
+  opacity: var(--porcentaje-avance, 0);
+  transition: opacity 0.6s ease-in-out;
+}
