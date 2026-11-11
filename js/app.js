@@ -50,21 +50,25 @@ function iniciarCieloNocturno() {
   }
 }
 
-function inicializarControlesGlobales() {
-  const btnIdioma = document.getElementById('btn-idioma');
-  const btnAudio = document.getElementById('btn-control-audio');
+function configurarControlesSuperiores() {
   const audioFondo = document.getElementById('audio-fondo');
+  const btnAudio = document.getElementById('btn-control-audio');
+  const btnIdioma = document.getElementById('btn-idioma');
 
-  if (btnIdioma && !btnIdioma.dataset.listenerAsignado) {
-    btnIdioma.dataset.listenerAsignado = "true";
-    btnIdioma.addEventListener('click', () => {
+  if (btnIdioma) {
+    const nuevoBtnIdioma = btnIdioma.cloneNode(true);
+    btnIdioma.parentNode.replaceChild(nuevoBtnIdioma, btnIdioma);
+
+    const btnIdiomaActualizado = document.getElementById('btn-idioma');
+    btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
+
+    btnIdiomaActualizado.addEventListener('click', () => {
       idiomaActual = idiomaActual === 'es' ? 'en' : 'es';
       localStorage.setItem('yeshua_idioma', idiomaActual);
+      btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
       
-      btnIdioma.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
-
       if (!juegoIniciado) {
-        renderizarBienvenida();
+        iniciarAplicacion();
       } else if (indiceActual >= codigoYeshuaPreguntas.length) {
         mostrarHuellaYeshua();
       } else {
@@ -73,49 +77,34 @@ function inicializarControlesGlobales() {
     });
   }
 
-  if (btnAudio && audioFondo && !btnAudio.dataset.listenerAsignado) {
-    btnAudio.dataset.listenerAsignado = "true";
-    btnAudio.addEventListener('click', () => {
+  if (btnAudio && audioFondo) {
+    const nuevoBtnAudio = btnAudio.cloneNode(true);
+    btnAudio.parentNode.replaceChild(nuevoBtnAudio, btnAudio);
+
+    document.getElementById('btn-control-audio').addEventListener('click', () => {
       if (audioFondo.paused) {
         audioFondo.play().then(() => {
-          btnAudio.textContent = '🔊';
+          document.getElementById('btn-control-audio').textContent = '🔊';
         }).catch(err => console.log("Error al reproducir audio:", err));
       } else {
         audioFondo.pause();
-        btnAudio.textContent = '🔇';
+        document.getElementById('btn-control-audio').textContent = '🔇';
       }
     });
   }
 }
 
 function iniciarAplicacion() {
+  const preguntasDiv = document.getElementById('preguntas-dinamicas');
+  const topSlot = document.getElementById('top-slot-container');
+  
+  if (!preguntasDiv || !topSlot) return;
+
+  iniciarCieloNocturno();
+  topSlot.innerHTML = '';
   indiceActual = 0;
   puntajeAcumulado = 0;
   juegoIniciado = false;
-
-  iniciarCieloNocturno();
-  inicializarControlesGlobales();
-
-  const topSlot = document.getElementById('top-slot-container');
-  if (topSlot) topSlot.innerHTML = '';
-
-  renderizarBienvenida();
-}
-
-function renderizarBienvenida() {
-  const preguntasDiv = document.getElementById('preguntas-dinamicas');
-  const topSlot = document.getElementById('top-slot-container');
-  const btnIdioma = document.getElementById('btn-idioma');
-
-  if (!preguntasDiv) return;
-
-  if (btnIdioma) {
-    btnIdioma.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
-  }
-
-  if (topSlot && !juegoIniciado) {
-    topSlot.innerHTML = '';
-  }
 
   const t = i18nTextos[idiomaActual];
 
@@ -135,16 +124,15 @@ function renderizarBienvenida() {
     </div>
   `;
 
+  configurarControlesSuperiores();
+
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
       juegoIniciado = true;
-      
-      if (topSlot) {
-        topSlot.innerHTML = `
-          <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
-        `;
-      }
+      topSlot.innerHTML = `
+        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
+      `;
 
       actualizarRostroVisual();
       
@@ -168,12 +156,7 @@ function renderizarBienvenida() {
 
 function renderizarPregunta() {
   const contenedor = document.getElementById('quiz-container');
-  const btnIdioma = document.getElementById('btn-idioma');
   if (!contenedor) return;
-
-  if (btnIdioma) {
-    btnIdioma.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
-  }
 
   if (indiceActual >= codigoYeshuaPreguntas.length) {
     mostrarHuellaYeshua();
@@ -183,10 +166,12 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
+  // Extracción dinámica según idioma activo
   const esIngles = idiomaActual === 'en';
   const enunciadoTexto = esIngles && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
   const espejoTexto = esIngles && p.espejoEn ? p.espejoEn : p.espejo;
   
+  // Opciones bilingües
   let opcionesActuales = p.opciones;
   if (esIngles && p.opcionesEn && p.opcionesEn.length > 0) {
     opcionesActuales = p.opcionesEn;
@@ -196,7 +181,7 @@ function renderizarPregunta() {
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.82rem; font-style: italic;">"${espejoTexto}"</span>
+        <span style="font-size: 0.84rem; font-style: italic;">"${espejoTexto}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${enunciadoTexto}</h3></div>
       <div class="opciones-lista">
@@ -246,12 +231,7 @@ function actualizarRostroVisual() {
 
 function mostrarHuellaYeshua() {
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || document.getElementById('quiz-container');
-  const btnIdioma = document.getElementById('btn-idioma');
   if (!preguntasDiv) return;
-
-  if (btnIdioma) {
-    btnIdioma.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
-  }
 
   const porcentajeTotal = Math.round((puntajeAcumulado / puntajeMaximo) * 100);
   const t = i18nTextos[idiomaActual];
@@ -293,4 +273,3 @@ function mostrarHuellaYeshua() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
-  
