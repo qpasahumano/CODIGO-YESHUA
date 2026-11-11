@@ -18,7 +18,7 @@ body {
   max-width: 430px;
   height: 100vh;
   max-height: 900px;
-  padding: 6px 12px 10px 12px;
+  padding: 20px 16px 20px 16px;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -29,8 +29,8 @@ body {
 
 /* Contenedor del Rostro e Imagen PNG Transparente */
 .rostro-container {
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,9 +39,9 @@ body {
 }
 
 .rostro-imagen-estatica {
-  width: 130px;
+  width: 140px;
   height: auto;
-  max-height: 145px;
+  max-height: 155px;
   object-fit: contain;
   background: transparent;
   border: none;
@@ -52,63 +52,73 @@ body {
 }
 
 .progreso-texto {
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: 0.75rem;
   color: #9a9aa8;
   letter-spacing: 0.8px;
 }
 
-/* Contenedor dinámico y pantalla de bienvenida centrada */
+/* Contenedor dinámico y pantalla de bienvenida distribuida hacia los extremos */
 #quiz-container {
   width: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 2px 0;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 #preguntas-dinamicas {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .pantalla-bienvenida {
   text-align: center;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  box-sizing: border-box;
 }
 
 .pantalla-bienvenida h2 {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   color: #f2c94c;
-  margin-top: 2px;
-  margin-bottom: 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   letter-spacing: 1px;
 }
 
 .subtitulo-bienvenida {
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   color: #b0b0bc;
-  line-height: 1.3;
-  margin-bottom: 10px;
+  line-height: 1.4;
+  margin-bottom: 8px;
   padding: 0 10px;
 }
 
-/* El Sello / Umbral de Inicio Centralizado (Cántaro más grande) */
+/* El Sello / Umbral de Inicio Centralizado (Cántaro agrandado y protagónico) */
 .contenedor-umbral {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: auto 0;
 }
 
 .sello-cantaro {
-  width: 160px;
+  width: 200px;
   height: auto;
   cursor: pointer;
   background: transparent;
@@ -117,30 +127,30 @@ body {
   display: block;
   margin: 0 auto;
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.4));
+  filter: drop-shadow(0 0 20px rgba(194, 155, 56, 0.45));
 }
 
 .sello-cantaro:hover, .sello-cantaro:active {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.75));
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 30px rgba(242, 201, 76, 0.8));
 }
 
 .texto-tocar-iniciar {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #a8946e;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 12px;
   margin-bottom: 6px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .subtitulo-explicacion {
-  margin-top: 2px;
-  font-size: 0.78rem;
+  margin-top: 8px;
+  font-size: 0.82rem;
   color: #d4c5a0;
-  line-height: 1.3;
-  padding: 0 10px;
+  line-height: 1.4;
+  padding: 0 12px;
   text-align: center;
 }
 
