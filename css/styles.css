@@ -7,8 +7,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -19,7 +19,7 @@ body {
   height: 100vh;
   height: 100dvh;
   max-height: 900px;
-  padding: 10px 16px 14px 16px;
+  padding: 16px 16px 28px 16px; /* Padding inferior aumentado para dar respiro seguro */
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -29,8 +29,8 @@ body {
 }
 
 .rostro-container {
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,9 +39,9 @@ body {
 }
 
 .rostro-imagen-estatica {
-  width: 130px;
+  width: 140px;
   height: auto;
-  max-height: 145px;
+  max-height: 155px;
   object-fit: contain;
   background: transparent;
   border: none;
@@ -58,7 +58,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 4px 0;
+  margin: 6px 0;
 }
 
 #preguntas-dinamicas {
@@ -77,25 +77,25 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 2px 0;
+  justify-content: space-between;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .pantalla-bienvenida h2 {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   color: #f2c94c;
-  margin-top: 2px;
+  margin-top: 4px;
   margin-bottom: 4px;
   letter-spacing: 1px;
 }
 
 .subtitulo-bienvenida {
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   color: #b0b0bc;
   line-height: 1.35;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   padding: 0 10px;
 }
 
@@ -105,12 +105,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  flex-shrink: 0;
+  margin: auto 0;
 }
 
 .sello-cantaro {
-  width: 160px;
+  width: 190px;
   height: auto;
   cursor: pointer;
   background: transparent;
@@ -128,24 +127,24 @@ body {
 }
 
 .texto-tocar-iniciar {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #a8946e;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  margin-top: 10px;
+  margin-bottom: 4px;
   opacity: 0.95;
 }
 
+/* Subido forzadamente dentro de la bienvenida */
 .subtitulo-explicacion {
   margin-top: 0;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
   font-size: 0.82rem;
   color: #d4c5a0;
-  line-height: 1.35;
+  line-height: 1.4;
   padding: 0 12px;
   text-align: center;
-  flex-shrink: 0;
 }
 
 .tarjeta-pergamino {
@@ -153,7 +152,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 14px 12px;
+  padding: 18px 14px;
   box-sizing: border-box;
   width: 100%;
   border-radius: 6px;
@@ -163,38 +162,38 @@ body {
 }
 
 .referencia-biblica {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   color: #1a0a03;
   background-color: rgba(74, 40, 16, 0.12);
   border: 1px solid rgba(74, 40, 16, 0.3);
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 5px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
   font-weight: 600;
 }
 
 .referencia-biblica strong {
   font-family: 'Cinzel', serif;
   color: #0d0301;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
 }
 
 .pregunta-enunciado h3 {
   font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #0f0502;
-  line-height: 1.3;
+  line-height: 1.35;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 700;
 }
 
 .opciones-lista {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   width: 100%;
 }
 
@@ -202,13 +201,13 @@ body {
   background-color: rgba(30, 14, 6, 0.94);
   color: #f7ebcf;
   border: 1px solid #5c3a21;
-  padding: 7px 9px;
+  padding: 8px 10px;
   border-radius: 6px;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
-  line-height: 1.25;
+  line-height: 1.3;
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
@@ -229,26 +228,26 @@ body {
   background-color: #1a1a1e;
   border: 1px solid #2a2a30;
   border-radius: 12px;
-  padding: 10px;
-  margin: 6px 0;
+  padding: 12px;
+  margin: 8px 0;
   text-align: center;
 }
 
 .puntaje-final {
-  font-size: 0.94rem;
-  margin-bottom: 4px;
+  font-size: 0.98rem;
+  margin-bottom: 6px;
 }
 
 .mensaje-evolutivo {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: #b0b0bc;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .texto-invitacion {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: #8c8c9a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   line-height: 1.3;
   text-align: center;
 }
