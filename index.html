@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Tu huella de Yeshúa</title>
+  <title>Yeshúa, la huella</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,12 +50,19 @@
       50% { opacity: 0.45; transform: scale(1.2); }
     }
 
-    /* Botón flotante de pausa / stop */
-    #btn-control-audio {
+    /* Contenedor superior derecho para controles (Audio e Idioma) */
+    .controles-superiores {
       position: absolute;
       top: 10px;
       right: 12px;
       z-index: 100;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Botón flotante de pausa / stop */
+    #btn-control-audio {
       background: rgba(30, 14, 6, 0.85);
       border: 1px solid #8c5a33;
       color: #f7ebcf;
@@ -77,12 +84,38 @@
       background-color: #5c3a21;
     }
 
+    /* Selector de idioma sutil */
+    #btn-idioma {
+      background: rgba(30, 14, 6, 0.85);
+      border: 1px solid #8c5a33;
+      color: #f7ebcf;
+      font-size: 0.75rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      border-radius: 18px;
+      height: 36px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    #btn-idioma:hover, #btn-idioma:active {
+      background-color: #5c3a21;
+      border-color: #f2c94c;
+      color: #f2c94c;
+    }
+
     #app-container {
       width: 100%;
       max-width: 430px;
       height: 100vh;
       max-height: 900px;
-      padding: 10px 12px;
+      padding: 24px 16px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
@@ -94,8 +127,8 @@
     }
 
     .rostro-container {
-      margin-top: 2px;
-      margin-bottom: 2px;
+      margin-top: 4px;
+      margin-bottom: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -123,37 +156,46 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin: 2px 0;
+      justify-content: space-between;
+      margin: 10px 0;
     }
 
     #preguntas-dinamicas {
       width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
     }
 
     .pantalla-bienvenida {
       text-align: center;
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      box-sizing: border-box;
     }
 
     .pantalla-bienvenida h2 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.35rem;
+      font-size: 1.45rem;
       color: #f2c94c;
-      margin-top: 2px;
-      margin-bottom: 4px;
+      margin-top: 10px;
+      margin-bottom: 6px;
       letter-spacing: 1px;
     }
 
     .subtitulo-bienvenida {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: #b0b0bc;
-      line-height: 1.3;
-      margin-bottom: 8px;
-      padding: 0 10px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      padding: 0 12px;
     }
 
     .contenedor-umbral {
@@ -162,10 +204,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin: auto 0;
     }
 
+    /* Botón principal magnificado y distribuido */
     .sello-cantaro {
-      width: 150px;
+      width: 190px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -174,31 +218,32 @@
       display: block;
       margin: 0 auto;
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 16px rgba(194, 155, 56, 0.4));
+      filter: drop-shadow(0 0 20px rgba(194, 155, 56, 0.45));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.75));
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 30px rgba(242, 201, 76, 0.8));
     }
 
     .texto-tocar-iniciar {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: #a8946e;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      opacity: 0.9;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      opacity: 0.95;
     }
 
     .subtitulo-explicacion {
-      margin-top: 2px;
-      font-size: 0.75rem;
+      margin-top: 10px;
+      font-size: 0.8rem;
       color: #d4c5a0;
-      line-height: 1.3;
-      padding: 0 10px;
+      line-height: 1.4;
+      padding: 0 16px;
       text-align: center;
+      margin-bottom: 10px;
     }
 
     .tarjeta-pergamino {
@@ -316,8 +361,11 @@
   <!-- Cielo nocturno sutil -->
   <div id="cielo-nocturno"></div>
 
-  <!-- Botón de control de reproducción de audio -->
-  <button id="btn-control-audio" title="Pausar / Reproducir">🔊</button>
+  <!-- Controles superiores (Audio e Idioma) -->
+  <div class="controles-superiores">
+    <button id="btn-idioma" title="Cambiar idioma / Change language">EN</button>
+    <button id="btn-control-audio" title="Pausar / Reproducir">🔊</button>
+  </div>
 
   <div id="app-container">
     <div id="top-slot-container" class="rostro-container"></div>
@@ -325,12 +373,16 @@
     <div id="quiz-container">
       <div id="preguntas-dinamicas">
         <div class="pantalla-bienvenida">
-          <h2>Tu huella de Yeshúa</h2>
-          <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
+          <div>
+            <h2 data-i18n="titulo">Yeshúa, la huella</h2>
+            <p class="subtitulo-bienvenida" data-i18n="subtitulo">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
+          </div>
           <div class="contenedor-umbral">
             <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi huella" class="sello-cantaro">
-            <span class="texto-tocar-iniciar">Tocar para iniciar</span>
-            <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
+            <span class="texto-tocar-iniciar" data-i18n="tocarIniciar">Tocar para iniciar</span>
+          </div>
+          <div>
+            <p class="subtitulo-explicacion" data-i18n="explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
           </div>
         </div>
       </div>
