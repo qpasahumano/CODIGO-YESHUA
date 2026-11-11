@@ -1,5 +1,32 @@
 import { codigoYeshuaPreguntas } from './content.js';
 
+// Diccionario de textos bilingües auditados minuciosamente para mantener el tono íntimo y solemne
+const i18nTextos = {
+  es: {
+    titulo: "Yeshúa, la huella",
+    subtitulo: "¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?",
+    tocarIniciar: "Tocar para iniciar",
+    explicacion: "La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida",
+    resultadoTitulo: "Tu huella de Yeshúa",
+    etiquetaAlineacion: "Alineación espiritual global",
+    btnReiniciar: "Volver a realizar el recorrido",
+    textoInvitacion: "El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno."
+  },
+  en: {
+    titulo: "Yeshúa, la huella",
+    subtitulo: "How much of Jesus Christ's teachings do you apply in your daily life?",
+    tocarIniciar: "Tap to begin",
+    explicacion: "The footprint of Jesus Christ will illuminate as you apply more of His teachings in your life",
+    resultadoTitulo: "Your footprint of Yeshúa",
+    etiquetaAlineacion: "Global spiritual alignment",
+    btnReiniciar: "Start the journey over",
+    textoInvitacion: "The Yeshúa Code is not a measure of judgment, but a mirror to observe what footprint you are leaving in your environment."
+  }
+};
+
+// Variable para controlar el idioma activo actual ('es' por defecto)
+let idiomaActual = localStorage.getItem('yeshua_idioma') || 'es';
+
 let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
@@ -25,13 +52,39 @@ function iniciarCieloNocturno() {
   }
 }
 
-function configurarControlAudio() {
+function configurarControlesSuperiores() {
   const audioFondo = document.getElementById('audio-fondo');
   const btnAudio = document.getElementById('btn-control-audio');
+  const btnIdioma = document.getElementById('btn-idioma');
 
+  // Configurar botón de idioma
+  if (btnIdioma) {
+    const nuevoBtnIdioma = btnIdioma.cloneNode(true);
+    btnIdioma.parentNode.replaceChild(nuevoBtnIdioma, btnIdioma);
+
+    const btnIdiomaActualizado = document.getElementById('btn-idioma');
+    btnIdiomaActualizado.textContent = idiomaActual === 'es' ? 'EN' : 'ES';
+
+    btnIdiomaActualizado.addEventListener('click', () => {
+      idiomaActual = idiomaActual === 'es' ? 'en' : 'es';
+      localStorage.setItem('yeshua_idioma', idiomaActual);
+      btnIdiomaActualizado.textContent = idiomaActual === 'es' ? 'EN' : 'ES';
+      
+      // Si estamos en la pantalla de bienvenida, la redibujamos para actualizar textos
+      if (indiceActual === 0 && !document.getElementById('rostro-yeshua')) {
+        iniciarAplicacion();
+      } else if (indiceActual >= codigoYeshuaPreguntas.length) {
+        mostrarHuellaYeshua();
+      } else {
+        renderizarPregunta();
+      }
+    });
+  }
+
+  // Configurar botón de audio
   if (btnAudio && audioFondo) {
-    const nuevoBtn = btnAudio.cloneNode(true);
-    btnAudio.parentNode.replaceChild(nuevoBtn, btnAudio);
+    const nuevoBtnAudio = btnAudio.cloneNode(true);
+    btnAudio.parentNode.replaceChild(nuevoBtnAudio, btnAudio);
 
     document.getElementById('btn-control-audio').addEventListener('click', () => {
       if (audioFondo.paused) {
@@ -54,27 +107,32 @@ function iniciarAplicacion() {
 
   iniciarCieloNocturno();
   topSlot.innerHTML = '';
+  indiceActual = 0;
+  puntajeAcumulado = 0;
+
+  const t = i18nTextos[idiomaActual];
 
   preguntasDiv.innerHTML = `
     <div class="pantalla-bienvenida">
-      <h2>Tu huella de Yeshúa</h2>
-      <p class="subtitulo-bienvenida">¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?</p>
+      <div>
+        <h2>${t.titulo}</h2>
+        <p class="subtitulo-bienvenida">${t.subtitulo}</p>
+      </div>
       <div class="contenedor-umbral">
         <img id="btn-comenzar" src="assets/icons/cantaro-agua.png" alt="Revelar mi huella" class="sello-cantaro">
-        <span class="texto-tocar-iniciar">Tocar para iniciar</span>
-        <p class="subtitulo-explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
+        <span class="texto-tocar-iniciar">${t.tocarIniciar}</span>
+      </div>
+      <div>
+        <p class="subtitulo-explicacion">${t.explicacion}</p>
       </div>
     </div>
   `;
 
-  configurarControlAudio();
+  configurarControlesSuperiores();
 
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
-      indiceActual = 0;
-      puntajeAcumulado = 0;
-
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       `;
@@ -111,15 +169,20 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
+  // Seleccionar textos de acuerdo al idioma activo
+  const enunciadoTexto = idiomaActual === 'en' && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
+  const espejoTexto = idiomaActual === 'en' && p.espejoEn ? p.espejoEn : p.espejo;
+  const opcionesActuales = idiomaActual === 'en' && p.opcionesEn ? p.opcionesEn : p.opciones;
+
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.84rem; font-style: italic;">"${p.espejo}"</span>
+        <span style="font-size: 0.84rem; font-style: italic;">"${espejoTexto}"</span>
       </div>
-      <div class="pregunta-enunciado"><h3>${p.id}. ${p.enunciado}</h3></div>
+      <div class="pregunta-enunciado"><h3>${p.id}. ${enunciadoTexto}</h3></div>
       <div class="opciones-lista">
-        ${p.opciones.map((op) => `
+        ${opcionesActuales.map((op) => `
           <button class="opcion-btn" data-peso="${op.peso}">
             ${op.texto}
           </button>
@@ -168,25 +231,36 @@ function mostrarHuellaYeshua() {
   if (!preguntasDiv) return;
 
   const porcentajeTotal = Math.round((puntajeAcumulado / puntajeMaximo) * 100);
+  const t = i18nTextos[idiomaActual];
 
   let mensajeReflexivo = "";
-  if (porcentajeTotal >= 80) {
-    mensajeReflexivo = "Tu andar refleja una profunda sintonía con las enseñanzas y el espíritu de los Evangelios en tu vida cotidiana.";
-  } else if (porcentajeTotal >= 50) {
-    mensajeReflexivo = "Te encontrás en un camino consciente de crecimiento, con un equilibrio firme y áreas abiertas a seguir transformando.";
+  if (idiomaActual === 'es') {
+    if (porcentajeTotal >= 80) {
+      mensajeReflexivo = "Tu andar refleja una profunda sintonía con las enseñanzas y el espíritu de los Evangelios en tu vida cotidiana.";
+    } else if (porcentajeTotal >= 50) {
+      mensajeReflexivo = "Te encontrás en un camino consciente de crecimiento, con un equilibrio firme y áreas abiertas a seguir transformando.";
+    } else {
+      mensajeReflexivo = "Este recorrido te invita a pausar y contemplar nuevos horizontes de empatía, servicio y transformación interior.";
+    }
   } else {
-    mensajeReflexivo = "Este recorrido te invita a pausar y contemplar nuevos horizontes de empatía, servicio y transformación interior.";
+    if (porcentajeTotal >= 80) {
+      mensajeReflexivo = "Your walk reflects a deep harmony with the teachings and spirit of the Gospels in your daily life.";
+    } else if (porcentajeTotal >= 50) {
+      mensajeReflexivo = "You find yourself on a conscious path of growth, with a firm balance and open areas to continue transforming.";
+    } else {
+      mensajeReflexivo = "This journey invites you to pause and contemplate new horizons of empathy, service, and inner transformation.";
+    }
   }
 
   preguntasDiv.innerHTML = `
     <div class="resultado-final">
-      <h2>Tu huella de Yeshúa</h2>
+      <h2>${t.resultadoTitulo}</h2>
       <div class="tarjeta-resumen">
-        <p class="puntaje-final">Alineación espiritual global: <strong>${porcentajeTotal}%</strong></p>
+        <p class="puntaje-final">${t.etiquetaAlineacion}: <strong>${porcentajeTotal}%</strong></p>
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
-      <p class="texto-invitacion">El Código Yeshúa no es una medida de juicio, sino un espejo para observar qué huella estás dejando en tu entorno.</p>
-      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 7px 16px; font-size: 0.82rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">Volver a realizar el recorrido</button>
+      <p class="texto-invitacion">${t.textoInvitacion}</p>
+      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 7px 16px; font-size: 0.82rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">${t.btnReiniciar}</button>
     </div>
   `;
 
