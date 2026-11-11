@@ -76,7 +76,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0;
+  padding: 4px 0 12px 0;
   box-sizing: border-box;
 }
 
@@ -135,7 +135,8 @@ body {
 }
 
 .subtitulo-explicacion {
-  margin-top: 6px;
+  margin-top: 4px;
+  margin-bottom: 8px;
   font-size: 0.82rem;
   color: #d4c5a0;
   line-height: 1.4;
