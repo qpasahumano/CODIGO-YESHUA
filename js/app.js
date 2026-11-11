@@ -1,6 +1,6 @@
 import { codigoYeshuaPreguntas } from './content.js';
 
-// Diccionario bilingüe auditado con la nueva frase corta y elegante
+// Diccionario bilingüe auditado con la frase corta y elegante
 const i18nTextos = {
   es: {
     titulo: "Yeshúa, la huella",
@@ -30,6 +30,7 @@ let idiomaActual = localStorage.getItem('yeshua_idioma') || 'es';
 let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
+let juegoIniciado = false;
 
 function iniciarCieloNocturno() {
   const cielo = document.getElementById('cielo-nocturno');
@@ -57,13 +58,11 @@ function configurarControlesSuperiores() {
   const btnAudio = document.getElementById('btn-control-audio');
   const btnIdioma = document.getElementById('btn-idioma');
 
-  // Configurar botón de idioma con reactividad perfecta
   if (btnIdioma) {
     const nuevoBtnIdioma = btnIdioma.cloneNode(true);
     btnIdioma.parentNode.replaceChild(nuevoBtnIdioma, btnIdioma);
 
     const btnIdiomaActualizado = document.getElementById('btn-idioma');
-    // Si estamos en español, el botón invita a ir a EN ("🌐 EN"). Si estamos en inglés, invita a volver a ES ("🌐 ES").
     btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
 
     btnIdiomaActualizado.addEventListener('click', () => {
@@ -71,8 +70,8 @@ function configurarControlesSuperiores() {
       localStorage.setItem('yeshua_idioma', idiomaActual);
       btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
       
-      // Refrescar pantalla actual según el estado del quiz
-      if (indiceActual === 0 && !document.getElementById('rostro-yeshua')) {
+      // Refrescar pantalla actual de forma inteligente sin perder el progreso
+      if (!juegoIniciado) {
         iniciarAplicacion();
       } else if (indiceActual >= codigoYeshuaPreguntas.length) {
         mostrarHuellaYeshua();
@@ -82,7 +81,6 @@ function configurarControlesSuperiores() {
     });
   }
 
-  // Configurar botón de audio
   if (btnAudio && audioFondo) {
     const nuevoBtnAudio = btnAudio.cloneNode(true);
     btnAudio.parentNode.replaceChild(nuevoBtnAudio, btnAudio);
@@ -110,6 +108,7 @@ function iniciarAplicacion() {
   topSlot.innerHTML = '';
   indiceActual = 0;
   puntajeAcumulado = 0;
+  juegoIniciado = false;
 
   const t = i18nTextos[idiomaActual];
 
@@ -134,6 +133,7 @@ function iniciarAplicacion() {
   const btnComenzar = document.getElementById('btn-comenzar');
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
+      juegoIniciado = true;
       topSlot.innerHTML = `
         <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
       `;
