@@ -166,12 +166,11 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
-  // Extracción dinámica según idioma activo
   const esIngles = idiomaActual === 'en';
   const enunciadoTexto = esIngles && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
   const espejoTexto = esIngles && p.espejoEn ? p.espejoEn : p.espejo;
   
-  // Opciones bilingües
+  // Selección de opciones en inglés o español con fallback estricto
   let opcionesActuales = p.opciones;
   if (esIngles && p.opcionesEn && p.opcionesEn.length > 0) {
     opcionesActuales = p.opcionesEn;
@@ -181,7 +180,7 @@ function renderizarPregunta() {
     <div class="tarjeta-pergamino">
       <div class="referencia-biblica">
         <strong>📖 ${p.referenciaBiblica}</strong><br>
-        <span style="font-size: 0.84rem; font-style: italic;">"${espejoTexto}"</span>
+        <span style="font-size: 0.82rem; font-style: italic;">"${espejoTexto}"</span>
       </div>
       <div class="pregunta-enunciado"><h3>${p.id}. ${enunciadoTexto}</h3></div>
       <div class="opciones-lista">
