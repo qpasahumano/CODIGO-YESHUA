@@ -25,7 +25,6 @@
       position: relative;
     }
 
-    /* Cielo nocturno sutil en la parte superior */
     #cielo-nocturno {
       position: absolute;
       top: 0;
@@ -50,7 +49,6 @@
       50% { opacity: 0.45; transform: scale(1.2); }
     }
 
-    /* Contenedor superior derecho para controles (Audio e Idioma) */
     .controles-superiores {
       position: absolute;
       top: 10px;
@@ -61,7 +59,6 @@
       align-items: center;
     }
 
-    /* Botón flotante de pausa / stop */
     #btn-control-audio {
       background: rgba(30, 14, 6, 0.85);
       border: 1px solid #8c5a33;
@@ -84,7 +81,6 @@
       background-color: #5c3a21;
     }
 
-    /* Selector de idioma sutil */
     #btn-idioma {
       background: rgba(30, 14, 6, 0.85);
       border: 1px solid #8c5a33;
@@ -97,7 +93,7 @@
       padding: 0 10px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 4px;
       cursor: pointer;
       backdrop-filter: blur(4px);
       transition: all 0.3s ease;
@@ -115,7 +111,7 @@
       max-width: 430px;
       height: 100vh;
       max-height: 900px;
-      padding: 24px 16px;
+      padding: 20px 16px 20px 16px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
@@ -134,13 +130,12 @@
       align-items: center;
       width: 100%;
       flex-shrink: 0;
-      min-height: 40px;
     }
 
     .rostro-imagen-estatica {
-      width: 155px;
+      width: 140px;
       height: auto;
-      max-height: 170px;
+      max-height: 155px;
       object-fit: contain;
       background: transparent;
       border: none;
@@ -177,7 +172,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 8px 0;
       box-sizing: border-box;
     }
 
@@ -185,7 +180,7 @@
       font-family: 'Cinzel Decorative', serif;
       font-size: 1.45rem;
       color: #f2c94c;
-      margin-top: 10px;
+      margin-top: 6px;
       margin-bottom: 6px;
       letter-spacing: 1px;
     }
@@ -194,8 +189,8 @@
       font-size: 0.88rem;
       color: #b0b0bc;
       line-height: 1.4;
-      margin-bottom: 12px;
-      padding: 0 12px;
+      margin-bottom: 8px;
+      padding: 0 10px;
     }
 
     .contenedor-umbral {
@@ -207,9 +202,8 @@
       margin: auto 0;
     }
 
-    /* Botón principal magnificado y distribuido */
     .sello-cantaro {
-      width: 190px;
+      width: 200px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -232,18 +226,17 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-top: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       opacity: 0.95;
     }
 
     .subtitulo-explicacion {
-      margin-top: 10px;
-      font-size: 0.8rem;
+      margin-top: 6px;
+      font-size: 0.82rem;
       color: #d4c5a0;
       line-height: 1.4;
-      padding: 0 16px;
+      padding: 0 12px;
       text-align: center;
-      margin-bottom: 10px;
     }
 
     .tarjeta-pergamino {
@@ -251,50 +244,48 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
-      padding: 16px 12px;
+      padding: 18px 14px;
       box-sizing: border-box;
       width: 100%;
       border-radius: 6px;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.85);
-      color: #2b170c;
+      color: #120904;
       text-align: center;
     }
 
     .referencia-biblica {
-      font-size: 0.84rem;
-      color: #2b170c;
+      font-size: 0.86rem;
+      color: #1a0a03;
       background-color: rgba(74, 40, 16, 0.12);
       border: 1px solid rgba(74, 40, 16, 0.3);
-      padding: 5px 8px;
+      padding: 6px 10px;
       border-radius: 5px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       text-align: center;
-      line-height: 1.3;
-      font-family: 'EB Garamond', serif;
+      line-height: 1.35;
       font-weight: 600;
     }
 
     .referencia-biblica strong {
       font-family: 'Cinzel', serif;
-      color: #1a0a03;
-      font-size: 0.86rem;
+      color: #0d0301;
+      font-size: 0.9rem;
     }
 
     .pregunta-enunciado h3 {
-      font-family: 'EB Garamond', serif;
-      font-size: 1rem;
-      color: #1a0a03;
-      line-height: 1.3;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: #0f0502;
+      line-height: 1.35;
       margin-top: 0;
-      margin-bottom: 8px;
-      font-weight: 600;
-      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .opciones-lista {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       width: 100%;
     }
 
@@ -302,18 +293,16 @@
       background-color: rgba(30, 14, 6, 0.94);
       color: #f7ebcf;
       border: 1px solid #5c3a21;
-      padding: 7px 9px;
+      padding: 8px 10px;
       border-radius: 6px;
       font-size: 0.8rem;
-      font-family: 'EB Garamond', serif;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
-      line-height: 1.25;
+      line-height: 1.3;
       width: 100%;
       box-sizing: border-box;
       box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      font-weight: 600;
     }
 
     .opcion-btn:hover, .opcion-btn:active {
@@ -331,26 +320,26 @@
       background-color: #1a1a1e;
       border: 1px solid #2a2a30;
       border-radius: 12px;
-      padding: 10px;
-      margin: 6px 0;
+      padding: 12px;
+      margin: 8px 0;
       text-align: center;
     }
 
     .puntaje-final {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
     }
 
     .mensaje-evolutivo {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: #b0b0bc;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .texto-invitacion {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #8c8c9a;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1.3;
       text-align: center;
     }
@@ -358,12 +347,10 @@
 </head>
 <body>
 
-  <!-- Cielo nocturno sutil -->
   <div id="cielo-nocturno"></div>
 
-  <!-- Controles superiores (Audio e Idioma) -->
   <div class="controles-superiores">
-    <button id="btn-idioma" title="Cambiar idioma / Change language">EN</button>
+    <button id="btn-idioma" title="Cambiar idioma">🌐 EN</button>
     <button id="btn-control-audio" title="Pausar / Reproducir">🔊</button>
   </div>
 
@@ -382,7 +369,7 @@
             <span class="texto-tocar-iniciar" data-i18n="tocarIniciar">Tocar para iniciar</span>
           </div>
           <div>
-            <p class="subtitulo-explicacion" data-i18n="explicacion">La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida</p>
+            <p class="subtitulo-explicacion" data-i18n="explicacion">Tu huella brillará según tu andar.</p>
           </div>
         </div>
       </div>
