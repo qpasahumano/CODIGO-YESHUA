@@ -1,6 +1,6 @@
 import { codigoYeshuaPreguntas } from './content.js';
 
-// Diccionario bilingüe auditado con la frase corta y elegante
+// Diccionario bilingüe auditado
 const i18nTextos = {
   es: {
     titulo: "Yeshúa, la huella",
@@ -24,9 +24,7 @@ const i18nTextos = {
   }
 };
 
-// Por defecto arranca en español
 let idiomaActual = localStorage.getItem('yeshua_idioma') || 'es';
-
 let indiceActual = 0;
 let puntajeAcumulado = 0;
 const puntajeMaximo = codigoYeshuaPreguntas.length * 2;
@@ -70,7 +68,7 @@ function configurarControlesSuperiores() {
       localStorage.setItem('yeshua_idioma', idiomaActual);
       btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
       
-      // Refrescar pantalla actual de forma inteligente sin perder el progreso
+      // Traducción reactiva inmediata en cualquier punto del recorrido
       if (!juegoIniciado) {
         iniciarAplicacion();
       } else if (indiceActual >= codigoYeshuaPreguntas.length) {
@@ -170,6 +168,7 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
+  // Selección rigurosa de idioma para preguntas, espejos y opciones en todo el quiz
   const enunciadoTexto = idiomaActual === 'en' && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
   const espejoTexto = idiomaActual === 'en' && p.espejoEn ? p.espejoEn : p.espejo;
   const opcionesActuales = idiomaActual === 'en' && p.opcionesEn ? p.opcionesEn : p.opciones;
