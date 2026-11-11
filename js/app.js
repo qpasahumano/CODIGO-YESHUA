@@ -1,12 +1,12 @@
 import { codigoYeshuaPreguntas } from './content.js';
 
-// Diccionario de textos bilingües auditados minuciosamente para mantener el tono íntimo y solemne
+// Diccionario bilingüe auditado con la nueva frase corta y elegante
 const i18nTextos = {
   es: {
     titulo: "Yeshúa, la huella",
     subtitulo: "¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?",
     tocarIniciar: "Tocar para iniciar",
-    explicacion: "La huella de Jesucristo se irá iluminando conforme más enseñanzas de él estés aplicando en tu vida",
+    explicacion: "Tu huella brillará según tu andar.",
     resultadoTitulo: "Tu huella de Yeshúa",
     etiquetaAlineacion: "Alineación espiritual global",
     btnReiniciar: "Volver a realizar el recorrido",
@@ -16,7 +16,7 @@ const i18nTextos = {
     titulo: "Yeshúa, la huella",
     subtitulo: "How much of Jesus Christ's teachings do you apply in your daily life?",
     tocarIniciar: "Tap to begin",
-    explicacion: "The footprint of Jesus Christ will illuminate as you apply more of His teachings in your life",
+    explicacion: "Your footprint will shine according to your walk.",
     resultadoTitulo: "Your footprint of Yeshúa",
     etiquetaAlineacion: "Global spiritual alignment",
     btnReiniciar: "Start the journey over",
@@ -24,7 +24,7 @@ const i18nTextos = {
   }
 };
 
-// Variable para controlar el idioma activo actual ('es' por defecto)
+// Por defecto arranca en español
 let idiomaActual = localStorage.getItem('yeshua_idioma') || 'es';
 
 let indiceActual = 0;
@@ -57,20 +57,21 @@ function configurarControlesSuperiores() {
   const btnAudio = document.getElementById('btn-control-audio');
   const btnIdioma = document.getElementById('btn-idioma');
 
-  // Configurar botón de idioma
+  // Configurar botón de idioma con reactividad perfecta
   if (btnIdioma) {
     const nuevoBtnIdioma = btnIdioma.cloneNode(true);
     btnIdioma.parentNode.replaceChild(nuevoBtnIdioma, btnIdioma);
 
     const btnIdiomaActualizado = document.getElementById('btn-idioma');
-    btnIdiomaActualizado.textContent = idiomaActual === 'es' ? 'EN' : 'ES';
+    // Si estamos en español, el botón invita a ir a EN ("🌐 EN"). Si estamos en inglés, invita a volver a ES ("🌐 ES").
+    btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
 
     btnIdiomaActualizado.addEventListener('click', () => {
       idiomaActual = idiomaActual === 'es' ? 'en' : 'es';
       localStorage.setItem('yeshua_idioma', idiomaActual);
-      btnIdiomaActualizado.textContent = idiomaActual === 'es' ? 'EN' : 'ES';
+      btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
       
-      // Si estamos en la pantalla de bienvenida, la redibujamos para actualizar textos
+      // Refrescar pantalla actual según el estado del quiz
       if (indiceActual === 0 && !document.getElementById('rostro-yeshua')) {
         iniciarAplicacion();
       } else if (indiceActual >= codigoYeshuaPreguntas.length) {
@@ -169,7 +170,6 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
-  // Seleccionar textos de acuerdo al idioma activo
   const enunciadoTexto = idiomaActual === 'en' && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
   const espejoTexto = idiomaActual === 'en' && p.espejoEn ? p.espejoEn : p.espejo;
   const opcionesActuales = idiomaActual === 'en' && p.opcionesEn ? p.opcionesEn : p.opciones;
