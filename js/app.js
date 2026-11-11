@@ -1,6 +1,5 @@
 import { codigoYeshuaPreguntas } from './content.js';
 
-// Diccionario bilingüe auditado
 const i18nTextos = {
   es: {
     titulo: "Yeshúa, la huella",
@@ -68,7 +67,6 @@ function configurarControlesSuperiores() {
       localStorage.setItem('yeshua_idioma', idiomaActual);
       btnIdiomaActualizado.textContent = idiomaActual === 'es' ? '🌐 EN' : '🌐 ES';
       
-      // Traducción reactiva inmediata en cualquier punto del recorrido
       if (!juegoIniciado) {
         iniciarAplicacion();
       } else if (indiceActual >= codigoYeshuaPreguntas.length) {
@@ -168,10 +166,16 @@ function renderizarPregunta() {
   const p = codigoYeshuaPreguntas[indiceActual];
   const preguntasDiv = document.getElementById('preguntas-dinamicas') || contenedor;
 
-  // Selección rigurosa de idioma para preguntas, espejos y opciones en todo el quiz
-  const enunciadoTexto = idiomaActual === 'en' && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
-  const espejoTexto = idiomaActual === 'en' && p.espejoEn ? p.espejoEn : p.espejo;
-  const opcionesActuales = idiomaActual === 'en' && p.opcionesEn ? p.opcionesEn : p.opciones;
+  // Extracción dinámica según idioma activo
+  const esIngles = idiomaActual === 'en';
+  const enunciadoTexto = esIngles && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
+  const espejoTexto = esIngles && p.espejoEn ? p.espejoEn : p.espejo;
+  
+  // Opciones bilingües
+  let opcionesActuales = p.opciones;
+  if (esIngles && p.opcionesEn && p.opcionesEn.length > 0) {
+    opcionesActuales = p.opcionesEn;
+  }
 
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
