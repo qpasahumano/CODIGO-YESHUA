@@ -6,7 +6,7 @@ export const codigoYeshuaPreguntas = [
     enunciado: "Cuando alguien necesita ayuda y no obtenés ningún beneficio, ¿te involucras?",
     enunciadoEn: "When someone needs help and you gain no benefit from it, do you get involved?",
     opciones: [
-      { texto: "No suelo involucrarme si no tengo relación o beneficio directo.", peso: 0 },
+      { texto: "No suelo involucrarse si no tengo relación o beneficio directo.", peso: 0 },
       { texto: "A veces ayudo si no me demanda demasiado tiempo o esfuerzo.", peso: 1 },
       { texto: "Me detengo y asisto al necesitado de forma desinteresada.", peso: 2 }
     ],
@@ -80,8 +80,8 @@ export const codigoYeshuaPreguntas = [
     ],
     referenciaBiblica: "Marcos 10:42-45",
     referenciaBiblicaEn: "Mark 10:42-45",
-    espejo: "Jesús enseña que quien quiera ser grande debe hacerse servidor de los demás.",
-    espejoEn: "Jesus teaches that whoever wants to become great must become a servant of others."
+    espejo: "Jesús establece que la verdadera grandeza no consiste en dominar, sino en servir a los demás.",
+    espejoEn: "Jesus establishes that true greatness consists not in dominating, but in serving others."
   },
   {
     id: 5,
@@ -174,7 +174,7 @@ export const codigoYeshuaPreguntas = [
     enunciado: "¿Ofrecés a los demás la misma comprensión que esperás recibir cuando te equivocás?",
     enunciadoEn: "Do you offer others the same understanding you expect to receive when you make a mistake?",
     opciones: [
-      { texto: "Soy muy exigente y implacable con los errores ajenos, pero indulgente con los míos.", peso: 0 },
+      { texto: "Soy muy exigente e implacable con los errores ajenos, pero indulgente con los míos.", peso: 0 },
       { texto: "A veces mido a los demás con distinta vara según quién sea.", peso: 1 },
       { texto: "Trato a los demás con la misma misericordia y paciencia que necesito para mí.", peso: 2 }
     ],
@@ -183,10 +183,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "Sometimes I judge others by a different standard depending on who they are.", peso: 1 },
       { texto: "I treat others with the same mercy and patience I need for myself.", peso: 2 }
     ],
-    referenciaBiblica: "Mateo 7:1-5",
-    referenciaBiblicaEn: "Matthew 7:1-5",
-    espejo: "Jesús invita a examinarse antes de juzgar a los demás.",
-    espejoEn: "Jesus invites us to examine ourselves before judging others."
+    referenciaBiblica: "Lucas 6:36-38",
+    referenciaBiblicaEn: "Luke 6:36-38",
+    espejo: "Jesús enseña a ser misericordiosos y a tratar a los demás con la misma medida de gracia que recibimos.",
+    espejoEn: "Jesus teaches us to be merciful and to treat others with the same measure of grace we receive."
   },
   {
     id: 10,
@@ -238,7 +238,7 @@ export const codigoYeshuaPreguntas = [
     enunciadoEn: "Do you do what is right even when no one can see or recognize you?",
     opciones: [
       { texto: "Mi comportamiento cambia radicalmente según si hay testigos o no.", peso: 0 },
-      { texto: "Cumplo lo básico, pero me esfuero más cuando hay supervisión.", peso: 1 },
+      { texto: "Cumplo lo básico, pero me esfuerzo más cuando hay supervisión.", peso: 1 },
       { texto: "Actúo con rectitud y honradez en la intimidad y en lo público por convicción.", peso: 2 }
     ],
     opcionesEn: [
@@ -246,10 +246,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "I do the bare minimum, but try harder when supervised.", peso: 1 },
       { texto: "I act with uprightness and honesty in private and in public out of conviction.", peso: 2 }
     ],
-    referenciaBiblica: "Mateo 6:1-4",
-    referenciaBiblicaEn: "Matthew 6:1-4",
-    espejo: "Jesús enseña a realizar las buenas acciones sin buscar reconocimiento.",
-    espejoEn: "Jesus teaches us to do good deeds without seeking recognition."
+    referenciaBiblica: "Lucas 16:10",
+    referenciaBiblicaEn: "Luke 16:10",
+    espejo: "Jesús enseña que quien es fiel en lo muy poco también es fiel en lo mucho.",
+    espejoEn: "Jesus teaches that whoever is faithful in very little is also faithful in much."
   },
   {
     id: 13,
@@ -414,10 +414,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "I pursue my financial well-being without paying much attention to my surroundings.", peso: 1 },
       { texto: "I value fairness and avoid profiting at the expense of others' harm.", peso: 2 }
     ],
-    referenciaBiblica: "Lucas 12:15-21",
-    referenciaBiblicaEn: "Luke 12:15-21",
-    espejo: "Jesús advierte sobre el peligro de confiar en las riquezas terrenales.",
-    espejoEn: "Jesus warns against the danger of trusting in earthly riches."
+    referenciaBiblica: "Lucas 16:19-31",
+    referenciaBiblicaEn: "Luke 16:19-31",
+    espejo: "Jesús advierte sobre la indiferencia ante el sufrimiento del prójimo necesitado frente a la abundancia desentendida.",
+    espejoEn: "Jesus warns against indifference to the suffering of a needy neighbor while living in unconcerned abundance."
   },
   {
     id: 21,
@@ -477,10 +477,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "I struggle to take responsibility and sometimes look for outside excuses.", peso: 1 },
       { texto: "I maturely take responsibility for the consequences of my decisions.", peso: 2 }
     ],
-    referenciaBiblica: "Mateo 12:33-37",
-    referenciaBiblicaEn: "Matthew 12:33-37",
-    espejo: "Jesús enseña que de la abundancia del corazón habla la boca y se rinden cuentas.",
-    espejoEn: "Jesus teaches that out of the overflow of the heart the mouth speaks and accountability is measured."
+    referenciaBiblica: "Lucas 19:1-10",
+    referenciaBiblicaEn: "Luke 19:1-10",
+    espejo: "Zaqueo asume la responsabilidad de sus actos reconociendo sus faltas y reparando el daño causado.",
+    espejoEn: "Zacchaeus takes responsibility for his actions by acknowledging his faults and repairing the harm caused."
   },
   {
     id: 24,
@@ -540,10 +540,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "Sometimes I look for a purpose, but daily routines consume me.", peso: 1 },
       { texto: "I walk with conviction and spiritual purpose in every decision.", peso: 2 }
     ],
-    referenciaBiblica: "Mateo 6:19-21",
-    referenciaBiblicaEn: "Matthew 6:19-21",
-    espejo: "Jesús enseña a enfocar el corazón en aquello que tiene valor eterno.",
-    espejoEn: "Jesus teaches us to focus our heart on what has eternal value."
+    referenciaBiblica: "Mateo 6:33",
+    referenciaBiblicaEn: "Matthew 6:33",
+    espejo: "Jesús enseña a buscar primeramente el Reino de Dios y su justicia como propósito supremo de vida.",
+    espejoEn: "Jesus teaches us to seek first the Kingdom of God and His righteousness as the supreme purpose of life."
   },
   {
     id: 27,
@@ -561,9 +561,9 @@ export const codigoYeshuaPreguntas = [
       { texto: "I listen for a bit, but I don't know what to say to bring hope.", peso: 1 },
       { texto: "I am a source of comfort, encouragement, and living hope for the suffering.", peso: 2 }
     ],
-    referenciaBiblica: "Mateo 5:4",
-    referenciaBiblicaEn: "Matthew 5:4",
-    espejo: "Jesús promete consuelo para quienes lloran y sufren con empatía.",
-    espejoEn: "Jesus promises comfort to those who mourn and suffer with empathy."
+    referenciaBiblica: "Mateo 11:28-30",
+    referenciaBiblicaEn: "Matthew 11:28-30",
+    espejo: "Jesús se presenta como fuente de descanso y alivio, llamándonos a ser reflejo de ese consuelo para los agobiados.",
+    espejoEn: "Jesus presents Himself as a source of rest and relief, calling us to reflect that comfort to the weary."
   }
 ];
