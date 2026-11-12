@@ -5,7 +5,7 @@ const i18nTextos = {
     titulo: "Yeshúa, la huella",
     subtitulo: "¿Cuánto de las enseñanzas de Jesucristo aplicás en tu vida?",
     tocarIniciar: "Tocar para iniciar",
-    explicacion: "Tu huella brillará según tu andar.",
+    explicacion: "Tu huella brillará con fuerza o penumbra, según cómo lleves a Yeshúa en tu andar.",
     resultadoTitulo: "Tu huella de Yeshúa",
     etiquetaAlineacion: "Alineación espiritual global",
     btnReiniciar: "Volver a realizar el recorrido",
@@ -15,7 +15,7 @@ const i18nTextos = {
     titulo: "Yeshúa, la huella",
     subtitulo: "How much of Jesus Christ's teachings do you apply in your daily life?",
     tocarIniciar: "Tap to begin",
-    explicacion: "Your footprint will shine according to your walk.",
+    explicacion: "Your footprint will shine with strength or in gloom, depending on how you carry Yeshúa in your walk.",
     resultadoTitulo: "Your footprint of Yeshúa",
     etiquetaAlineacion: "Global spiritual alignment",
     btnReiniciar: "Start the journey over",
@@ -272,3 +272,4 @@ function mostrarHuellaYeshua() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
+    
