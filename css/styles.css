@@ -1,4 +1,4 @@
-Body {
+body {
   margin: 0;
   padding: 0;
   background-color: #0d0d0f;
@@ -25,7 +25,6 @@ Body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Cambiado a flex-start con gap para que respire de forma natural y no pegue saltos al fondo */
   justify-content: flex-start;
   gap: 8px;
 }
@@ -139,21 +138,19 @@ Body {
   font-weight: 600;
 }
 
-/* Efecto elegante para el texto inferior de bienvenida */
+/* AJUSTADO: Texto inferior sutil, pequeño, delicado y sin cajas pesadas */
 .subtitulo-explicacion {
-  margin: 0;
-  font-size: 0.83rem;
-  color: #e6dbb9;
-  line-height: 1.4;
-  padding: 8px 14px;
+  margin: 2px 0 0 0;
+  font-size: 0.72rem;
+  color: #d4c5a0;
+  line-height: 1.35;
+  padding: 0 16px;
   text-align: center;
   font-family: 'Cinzel', serif;
-  background: rgba(45, 25, 10, 0.4);
-  border-left: 2px solid #c29b38;
-  border-right: 2px solid #c29b38;
-  border-radius: 4px;
-  width: 90%;
-  box-sizing: border-box;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 4px rgba(242, 201, 76, 0.3);
+  opacity: 0.85;
 }
 
 .tarjeta-pergamino {
@@ -275,4 +272,4 @@ Body {
   font-family: 'Cinzel', serif;
   font-style: italic;
   padding: 0 6px;
-  }
+}
