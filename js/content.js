@@ -363,4 +363,207 @@ export const codigoYeshuaPreguntas = [
     enunciado: "¿Podés tratar dignamente a alguien que te ha tratado mal?",
     enunciadoEn: "Can you treat someone with dignity even if they have mistreated you?",
     opciones: [
-      { texto: "Devuelvo el maltrato o busco la forma de per
+      { texto: "Devuelvo el maltrato o busco la forma de desquitarme.", peso: 0 },
+      { texto: "Me aparto y evito toda interacción con esa persona.", peso: 1 },
+      { texto: "Mantengo el respeto y respondo con altura ante la provocación.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I return the mistreatment or look for a way to get back at them.", peso: 0 },
+      { texto: "I pull away and avoid all interaction with that person.", peso: 1 },
+      { texto: "I maintain respect and respond with composure in the face of provocation.", peso: 2 }
+    ],
+    referenciaBiblica: "Lucas 6:27-28",
+    referenciaBiblicaEn: "Luke 6:27-28",
+    espejo: "Jesús enseña a bendecir a quienes nos maldicen.",
+    espejoEn: "Jesus teaches us to bless those who curse us."
+  },
+  {
+    id: 19,
+    bloque: 7,
+    categoria: "Materialismo, Generosidad y Prójimo",
+    enunciado: "¿Compartís tus bienes con alegría cuando alguien de tu entorno pasa necesidad?",
+    enunciadoEn: "Do you share your belongings with joy when someone around you is in need?",
+    opciones: [
+      { texto: "Me cuesta mucho ceder lo mío; cuido celosamente mis posesiones.", peso: 0 },
+      { texto: "Ayudo si me sobra o si no me implica un verdadero sacrificio.", peso: 1 },
+      { texto: "Soy generoso y desprendido, compartiendo lo que tengo con alegría.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I find it very hard to let go of my things; I jealously guard my possessions.", peso: 0 },
+      { texto: "I help if I have spare or if it doesn't require a real sacrifice.", peso: 1 },
+      { texto: "I am generous and detached, sharing what I have with joy.", peso: 2 }
+    ],
+    referenciaBiblica: "Lucas 12:33-34",
+    referenciaBiblicaEn: "Luke 12:33-34",
+    espejo: "Jesús anima a compartir los bienes acumulando tesoros en el cielo.",
+    espejoEn: "Jesus encourages sharing our goods and storing up treasures in heaven."
+  },
+  {
+    id: 20,
+    bloque: 7,
+    categoria: "Materialismo, Generosidad y Prójimo",
+    enunciado: "¿Evitás acumular riquezas a expensas de la necesidad o el sufrimiento de otros?",
+    enunciadoEn: "Do you avoid accumulating wealth at the expense of others' needs or suffering?",
+    opciones: [
+      { texto: "Mi prioridad es acumular dinero sin importar a quién afecte en el camino.", peso: 0 },
+      { texto: "Busco mi bienestar económico sin prestarle demasiada atención al entorno.", peso: 1 },
+      { texto: "Valoro la equidad y evito lucrar a costa del perjuicio ajeno.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "My priority is accumulating money regardless of who gets affected along the way.", peso: 0 },
+      { texto: "I pursue my financial well-being without paying much attention to my surroundings.", peso: 1 },
+      { texto: "I value fairness and avoid profiting at the expense of others' harm.", peso: 2 }
+    ],
+    referenciaBiblica: "Lucas 12:15-21",
+    referenciaBiblicaEn: "Luke 12:15-21",
+    espejo: "Jesús advierte sobre el peligro de confiar en las riquezas terrenales.",
+    espejoEn: "Jesus warns against the danger of trusting in earthly riches."
+  },
+  {
+    id: 21,
+    bloque: 7,
+    categoria: "Materialismo, Generosidad y Prójimo",
+    enunciado: "¿Sos generoso con tu tiempo y tu atención hacia los más vulnerables?",
+    enunciadoEn: "Are you generous with your time and attention toward the most vulnerable?",
+    opciones: [
+      { texto: "Considero que el tiempo de los demás es problema de cada uno.", peso: 0 },
+      { texto: "Doy algo de mi tiempo solo si me sobra o me resulta cómodo.", peso: 1 },
+      { texto: "Dedico tiempo y escucha activa a quienes están desamparados.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I believe everyone else's time is their own problem.", peso: 0 },
+      { texto: "I give some of my time only if I have extra or find it convenient.", peso: 1 },
+      { texto: "I dedicate time and active listening to those who are helpless.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 25:35-40",
+    referenciaBiblicaEn: "Matthew 25:35-40",
+    espejo: "Jesús identifica su propia presencia en el cuidado de los hambrientos y sedientos.",
+    espejoEn: "Jesus identifies His own presence in the care given to the hungry and thirsty."
+  },
+  {
+    id: 22,
+    bloque: 8,
+    categoria: "Liderazgo, Integridad y Ejemplo",
+    enunciado: "¿Tus acciones cotidianas reflejan con coherencia lo que decís defender o pregonar?",
+    enunciadoEn: "Do your daily actions consistently reflect what you claim to defend or advocate?",
+    opciones: [
+      { texto: "Digo una cosa pero en privado hago exactamente lo contrario.", peso: 0 },
+      { texto: "Intento ser coherente, aunque a veces me gana la hipocresía.", peso: 1 },
+      { texto: "Vivo con absoluta coherencia e integridad entre lo que profeso y hago.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I say one thing but in private do the exact opposite.", peso: 0 },
+      { texto: "I try to be consistent, though hypocrisy sometimes gets the better of me.", peso: 1 },
+      { texto: "I live with absolute coherence and integrity between what I profess and do.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 23:1-3",
+    referenciaBiblicaEn: "Matthew 23:1-3",
+    espejo: "Jesús cuestiona a quienes dicen una cosa pero no la practican.",
+    espejoEn: "Jesus challenges those who say one thing but do not practice it."
+  },
+  {
+    id: 23,
+    bloque: 8,
+    categoria: "Liderazgo, Integridad y Ejemplo",
+    enunciado: "¿Asumís la responsabilidad de tus actos sin buscar chivos expiatorios?",
+    enunciadoEn: "Do you take responsibility for your actions without looking for scapegoats?",
+    opciones: [
+      { texto: "Siempre le echo la culpa a los demás de mis propios fracasos y errores.", peso: 0 },
+      { texto: "Me cuesta hacerme cargo y a veces busco excusas externas.", peso: 1 },
+      { texto: "Asumo con total madurez las consecuencias de mis decisiones.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I always blame others for my own failures and mistakes.", peso: 0 },
+      { texto: "I struggle to take responsibility and sometimes look for outside excuses.", peso: 1 },
+      { texto: "I maturely take responsibility for the consequences of my decisions.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 12:33-37",
+    referenciaBiblicaEn: "Matthew 12:33-37",
+    espejo: "Jesús enseña que de la abundancia del corazón habla la boca y se rinden cuentas.",
+    espejoEn: "Jesus teaches that out of the overflow of the heart the mouth speaks and accountability is measured."
+  },
+  {
+    id: 24,
+    bloque: 8,
+    categoria: "Liderazgo, Integridad y Ejemplo",
+    enunciado: "¿Utilizás tu influencia para levantar y guiar a otros en lugar de manipularlos?",
+    enunciadoEn: "Do you use your influence to lift and guide others instead of manipulating them?",
+    opciones: [
+      { texto: "Uso a los demás en beneficio propio y para conseguir mis metas.", peso: 0 },
+      { texto: "A veces guío a otros, pero priorizo mis propios intereses.", peso: 1 },
+      { texto: "Uso mi posición para servir, proteger y potenciar el crecimiento ajeno.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I use others for my own benefit and to achieve my goals.", peso: 0 },
+      { texto: "Sometimes I guide others, but I prioritize my own interests.", peso: 1 },
+      { texto: "I use my position to serve, protect, and empower the growth of others.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 20:25-28",
+    referenciaBiblicaEn: "Matthew 20:25-28",
+    espejo: "Jesús contrasta el liderazgo de poder terrenal con el servicio de entrega.",
+    espejoEn: "Jesus contrasts earthly power leadership with servant-hearted delivery."
+  },
+  {
+    id: 25,
+    bloque: 9,
+    categoria: "Esperanza, Fe y Propósito",
+    enunciado: "¿Mantenés la paz interior y la confianza ante situaciones de incertidumbre?",
+    enunciadoEn: "Do you maintain inner peace and trust in the face of uncertainty?",
+    opciones: [
+      { texto: "Me desespero y pierdo el control ante el menor síntoma de incertidumbre.", peso: 0 },
+      { texto: "Siento mucha ansiedad, aunque intento disimularla.", peso: 1 },
+      { texto: "Confío profundamente y mantengo la serenidad en los momentos difíciles.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I despair and lose control at the slightest sign of uncertainty.", peso: 0 },
+      { texto: "I feel a lot of anxiety, though I try to hide it.", peso: 1 },
+      { texto: "I trust deeply and maintain serenity in difficult times.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 6:25-34",
+    referenciaBiblicaEn: "Matthew 6:25-34",
+    espejo: "Jesús invita a no angustiarse por el mañana y confiar en la providencia.",
+    espejoEn: "Jesus invites us not to worry about tomorrow and to trust in provision."
+  },
+  {
+    id: 26,
+    bloque: 9,
+    categoria: "Esperanza, Fe y Propósito",
+    enunciado: "¿Vivís con un sentido trascendente y propósito claro en tu día a día?",
+    enunciadoEn: "Do you live with a transcendent sense of purpose in your daily life?",
+    opciones: [
+      { texto: "Vivo al día sin importarme el sentido profundo de mis actos.", peso: 0 },
+      { texto: "A veces busco un propósito, pero el trajín diario me consume.", peso: 1 },
+      { texto: "Camino con convicción y propósito espiritual en cada decisión.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I live day by day without caring about the deep meaning of my actions.", peso: 0 },
+      { texto: "Sometimes I look for a purpose, but daily routines consume me.", peso: 1 },
+      { texto: "I walk with conviction and spiritual purpose in every decision.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 6:19-21",
+    referenciaBiblicaEn: "Matthew 6:19-21",
+    espejo: "Jesús enseña a enfocar el corazón en aquello que tiene valor eterno.",
+    espejoEn: "Jesus teaches us to focus our heart on what has eternal value."
+  },
+  {
+    id: 27,
+    bloque: 9,
+    categoria: "Esperanza, Fe y Propósito",
+    enunciado: "¿Sembrás esperanza y consuelo en quienes te rodean cuando atraviesan crisis?",
+    enunciadoEn: "Do you sow hope and comfort in those around you when they go through crises?",
+    opciones: [
+      { texto: "Me alejo o minimizo los problemas de quienes sufren a mi alrededor.", peso: 0 },
+      { texto: "Escucho un rato, pero no sé qué decir para aportar esperanza.", peso: 1 },
+      { texto: "Soy fuente de consuelo, aliento y esperanza viva para el que sufre.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I walk away or minimize the problems of those suffering around me.", peso: 0 },
+      { texto: "I listen for a bit, but I don't know what to say to bring hope.", peso: 1 },
+      { texto: "I am a source of comfort, encouragement, and living hope for the suffering.", peso: 2 }
+    ],
+    referenciaBiblica: "Mateo 5:4",
+    referenciaBiblicaEn: "Matthew 5:4",
+    espejo: "Jesús promete consuelo para quienes lloran y sufren con empatía.",
+    espejoEn: "Jesus promises comfort to those who mourn and suffer with empathy."
+  }
+];
