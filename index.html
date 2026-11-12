@@ -171,7 +171,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 16px;
       padding: 8px 0;
       box-sizing: border-box;
     }
@@ -199,7 +200,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: auto 0;
+      margin: 6px 0;
     }
 
     .sello-cantaro {
@@ -230,13 +231,18 @@
       opacity: 0.95;
     }
 
+    /* ESTILO ACTUALIZADO: Frase superior con tipografía arcaica/hebrea y efecto glow */
     .subtitulo-explicacion {
-      margin-top: 6px;
-      font-size: 0.82rem;
-      color: #d4c5a0;
-      line-height: 1.4;
-      padding: 0 12px;
+      margin-top: 4px;
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+      color: #f7e3a1;
+      line-height: 1.45;
+      padding: 6px 14px;
       text-align: center;
+      text-shadow: 0 0 8px rgba(242, 201, 76, 0.55), 0 0 18px rgba(194, 155, 56, 0.35);
     }
 
     .tarjeta-pergamino {
@@ -369,7 +375,7 @@
             <span class="texto-tocar-iniciar" data-i18n="tocarIniciar">Tocar para iniciar</span>
           </div>
           <div>
-            <p class="subtitulo-explicacion" data-i18n="explicacion">Tu huella brillará según tu andar.</p>
+            <p class="subtitulo-explicacion" data-i18n="explicacion">Tu huella brillará con fuerza o penumbra, según cómo lleves a Yeshúa en tu andar.</p>
           </div>
         </div>
       </div>
