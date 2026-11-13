@@ -135,7 +135,7 @@
       z-index: 5;
     }
 
-    /* Rostro superior agrandado y sin caja ni estampita (usa drop-shadow que sigue la silueta real) */
+    /* Rostro superior intacto, grande y sin recuadro */
     .ylh-logo-principal, 
     #top-slot-container img, 
     .rostro-imagen-estatica {
@@ -354,27 +354,27 @@
       text-align: center;
     }
 
-    /* Pie de página: icono Y.L.H. natural, legible, sin círculos ni cajas */
+    /* Pie de página: Sello Y.L.H. agrandado (75px) y con un globo de brillo dorado más intenso */
     .contenedor-pie-global {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      margin-top: 6px;
-      margin-bottom: 4px;
+      margin-top: 4px;
+      margin-bottom: 2px;
       flex-shrink: 0;
     }
 
     .sello-ylh-pie {
-      width: 48px !important;
+      width: 75px !important;
       height: auto !important;
-      border-radius: 0 !important;
-      border: none !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(242, 201, 76, 0.6) !important;
       box-shadow: none !important;
       background: transparent !important;
-      opacity: 0.95;
-      filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.5));
+      opacity: 1;
+      filter: drop-shadow(0 0 14px rgba(242, 201, 76, 0.85)) drop-shadow(0 0 25px rgba(242, 201, 76, 0.4));
     }
 
     .pie-marca {
@@ -396,7 +396,7 @@
   </div>
 
   <div id="app-container">
-    <!-- Rostro superior original sin cajas ni bordes -->
+    <!-- Rostro superior intacto -->
     <div id="top-slot-container" class="rostro-container">
       <img src="assets/ylh-logo.webp" alt="Yeshúa La Huella Logo" class="ylh-logo-principal">
     </div>
@@ -419,7 +419,7 @@
       </div>
     </div>
 
-    <!-- Pie de página con el icono Y.L.H. natural y visible -->
+    <!-- Pie de página con el sello Y.L.H. agrandado y con mayor brillo dorado -->
     <div class="contenedor-pie-global">
       <img src="assets/ylh-logo.webp" alt="Y.L.H." class="sello-ylh-pie">
       <div class="pie-marca">
