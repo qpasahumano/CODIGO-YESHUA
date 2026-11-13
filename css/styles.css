@@ -1,4 +1,4 @@
-body {
+Body {
   margin: 0;
   padding: 0;
   background-color: #0d0d0f;
@@ -112,8 +112,8 @@ body {
   z-index: 2;
 }
 
-/* Contenedor del logo principal superior (Y.L.H.) */
-.rostro-container {
+/* Contenedor superior (Logo o Rostro de Yeshúa dinámico) */
+#top-slot-container {
   margin-top: 2px;
   margin-bottom: 2px;
   display: flex;
@@ -122,6 +122,18 @@ body {
   width: 100%;
   flex-shrink: 0;
   z-index: 5;
+  min-height: 52px;
+  justify-content: center;
+}
+
+/* Estilo para el rostro de Yeshúa cuando se activa el juego (tamaño acotado y prolijo arriba) */
+.rostro-imagen-estatica {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #8c5a33;
+  transition: all 0.3s ease;
 }
 
 .ylh-logo-principal {
