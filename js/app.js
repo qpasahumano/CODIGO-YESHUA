@@ -171,6 +171,9 @@ function renderizarPregunta() {
   const espejoTexto = esIngles && p.espejoEn ? p.espejoEn : p.espejo;
   const refBiblicaTexto = esIngles && p.referenciaBiblicaEn ? p.referenciaBiblicaEn : p.referenciaBiblica;
   
+  // Soporte para categoría bilingüe usando la nueva propiedad categoriaEn
+  const categoriaTexto = esIngles && p.categoriaEn ? p.categoriaEn : p.categoria;
+  
   let opcionesActuales = p.opciones;
   if (esIngles && p.opcionesEn && p.opcionesEn.length > 0) {
     opcionesActuales = p.opcionesEn;
@@ -178,6 +181,9 @@ function renderizarPregunta() {
 
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
+      <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #c29b38; margin-bottom: 6px; font-weight: 600;">
+        📌 ${categoriaTexto}
+      </div>
       <div class="referencia-biblica">
         <strong>📖 ${refBiblicaTexto}</strong><br>
         <span style="font-size: 0.84rem; font-style: italic;">"${espejoTexto}"</span>
@@ -272,4 +278,3 @@ function mostrarHuellaYeshua() {
 }
 
 document.addEventListener('DOMContentLoaded', iniciarAplicacion);
-    
