@@ -20,6 +20,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      height: 100dvh;
       overflow: hidden;
       box-sizing: border-box;
       position: relative;
@@ -110,8 +111,9 @@
       width: 100%;
       max-width: 430px;
       height: 100vh;
+      height: 100dvh;
       max-height: 900px;
-      padding: 16px 16px 8px 16px;
+      padding: 10px 16px 10px 16px;
       box-sizing: border-box;
       text-align: center;
       display: flex;
@@ -123,7 +125,7 @@
     }
 
     .rostro-container {
-      margin-top: 4px;
+      margin-top: 2px;
       margin-bottom: 2px;
       display: flex;
       flex-direction: column;
@@ -133,26 +135,18 @@
       z-index: 5;
     }
 
-    .ylh-logo-principal {
-      width: 64px;
-      height: auto;
-      border-radius: 50%;
-      box-shadow: 0 0 14px rgba(242, 201, 76, 0.4);
-      border: 1px solid #8c5a33;
-      object-fit: cover;
-    }
-
-    /* Restricción estricta para que el rostro dinámico no se expanda nunca */
+    /* Tamaño original exacto para la cara de Jesucristo y el logo principal (ni muy chica ni gigante) */
+    .ylh-logo-principal, 
     #top-slot-container img, 
     .rostro-imagen-estatica {
-      width: 58px !important;
-      height: 58px !important;
-      max-width: 58px !important;
-      max-height: 58px !important;
+      width: 64px !important;
+      height: 64px !important;
+      max-width: 64px !important;
+      max-height: 64px !important;
       border-radius: 50% !important;
-      object-fit: cover !important;
-      border: 1px solid #8c5a33 !important;
       box-shadow: 0 0 14px rgba(242, 201, 76, 0.45) !important;
+      border: 1px solid #8c5a33 !important;
+      object-fit: cover !important;
     }
 
     #quiz-container {
@@ -161,47 +155,45 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      margin: 6px 0;
+      justify-content: center;
+      margin: 2px 0;
     }
 
     #preguntas-dinamicas {
       width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .pantalla-bienvenida {
       text-align: center;
       width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 4px 0;
+      gap: 10px;
+      padding: 2px 0;
       box-sizing: border-box;
     }
 
     .pantalla-bienvenida h2 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: #f2c94c;
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin-top: 2px;
+      margin-bottom: 2px;
       letter-spacing: 1px;
     }
 
     .subtitulo-bienvenida {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #b0b0bc;
-      line-height: 1.35;
-      margin-bottom: 6px;
-      padding: 0 10px;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      padding: 0 8px;
     }
 
     .contenedor-umbral {
@@ -210,11 +202,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 4px 0;
+      margin: 2px 0;
     }
 
     .sello-cantaro {
-      width: 180px;
+      width: 165px;
       height: auto;
       cursor: pointer;
       background: transparent;
@@ -223,12 +215,12 @@
       display: block;
       margin: 0 auto;
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 20px rgba(194, 155, 56, 0.45));
+      filter: drop-shadow(0 0 18px rgba(194, 155, 56, 0.45));
     }
 
     .sello-cantaro:hover, .sello-cantaro:active {
       transform: scale(1.06);
-      filter: drop-shadow(0 0 30px rgba(242, 201, 76, 0.8));
+      filter: drop-shadow(0 0 28px rgba(242, 201, 76, 0.8));
     }
 
     .texto-tocar-iniciar {
@@ -236,17 +228,17 @@
       color: #a8946e;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 10px;
-      margin-bottom: 4px;
+      margin-top: 8px;
+      margin-bottom: 2px;
       opacity: 0.95;
     }
 
     .subtitulo-explicacion {
       margin: 2px 0 0 0;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: #d4c5a0;
       line-height: 1.3;
-      padding: 0 14px;
+      padding: 0 10px;
       text-align: center;
       font-family: 'Cinzel', serif;
       font-weight: 600;
@@ -260,7 +252,7 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
-      padding: 14px 12px;
+      padding: 12px 10px;
       box-sizing: border-box;
       width: 100%;
       border-radius: 6px;
@@ -270,13 +262,13 @@
     }
 
     .referencia-biblica {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: #1a0a03;
       background-color: rgba(74, 40, 16, 0.12);
       border: 1px solid rgba(74, 40, 16, 0.3);
-      padding: 5px 8px;
+      padding: 4px 6px;
       border-radius: 5px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       text-align: center;
       line-height: 1.3;
       font-weight: 600;
@@ -285,23 +277,23 @@
     .referencia-biblica strong {
       font-family: 'Cinzel', serif;
       color: #0d0301;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
     }
 
     .pregunta-enunciado h3 {
       font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: #0f0502;
       line-height: 1.3;
       margin-top: 0;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 700;
     }
 
     .opciones-lista {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
       width: 100%;
     }
 
@@ -309,9 +301,9 @@
       background-color: rgba(30, 14, 6, 0.94);
       color: #f7ebcf;
       border: 1px solid #5c3a21;
-      padding: 7px 9px;
+      padding: 6px 8px;
       border-radius: 6px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -336,52 +328,53 @@
       background-color: #1a1a1e;
       border: 1px solid #2a2a30;
       border-radius: 12px;
-      padding: 10px;
-      margin: 6px 0;
+      padding: 8px;
+      margin: 4px 0;
       text-align: center;
     }
 
     .puntaje-final {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
     }
 
     .mensaje-evolutivo {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: #b0b0bc;
       line-height: 1.3;
     }
 
     .texto-invitacion {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: #8c8c9a;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       line-height: 1.25;
       text-align: center;
     }
 
+    /* Pie de página perfectamente integrado DENTRO del contenedor principal, visible y con buen tamaño */
     .contenedor-pie-global {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
-      margin-top: 4px;
+      gap: 2px;
+      margin-top: 2px;
       flex-shrink: 0;
     }
 
     .sello-ylh-pie {
-      width: 28px;
-      height: auto;
-      opacity: 0.85;
+      width: 28px !important;
+      height: auto !important;
+      opacity: 0.9;
       filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.5));
     }
 
     .pie-marca {
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       color: #9c8c6a;
       letter-spacing: 1px;
-      opacity: 0.8;
+      opacity: 0.85;
       font-family: 'Cinzel', serif;
     }
   </style>
@@ -396,7 +389,7 @@
   </div>
 
   <div id="app-container">
-    <!-- Logo principal integrado en la interfaz -->
+    <!-- Logo principal / Rostro superior -->
     <div id="top-slot-container" class="rostro-container">
       <img src="assets/ylh-logo.webp" alt="Yeshúa La Huella Logo" class="ylh-logo-principal">
     </div>
@@ -419,7 +412,7 @@
       </div>
     </div>
 
-    <!-- Pie unificado con la sigla correcta Y.L.H. y el logo funcional para evitar errores -->
+    <!-- Pie de página integrado adentro de la interfaz, con Y.L.H. y visible -->
     <div class="contenedor-pie-global">
       <img src="assets/ylh-logo.webp" alt="Y.L.H." class="sello-ylh-pie">
       <div class="pie-marca">
