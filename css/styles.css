@@ -11,6 +11,88 @@ body {
   min-height: 100dvh;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
+}
+
+#cielo-nocturno {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.estrella-nocturna {
+  position: absolute;
+  background-color: #f7ebcf;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: titilarSt 4s infinite ease-in-out;
+}
+
+@keyframes titilarSt {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 0.45; transform: scale(1.2); }
+}
+
+.controles-superiores {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#btn-control-audio {
+  background: rgba(30, 14, 6, 0.85);
+  border: 1px solid #8c5a33;
+  color: #f7ebcf;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+#btn-control-audio:active {
+  transform: scale(0.9);
+  background-color: #5c3a21;
+}
+
+#btn-idioma {
+  background: rgba(30, 14, 6, 0.85);
+  border: 1px solid #8c5a33;
+  color: #f7ebcf;
+  font-size: 0.75rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  border-radius: 18px;
+  height: 36px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+#btn-idioma:hover, #btn-idioma:active {
+  background-color: #5c3a21;
+  border-color: #f2c94c;
+  color: #f2c94c;
 }
 
 #app-container {
@@ -19,16 +101,18 @@ body {
   height: 100vh;
   height: 100dvh;
   max-height: 900px;
-  padding: 14px 16px 20px 16px;
+  padding: 14px 16px 16px 16px;
   box-sizing: border-box;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
+/* Contenedor del logo principal superior (Y.L.H.) */
 .rostro-container {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -37,19 +121,16 @@ body {
   align-items: center;
   width: 100%;
   flex-shrink: 0;
+  z-index: 5;
 }
 
-.rostro-imagen-estatica {
-  width: 130px;
+.ylh-logo-principal {
+  width: 58px;
   height: auto;
-  max-height: 145px;
-  object-fit: contain;
-  background: transparent;
-  border: none;
-  padding: 0;
-  opacity: 0.02;
-  filter: grayscale(100%) brightness(0.4);
-  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(242, 201, 76, 0.4);
+  border: 1px solid #8c5a33;
+  object-fit: cover;
 }
 
 #quiz-container {
@@ -77,8 +158,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 4px 0;
+  gap: 10px;
+  padding: 2px 0;
   box-sizing: border-box;
 }
 
@@ -92,7 +173,7 @@ body {
 }
 
 .subtitulo-bienvenida {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: #c4c4d0;
   line-height: 1.35;
   margin: 0;
@@ -106,11 +187,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 4px 0;
+  margin: 2px 0;
 }
 
 .sello-cantaro {
-  width: 175px;
+  width: 165px;
   height: auto;
   cursor: pointer;
   background: transparent;
@@ -128,20 +209,19 @@ body {
 }
 
 .texto-tocar-iniciar {
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   color: #d4bc8c;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-top: 8px;
+  margin-top: 6px;
   margin-bottom: 0;
   opacity: 0.95;
   font-weight: 600;
 }
 
-/* AJUSTADO: Texto inferior sutil, pequeño, delicado y sin cajas pesadas */
 .subtitulo-explicacion {
   margin: 2px 0 0 0;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: #d4c5a0;
   line-height: 1.35;
   padding: 0 16px;
@@ -158,7 +238,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 16px 14px;
+  padding: 14px 12px;
   box-sizing: border-box;
   width: 100%;
   border-radius: 6px;
@@ -168,13 +248,13 @@ body {
 }
 
 .referencia-biblica {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: #1a0a03;
   background-color: rgba(74, 40, 16, 0.12);
   border: 1px solid rgba(74, 40, 16, 0.3);
-  padding: 5px 8px;
+  padding: 4px 8px;
   border-radius: 5px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   text-align: center;
   line-height: 1.35;
   font-weight: 600;
@@ -183,16 +263,16 @@ body {
 .referencia-biblica strong {
   font-family: 'Cinzel', serif;
   color: #0d0301;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
 .pregunta-enunciado h3 {
   font-family: 'Cinzel', serif;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: #0f0502;
   line-height: 1.35;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 700;
 }
 
@@ -207,9 +287,9 @@ body {
   background-color: rgba(30, 14, 6, 0.94);
   color: #f7ebcf;
   border: 1px solid #5c3a21;
-  padding: 7px 10px;
+  padding: 6px 9px;
   border-radius: 6px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -230,13 +310,13 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .resultado-final h2 {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
   color: #f2c94c;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin: 0;
 }
 
@@ -244,27 +324,27 @@ body {
   background-color: #1a1a1e;
   border: 1px solid #3a3a45;
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
   margin: 0;
   text-align: center;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
 
 .puntaje-final {
-  font-size: 0.92rem;
-  margin-bottom: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 3px;
   font-family: 'Cinzel', serif;
   color: #f2c94c;
 }
 
 .mensaje-evolutivo {
-  font-size: 0.81rem;
+  font-size: 0.79rem;
   color: #d0d0dc;
   line-height: 1.35;
 }
 
 .texto-invitacion {
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   color: #b5a47e;
   margin: 0;
   line-height: 1.35;
@@ -272,4 +352,30 @@ body {
   font-family: 'Cinzel', serif;
   font-style: italic;
   padding: 0 6px;
+}
+
+/* Pie de página unificado */
+.contenedor-pie-global {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.sello-ylh-pie {
+  width: 26px;
+  height: auto;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.5));
+}
+
+.pie-marca {
+  font-size: 0.66rem;
+  color: #9c8c6a;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  font-family: 'Cinzel', serif;
 }
