@@ -1,3 +1,8 @@
+/**
+ * content.js - Actualizado y sincronizado
+ * Yeshúa, la huella / qpasahumano
+ */
+
 export const codigoYeshuaPreguntas = [
   {
     id: 1,
