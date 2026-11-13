@@ -135,7 +135,7 @@
       z-index: 5;
     }
 
-    /* Rostro superior restaurado: tamaño grande, sin encierro circular */
+    /* 1. Rostro superior: tamaño original grande, SIN círculos ni cuadrados forzados */
     .ylh-logo-principal, 
     #top-slot-container img, 
     .rostro-imagen-estatica {
@@ -144,8 +144,8 @@
       max-width: 90px !important;
       max-height: 120px !important;
       border-radius: 0 !important;
-      box-shadow: 0 0 16px rgba(242, 201, 76, 0.4) !important;
       border: none !important;
+      box-shadow: 0 0 16px rgba(242, 201, 76, 0.4) !important;
       object-fit: contain !important;
       background: transparent !important;
     }
@@ -353,7 +353,7 @@
       text-align: center;
     }
 
-    /* Pie de página con el icono Y.L.H. visible, agrandado y texto acomodado */
+    /* 2. Pie de página: icono Y.L.H. natural, legible, sin círculos ni bordes forzados */
     .contenedor-pie-global {
       width: 100%;
       display: flex;
@@ -366,12 +366,13 @@
     }
 
     .sello-ylh-pie {
-      width: 50px !important;
+      width: 48px !important;
       height: auto !important;
-      border-radius: 50% !important;
-      border: 1px solid #8c5a33 !important;
+      border-radius: 0 !important;
+      border: none !important;
+      background: transparent !important;
       opacity: 0.95;
-      filter: drop-shadow(0 0 8px rgba(242, 201, 76, 0.6));
+      filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.5));
     }
 
     .pie-marca {
@@ -393,7 +394,7 @@
   </div>
 
   <div id="app-container">
-    <!-- Rostro superior original sin círculo ni encapsulado y en tamaño grande -->
+    <!-- Rostro superior original sin bordes ni formas forzadas -->
     <div id="top-slot-container" class="rostro-container">
       <img src="assets/ylh-logo.webp" alt="Yeshúa La Huella Logo" class="ylh-logo-principal">
     </div>
@@ -416,7 +417,7 @@
       </div>
     </div>
 
-    <!-- Pie de página con el icono Y.L.H. agrandado, legible y su texto acomodado -->
+    <!-- Pie de página con el icono Y.L.H. natural y visible, sin círculos molestos -->
     <div class="contenedor-pie-global">
       <img src="assets/ylh-logo.webp" alt="Y.L.H." class="sello-ylh-pie">
       <div class="pie-marca">
