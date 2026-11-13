@@ -589,10 +589,8 @@ export const codigoYeshuaPreguntas = [
       { texto: "I am a source of comfort, encouragement, and living hope for the suffering.", peso: 2 }
     ],
     referenciaBiblica: "Mateo 11:28-30",
-    referenciaBiblicaEn: "Luke 11:28-30",
+    referenciaBiblicaEn: "Matthew 11:28-30",
     espejo: "Jesús se presenta como fuente de descanso y alivio, llamándonos a ser reflejo de ese consuelo para los agobiados.",
     espejoEn: "Jesus presents Himself as a source of rest and relief, calling us to reflect that comfort to the weary."
   }
 ];
-
-// Nota de pie integrada sutilmente: yeshualahuella.com / qpasahumano
