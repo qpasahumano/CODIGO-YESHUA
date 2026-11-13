@@ -79,7 +79,7 @@ function configurarControlesSuperiores() {
 
   if (btnAudio && audioFondo) {
     const nuevoBtnAudio = btnAudio.cloneNode(true);
-    btnAudio.parentNode.replaceChild(nuevoBtnAudio, btnAudio);
+    audioFondo.parentNode.replaceChild(nuevoBtnAudio, audioFondo);
 
     document.getElementById('btn-control-audio').addEventListener('click', () => {
       if (audioFondo.paused) {
@@ -101,6 +101,7 @@ function iniciarAplicacion() {
   if (!preguntasDiv || !topSlot) return;
 
   iniciarCieloNocturno();
+  // Al inicio el rostro superior se mantiene completamente invisible o vacío
   topSlot.innerHTML = '';
   indiceActual = 0;
   puntajeAcumulado = 0;
@@ -130,8 +131,10 @@ function iniciarAplicacion() {
   if (btnComenzar) {
     btnComenzar.addEventListener('click', () => {
       juegoIniciado = true;
+      
+      // Creamos la imagen del rostro pero seteada con opacidad 0 o muy tenue al comenzar las primeras preguntas
       topSlot.innerHTML = `
-        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica">
+        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica" style="opacity: 0; transition: opacity 0.8s ease, filter 0.8s ease;">
       `;
 
       actualizarRostroVisual();
@@ -170,8 +173,6 @@ function renderizarPregunta() {
   const enunciadoTexto = esIngles && p.enunciadoEn ? p.enunciadoEn : p.enunciado;
   const espejoTexto = esIngles && p.espejoEn ? p.espejoEn : p.espejo;
   const refBiblicaTexto = esIngles && p.referenciaBiblicaEn ? p.referenciaBiblicaEn : p.referenciaBiblica;
-  
-  // Soporte para categoría bilingüe usando la nueva propiedad categoriaEn
   const categoriaTexto = esIngles && p.categoriaEn ? p.categoriaEn : p.categoria;
   
   let opcionesActuales = p.opciones;
@@ -181,7 +182,7 @@ function renderizarPregunta() {
 
   preguntasDiv.innerHTML = `
     <div class="tarjeta-pergamino">
-      <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #c29b38; margin-bottom: 6px; font-weight: 600;">
+      <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #261004; margin-bottom: 6px; font-weight: 700; font-family: 'Cinzel', serif;">
         📌 ${categoriaTexto}
       </div>
       <div class="referencia-biblica">
@@ -209,28 +210,39 @@ function renderizarPregunta() {
 
 function procesarRespuesta(peso) {
   puntajeAcumulado += peso;
-  actualizarRostroVisual();
   indiceActual++;
+  actualizarRostroVisual();
   renderizarPregunta();
 }
 
 function actualizarRostroVisual() {
-  const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
   const rostroImg = document.getElementById('rostro-yeshua');
+  if (!rostroImg) return;
 
-  if (rostroImg) {
-    let opacidadCalculada = 0.02 + Math.pow(porcentaje / 100, 2.0) * 0.98;
-    rostroImg.style.opacity = opacidadCalculada;
+  // Lógica de aparición gradual: 
+  // - Si estamos antes de la pregunta 9 (es decir, indiceActual < 9), el rostro permanece prácticamente oculto (opacidad 0 o un sombreado muy difuso).
+  // - A partir de la pregunta 9/10 en adelante, empieza a revelarse de forma real en función del puntaje acumulado.
+  
+  if (indiceActual < 9) {
+    rostroImg.style.opacity = '0.03';
+    rostroImg.style.filter = 'drop-shadow(0 0 4px rgba(0, 0, 0, 0.9)) grayscale(100%) contrast(1.8) brightness(0.4)';
+    return;
+  }
 
-    if (porcentaje >= 75) {
-      rostroImg.style.filter = 'drop-shadow(0 0 18px rgba(242, 201, 76, 0.8)) grayscale(0%) contrast(1.15) brightness(1.12)';
-    } else if (porcentaje >= 45) {
-      rostroImg.style.filter = 'drop-shadow(0 0 10px rgba(194, 155, 56, 0.5)) grayscale(25%) contrast(1.25)';
-    } else if (indiceActual >= 20 && porcentaje < 30) {
-      rostroImg.style.filter = 'drop-shadow(0 0 12px rgba(242, 201, 76, 0.45)) grayscale(80%) contrast(1.5) brightness(0.75)';
-    } else {
-      rostroImg.style.filter = 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8)) grayscale(100%) contrast(1.7) brightness(0.55)';
-    }
+  // Calculamos el porcentaje en base al progreso real y respuestas positivas
+  const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
+  
+  // Curva de opacidad más suave y gradual desde la pregunta 9 en adelante
+  let opacidadCalculada = 0.15 + (Math.pow(porcentaje / 100, 1.8) * 0.85);
+  rostroImg.style.opacity = Math.min(opacidadCalculada, 1);
+
+  // Niveles de brillo, color y resplandor según el puntaje positivo acumulado
+  if (porcentaje >= 75) {
+    rostroImg.style.filter = 'drop-shadow(0 0 20px rgba(242, 201, 76, 0.9)) grayscale(0%) contrast(1.2) brightness(1.18)';
+  } else if (porcentaje >= 45) {
+    rostroImg.style.filter = 'drop-shadow(0 0 12px rgba(194, 155, 56, 0.6)) grayscale(30%) contrast(1.3) brightness(0.95)';
+  } else {
+    rostroImg.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.85)) grayscale(85%) contrast(1.6) brightness(0.65)';
   }
 }
 
