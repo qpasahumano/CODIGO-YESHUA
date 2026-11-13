@@ -20,6 +20,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      height: 100dvh;
       overflow: hidden;
       box-sizing: border-box;
       position: relative;
@@ -110,6 +111,7 @@
       width: 100%;
       max-width: 430px;
       height: 100vh;
+      height: 100dvh;
       max-height: 900px;
       padding: 16px 16px 8px 16px;
       box-sizing: border-box;
@@ -128,18 +130,32 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       width: 100%;
+      min-height: 64px;
       flex-shrink: 0;
       z-index: 5;
     }
 
     .ylh-logo-principal {
       width: 64px;
-      height: auto;
+      height: 64px;
       border-radius: 50%;
       box-shadow: 0 0 14px rgba(242, 201, 76, 0.4);
       border: 1px solid #8c5a33;
       object-fit: cover;
+    }
+
+    .rostro-imagen-estatica {
+      width: 58px;
+      height: 58px;
+      max-width: 58px;
+      max-height: 58px;
+      border-radius: 50%;
+      box-shadow: 0 0 14px rgba(242, 201, 76, 0.45);
+      border: 1px solid #8c5a33;
+      object-fit: cover;
+      display: block;
     }
 
     #quiz-container {
@@ -148,23 +164,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       margin: 6px 0;
+      overflow-y: auto;
     }
 
     #preguntas-dinamicas {
       width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .pantalla-bienvenida {
       text-align: center;
       width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
