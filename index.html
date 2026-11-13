@@ -26,7 +26,7 @@
       position: relative;
     }
 
-    /* Cielo nocturno extendido a todo el fondo de la pantalla */
+    /* Cielo nocturno cubriendo toda la pantalla */
     #cielo-nocturno {
       position: absolute;
       top: 0;
@@ -136,7 +136,7 @@
       z-index: 5;
     }
 
-    /* Rostro superior intacto */
+    /* Rostro superior intacto, grande y libre de cajas */
     .ylh-logo-principal, 
     #top-slot-container img, 
     .rostro-imagen-estatica {
@@ -355,7 +355,7 @@
       text-align: center;
     }
 
-    /* Pie de página intacto con el sello Y.L.H. grande y brillante */
+    /* Pie de página: Sello Y.L.H. grande (75px) SIN ningún óvalo ni marco feo al rededor */
     .contenedor-pie-global {
       width: 100%;
       display: flex;
@@ -371,7 +371,7 @@
       width: 75px !important;
       height: auto !important;
       border-radius: 50% !important;
-      border: 1px solid rgba(242, 201, 76, 0.6) !important;
+      border: none !important;
       box-shadow: none !important;
       background: transparent !important;
       opacity: 1;
@@ -389,7 +389,7 @@
 </head>
 <body>
 
-  <!-- Contenedor del cielo nocturno cubriendo toda la pantalla -->
+  <!-- Cielo nocturno cubriendo toda la pantalla -->
   <div id="cielo-nocturno"></div>
 
   <div class="controles-superiores">
@@ -421,7 +421,7 @@
       </div>
     </div>
 
-    <!-- Pie de página intacto -->
+    <!-- Pie de página con el sello Y.L.H. grande, brillante y sin óvalo feo -->
     <div class="contenedor-pie-global">
       <img src="assets/ylh-logo.webp" alt="Y.L.H." class="sello-ylh-pie">
       <div class="pie-marca">
