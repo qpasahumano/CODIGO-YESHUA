@@ -3,10 +3,11 @@ export const codigoYeshuaPreguntas = [
     id: 1,
     bloque: 1,
     categoria: "Amor, Compasión y Prójimo",
+    categoriaEn: "Love, Compassion and Neighbor",
     enunciado: "Cuando alguien necesita ayuda y no obtenés ningún beneficio, ¿te involucras?",
     enunciadoEn: "When someone needs help and you gain no benefit from it, do you get involved?",
     opciones: [
-      { texto: "No suelo involucrarse si no tengo relación o beneficio directo.", peso: 0 },
+      { texto: "No suelo involucrarme si no tengo relación o beneficio directo.", peso: 0 },
       { texto: "A veces ayudo si no me demanda demasiado tiempo o esfuerzo.", peso: 1 },
       { texto: "Me detengo y asisto al necesitado de forma desinteresada.", peso: 2 }
     ],
@@ -24,6 +25,7 @@ export const codigoYeshuaPreguntas = [
     id: 2,
     bloque: 1,
     categoria: "Amor, Compasión y Prójimo",
+    categoriaEn: "Love, Compassion and Neighbor",
     enunciado: "¿Tratás con la misma consideración a quien puede darte algo y a quien no puede ofrecerte nada?",
     enunciadoEn: "Do you treat someone who can give you something with the same consideration as someone who can offer you nothing?",
     opciones: [
@@ -45,6 +47,7 @@ export const codigoYeshuaPreguntas = [
     id: 3,
     bloque: 1,
     categoria: "Amor, Compasión y Prójimo",
+    categoriaEn: "Love, Compassion and Neighbor",
     enunciado: "Cuando encontrás a alguien atravesando una situación difícil, ¿tu primera reacción es ayudarlo o juzgarlo?",
     enunciadoEn: "When you meet someone going through a difficult situation, is your first reaction to help them or judge them?",
     opciones: [
@@ -66,6 +69,7 @@ export const codigoYeshuaPreguntas = [
     id: 4,
     bloque: 2,
     categoria: "Humildad y Servicio",
+    categoriaEn: "Humility and Service",
     enunciado: "¿Estás dispuesto a servir a otros, incluso cuando la tarea no te da reconocimiento?",
     enunciadoEn: "Are you willing to serve others, even when the task brings you no recognition?",
     opciones: [
@@ -87,6 +91,7 @@ export const codigoYeshuaPreguntas = [
     id: 5,
     bloque: 2,
     categoria: "Humildad y Servicio",
+    categoriaEn: "Humility and Service",
     enunciado: "¿Podés reconocer tus propios errores antes de señalar los de los demás?",
     enunciadoEn: "Can you acknowledge your own mistakes before pointing out those of others?",
     opciones: [
@@ -108,6 +113,7 @@ export const codigoYeshuaPreguntas = [
     id: 6,
     bloque: 2,
     categoria: "Humildad y Servicio",
+    categoriaEn: "Humility and Service",
     enunciado: "¿Hacés el bien sin necesitar reconocimiento o agradecimiento?",
     enunciadoEn: "Do you do good without needing recognition or gratitude?",
     opciones: [
@@ -129,6 +135,7 @@ export const codigoYeshuaPreguntas = [
     id: 7,
     bloque: 3,
     categoria: "Perdón y Misericordia",
+    categoriaEn: "Forgiveness and Mercy",
     enunciado: "Cuando alguien te lastima, ¿podés evitar buscar venganza?",
     enunciadoEn: "When someone hurts you, can you refrain from seeking revenge?",
     opciones: [
@@ -150,6 +157,7 @@ export const codigoYeshuaPreguntas = [
     id: 8,
     bloque: 3,
     categoria: "Perdón y Misericordia",
+    categoriaEn: "Forgiveness and Mercy",
     enunciado: "Cuando alguien reconoce su error y busca cambiar, ¿estás dispuesto a perdonarlo?",
     enunciadoEn: "When someone admits their mistake and seeks to change, are you willing to forgive them?",
     opciones: [
@@ -171,6 +179,7 @@ export const codigoYeshuaPreguntas = [
     id: 9,
     bloque: 3,
     categoria: "Perdón y Misericordia",
+    categoriaEn: "Forgiveness and Mercy",
     enunciado: "¿Ofrecés a los demás la misma comprensión que esperás recibir cuando te equivocás?",
     enunciadoEn: "Do you offer others the same understanding you expect to receive when you make a mistake?",
     opciones: [
@@ -192,6 +201,7 @@ export const codigoYeshuaPreguntas = [
     id: 10,
     bloque: 4,
     categoria: "Justicia, Verdad y Honestidad",
+    categoriaEn: "Justice, Truth and Honesty",
     enunciado: "¿Decís la verdad incluso cuando hacerlo puede perjudicarte?",
     enunciadoEn: "Do you tell the truth even when doing so might put you at a disadvantage?",
     opciones: [
@@ -213,6 +223,7 @@ export const codigoYeshuaPreguntas = [
     id: 11,
     bloque: 4,
     categoria: "Justicia, Verdad y Honestidad",
+    categoriaEn: "Justice, Truth and Honesty",
     enunciado: "¿Respetás lo ajeno incluso cuando podrías apropiártelo sin que nadie lo note?",
     enunciadoEn: "Do you respect what belongs to others even when you could take it without anyone noticing?",
     opciones: [
@@ -234,6 +245,7 @@ export const codigoYeshuaPreguntas = [
     id: 12,
     bloque: 4,
     categoria: "Justicia, Verdad y Honestidad",
+    categoriaEn: "Justice, Truth and Honesty",
     enunciado: "¿Hacés lo correcto incluso cuando nadie puede verte o reconocerte?",
     enunciadoEn: "Do you do what is right even when no one can see or recognize you?",
     opciones: [
@@ -255,6 +267,7 @@ export const codigoYeshuaPreguntas = [
     id: 13,
     bloque: 5,
     categoria: "Respeto, Inclusión y Dignidad",
+    categoriaEn: "Respect, Inclusion and Dignity",
     enunciado: "¿Compartís tu tiempo y tus recursos con personas que no pueden devolverte el favor?",
     enunciadoEn: "Do you share your time and resources with people who cannot return the favor?",
     opciones: [
@@ -276,6 +289,7 @@ export const codigoYeshuaPreguntas = [
     id: 14,
     bloque: 5,
     categoria: "Respeto, Inclusión y Dignidad",
+    categoriaEn: "Respect, Inclusion and Dignity",
     enunciado: "¿Podés tratar con respeto a alguien que tiene creencias o costumbres diferentes a las tuyas?",
     enunciadoEn: "Can you treat someone with respect when they have different beliefs or customs than yours?",
     opciones: [
@@ -297,6 +311,7 @@ export const codigoYeshuaPreguntas = [
     id: 15,
     bloque: 5,
     categoria: "Respeto, Inclusión y Dignidad",
+    categoriaEn: "Respect, Inclusion and Dignity",
     enunciado: "¿Evitás despreciar a alguien por su pasado, su condición o su reputación?",
     enunciadoEn: "Do you avoid looking down on someone because of their past, background, or reputation?",
     opciones: [
@@ -318,6 +333,7 @@ export const codigoYeshuaPreguntas = [
     id: 16,
     bloque: 6,
     categoria: "Conflictos, Ira y Reconciliación",
+    categoriaEn: "Conflicts, Anger and Reconciliation",
     enunciado: "Cuando te enojás, ¿evitás insultar, humillar o agredir a la otra persona?",
     enunciadoEn: "When you get angry, do you avoid insulting, humiliating, or attacking the other person?",
     opciones: [
@@ -339,6 +355,7 @@ export const codigoYeshuaPreguntas = [
     id: 17,
     bloque: 6,
     categoria: "Conflictos, Ira y Reconciliación",
+    categoriaEn: "Conflicts, Anger and Reconciliation",
     enunciado: "Cuando existe un conflicto, ¿buscás reconciliarte en lugar de alimentar el enfrentamiento?",
     enunciadoEn: "When a conflict arises, do you seek reconciliation instead of fueling the confrontation?",
     opciones: [
@@ -360,6 +377,7 @@ export const codigoYeshuaPreguntas = [
     id: 18,
     bloque: 6,
     categoria: "Conflictos, Ira y Reconciliación",
+    categoriaEn: "Conflicts, Anger and Reconciliation",
     enunciado: "¿Podés tratar dignamente a alguien que te ha tratado mal?",
     enunciadoEn: "Can you treat someone with dignity even if they have mistreated you?",
     opciones: [
@@ -381,6 +399,7 @@ export const codigoYeshuaPreguntas = [
     id: 19,
     bloque: 7,
     categoria: "Materialismo, Generosidad y Prójimo",
+    categoriaEn: "Materialism, Generosity and Neighbor",
     enunciado: "¿Compartís tus bienes con alegría cuando alguien de tu entorno pasa necesidad?",
     enunciadoEn: "Do you share your belongings with joy when someone around you is in need?",
     opciones: [
@@ -402,6 +421,7 @@ export const codigoYeshuaPreguntas = [
     id: 20,
     bloque: 7,
     categoria: "Materialismo, Generosidad y Prójimo",
+    categoriaEn: "Materialism, Generosity and Neighbor",
     enunciado: "¿Evitás acumular riquezas a expensas de la necesidad o el sufrimiento de otros?",
     enunciadoEn: "Do you avoid accumulating wealth at the expense of others' needs or suffering?",
     opciones: [
@@ -423,6 +443,7 @@ export const codigoYeshuaPreguntas = [
     id: 21,
     bloque: 7,
     categoria: "Materialismo, Generosidad y Prójimo",
+    categoriaEn: "Materialism, Generosity and Neighbor",
     enunciado: "¿Sos generoso con tu tiempo y tu atención hacia los más vulnerables?",
     enunciadoEn: "Are you generous with your time and attention toward the most vulnerable?",
     opciones: [
@@ -444,6 +465,7 @@ export const codigoYeshuaPreguntas = [
     id: 22,
     bloque: 8,
     categoria: "Liderazgo, Integridad y Ejemplo",
+    categoriaEn: "Leadership, Integrity and Example",
     enunciado: "¿Tus acciones cotidianas reflejan con coherencia lo que decís defender o pregonar?",
     enunciadoEn: "Do your daily actions consistently reflect what you claim to defend or advocate?",
     opciones: [
@@ -465,6 +487,7 @@ export const codigoYeshuaPreguntas = [
     id: 23,
     bloque: 8,
     categoria: "Liderazgo, Integridad y Ejemplo",
+    categoriaEn: "Leadership, Integrity and Example",
     enunciado: "¿Asumís la responsabilidad de tus actos sin buscar chivos expiatorios?",
     enunciadoEn: "Do you take responsibility for your actions without looking for scapegoats?",
     opciones: [
@@ -486,6 +509,7 @@ export const codigoYeshuaPreguntas = [
     id: 24,
     bloque: 8,
     categoria: "Liderazgo, Integridad y Ejemplo",
+    categoriaEn: "Leadership, Integrity and Example",
     enunciado: "¿Utilizás tu influencia para levantar y guiar a otros en lugar de manipularlos?",
     enunciadoEn: "Do you use your influence to lift and guide others instead of manipulating them?",
     opciones: [
@@ -500,13 +524,14 @@ export const codigoYeshuaPreguntas = [
     ],
     referenciaBiblica: "Mateo 20:25-28",
     referenciaBiblicaEn: "Matthew 20:25-28",
-    espejo: "Jesús contrasta el liderazgo de poder terrenal con el servicio de entrega.",
-    espejoEn: "Jesus contrasts earthly power leadership with servant-hearted delivery."
+    espejo: "Jesús contrasta el liderazgo de poder terrenal con el servicio que se entrega a los demás.",
+    espejoEn: "Jesus contrasts worldly leadership of power with a life of self-giving service."
   },
   {
     id: 25,
     bloque: 9,
     categoria: "Esperanza, Fe y Propósito",
+    categoriaEn: "Hope, Faith and Purpose",
     enunciado: "¿Mantenés la paz interior y la confianza ante situaciones de incertidumbre?",
     enunciadoEn: "Do you maintain inner peace and trust in the face of uncertainty?",
     opciones: [
@@ -528,6 +553,7 @@ export const codigoYeshuaPreguntas = [
     id: 26,
     bloque: 9,
     categoria: "Esperanza, Fe y Propósito",
+    categoriaEn: "Hope, Faith and Purpose",
     enunciado: "¿Vivís con un sentido trascendente y propósito claro en tu día a día?",
     enunciadoEn: "Do you live with a transcendent sense of purpose in your daily life?",
     opciones: [
@@ -549,6 +575,7 @@ export const codigoYeshuaPreguntas = [
     id: 27,
     bloque: 9,
     categoria: "Esperanza, Fe y Propósito",
+    categoriaEn: "Hope, Faith and Purpose",
     enunciado: "¿Sembrás esperanza y consuelo en quienes te rodean cuando atraviesan crisis?",
     enunciadoEn: "Do you sow hope and comfort in those around you when they go through crises?",
     opciones: [
@@ -562,8 +589,10 @@ export const codigoYeshuaPreguntas = [
       { texto: "I am a source of comfort, encouragement, and living hope for the suffering.", peso: 2 }
     ],
     referenciaBiblica: "Mateo 11:28-30",
-    referenciaBiblicaEn: "Matthew 11:28-30",
+    referenciaBiblicaEn: "Luke 11:28-30",
     espejo: "Jesús se presenta como fuente de descanso y alivio, llamándonos a ser reflejo de ese consuelo para los agobiados.",
     espejoEn: "Jesus presents Himself as a source of rest and relief, calling us to reflect that comfort to the weary."
   }
 ];
+
+// Nota de pie integrada sutilmente: yeshualahuella.com / qpasahumano
