@@ -1,5 +1,5 @@
 /**
- * content.js - Actualizado y sincronizado
+ * content.js - Actualizado con el Bloque 10 (La Creación y la Vida)
  * Yeshúa, la huella / qpasahumano
  */
 
@@ -597,5 +597,71 @@ export const codigoYeshuaPreguntas = [
     referenciaBiblicaEn: "Matthew 11:28-30",
     espejo: "Jesús se presenta como fuente de descanso y alivio, llamándonos a ser reflejo de ese consuelo para los agobiados.",
     espejoEn: "Jesus presents Himself as a source of rest and relief, calling us to reflect that comfort to the weary."
+  },
+  {
+    id: 28,
+    bloque: 10,
+    categoria: "Custodia de la Creación y la Vida",
+    categoriaEn: "Stewardship of Creation and Life",
+    enunciado: "Cuando observás los recursos naturales, el agua o los espacios verdes, ¿actuás con respeto y cuidado por el entorno?",
+    enunciadoEn: "When you observe natural resources, water, or green spaces, do you act with respect and care for the environment?",
+    opciones: [
+      { texto: "No presto atención; uso los recursos sin importarme el impacto en la naturaleza.", peso: 0 },
+      { texto: "Cuido lo básico por comodidad o norma, pero no me detengo a reflexionar.", peso: 1 },
+      { texto: "Valoro y protejo la creación como un hogar sagrado confiado a nuestro cuidado.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I don't pay attention; I use resources without caring about the impact on nature.", peso: 0 },
+      { texto: "I do the basics out of convenience or rule, but I don't stop to reflect.", peso: 1 },
+      { texto: "I value and protect creation as a sacred home entrusted to our care.", peso: 2 }
+    ],
+    referenciaBiblica: "Génesis 2:15 / Mateo 6:28-29",
+    referenciaBiblicaEn: "Genesis 2:15 / Matthew 6:28-29",
+    espejo: "El Creador encomendó custodiar la tierra y viste con hermosura los lirios del campo.",
+    espejoEn: "The Creator entrusted us to keep the earth and clothes the lilies of the field with beauty."
+  },
+  {
+    id: 29,
+    bloque: 10,
+    categoria: "Custodia de la Creación y la Vida",
+    categoriaEn: "Stewardship of Creation and Life",
+    enunciado: "Frente a un animal desamparado, herido o en situación de vulnerabilidad, ¿cómo respondés?",
+    enunciadoEn: "Facing a stray, injured, or vulnerable animal, how do you respond?",
+    opciones: [
+      { texto: "Lo ignoro por completo o considero que los animales no son mi responsabilidad.", peso: 0 },
+      { texto: "Siento algo de pena, pero sigo de largo sin intervenir.", peso: 1 },
+      { texto: "Muestro compasión activa y busco aliviar su sufrimiento.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I ignore it completely or consider that animals are not my responsibility.", peso: 0 },
+      { texto: "I feel some pity, but move on without intervening.", peso: 1 },
+      { texto: "I show active compassion and seek to alleviate its suffering.", peso: 2 }
+    ],
+    referenciaBiblica: "Proverbios 12:10 / Lucas 12:6",
+    referenciaBiblicaEn: "Proverbs 12:10 / Luke 12:6",
+    espejo: "El justo cuida y conoce la sensibilidad de su animal; ni un gorrión cae sin que Dios lo note.",
+    espejoEn: "The righteous care for the needs of their animals; not even a sparrow falls unnoticed by God."
+  },
+  {
+    id: 30,
+    bloque: 10,
+    categoria: "Custodia de la Creación y la Vida",
+    categoriaEn: "Stewardship of Creation and Life",
+    enunciado: "¿Evitás el derroche innecesario de alimentos y recursos en tu vida cotidiana?",
+    enunciadoEn: "Do you avoid unnecessary waste of food and resources in your daily life?",
+    opciones: [
+      { texto: "Desperdicio comida o recursos sin preocuparme por quienes no los tienen.", peso: 0 },
+      { texto: "A veces me controlo, pero suelo acumular o descartar con liviandad.", peso: 1 },
+      { texto: "Valoro el sustento diario y evito el desperdicio con gratitud y responsabilidad.", peso: 2 }
+    ],
+    opcionesEn: [
+      { texto: "I waste food or resources without caring about those who go without.", peso: 0 },
+      { texto: "Sometimes I restrain myself, but I often accumulate or discard lightly.", peso: 1 },
+      { texto: "I value daily sustenance and avoid waste with gratitude and responsibility.", peso: 2 }
+    ],
+    referenciaBiblica: "Salmos 104:14-15 / Juan 6:12",
+    referenciaBiblicaEn: "John 6:12 / Psalms 104:14-15",
+    espejo: "Yeshúa ordenó recoger lo sobrante para que nada se perdiera, honrando el sustento provisto.",
+    espejoEn: "Yeshua ordered the leftovers gathered so nothing would be lost, honoring the provision given."
   }
 ];
