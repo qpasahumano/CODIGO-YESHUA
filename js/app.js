@@ -79,7 +79,7 @@ function configurarControlesSuperiores() {
 
   if (btnAudio && audioFondo) {
     const nuevoBtnAudio = btnAudio.cloneNode(true);
-    audioFondo.parentNode.replaceChild(nuevoBtnAudio, audioFondo);
+    btnAudio.parentNode.replaceChild(nuevoBtnAudio, btnAudio);
 
     const btnAudioActualizado = document.getElementById('btn-control-audio');
     if (btnAudioActualizado) {
@@ -135,7 +135,7 @@ function iniciarAplicacion() {
       juegoIniciado = true;
       
       topSlot.innerHTML = `
-        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica" style="opacity: 03; transition: opacity 0.8s ease, filter 0.8s ease;">
+        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica" style="opacity: 0.03; transition: opacity 0.8s ease, filter 0.8s ease;">
       `;
 
       actualizarRostroVisual();
@@ -266,7 +266,7 @@ function mostrarHuellaYeshua() {
   }
 
   preguntasDiv.innerHTML = `
-    <div class="resultado-final">
+    <div class="resultado-final" style="padding-bottom: 20px;">
       <h2>${t.resultadoTitulo}</h2>
       
       <div class="tarjeta-resumen">
@@ -274,19 +274,19 @@ function mostrarHuellaYeshua() {
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
 
-      <!-- Contenedor de la Huella Incompleta Proporcional con máscara y borroneado -->
-      <div class="contenedor-huella-usuario" style="position: relative; width: 180px; height: 180px; margin: 16px auto; display: flex; align-items: center; justify-content: center;">
-        <div style="position: relative; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 12}%); mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 12}%);">
-          <img src="assets/huella-usuario.png" alt="Huella de usuario" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.4));">
+      <!-- Contenedor de la Huella Proporcional acotado (130x130px) sin desbordes -->
+      <div class="contenedor-huella-usuario" style="position: relative; width: 130px; height: 130px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">
+        <div style="position: relative; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 15}%); mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 15}%);">
+          <img src="assets/huella-usuario.png" alt="Huella de usuario" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(242, 201, 76, 0.4));">
         </div>
-        <!-- Número de porcentaje flotando sobre la huella con legibilidad garantizada -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: #f2c94c; text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.8); pointer-events: none;">
+        <!-- Número centrado sobre la huella -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: #f2c94c; text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.8); pointer-events: none;">
           ${porcentajeTotal}%
         </div>
       </div>
 
-      <p class="texto-invitacion">${t.textoInvitacion}</p>
-      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 7px 16px; font-size: 0.82rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">${t.btnReiniciar}</button>
+      <p class="texto-invitacion" style="font-size: 0.85rem; margin-bottom: 12px;">${t.textoInvitacion}</p>
+      <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 6px 14px; font-size: 0.8rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">${t.btnReiniciar}</button>
     </div>
   `;
 
