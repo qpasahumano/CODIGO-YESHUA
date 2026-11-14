@@ -81,16 +81,19 @@ function configurarControlesSuperiores() {
     const nuevoBtnAudio = btnAudio.cloneNode(true);
     audioFondo.parentNode.replaceChild(nuevoBtnAudio, audioFondo);
 
-    document.getElementById('btn-control-audio').addEventListener('click', () => {
-      if (audioFondo.paused) {
-        audioFondo.play().then(() => {
-          document.getElementById('btn-control-audio').textContent = '🔊';
-        }).catch(err => console.log("Error al reproducir audio:", err));
-      } else {
-        audioFondo.pause();
-        document.getElementById('btn-control-audio').textContent = '🔇';
-      }
-    });
+    const btnAudioActualizado = document.getElementById('btn-control-audio');
+    if (btnAudioActualizado) {
+      btnAudioActualizado.addEventListener('click', () => {
+        if (audioFondo.paused) {
+          audioFondo.play().then(() => {
+            btnAudioActualizado.textContent = '🔊';
+          }).catch(err => console.log("Error al reproducir audio:", err));
+        } else {
+          audioFondo.pause();
+          btnAudioActualizado.textContent = '🔇';
+        }
+      });
+    }
   }
 }
 
@@ -101,7 +104,6 @@ function iniciarAplicacion() {
   if (!preguntasDiv || !topSlot) return;
 
   iniciarCieloNocturno();
-  // Al inicio el rostro superior se mantiene completamente invisible o vacío
   topSlot.innerHTML = '';
   indiceActual = 0;
   puntajeAcumulado = 0;
@@ -132,9 +134,8 @@ function iniciarAplicacion() {
     btnComenzar.addEventListener('click', () => {
       juegoIniciado = true;
       
-      // Creamos la imagen del rostro pero seteada con opacidad 0 o muy tenue al comenzar las primeras preguntas
       topSlot.innerHTML = `
-        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica" style="opacity: 0; transition: opacity 0.8s ease, filter 0.8s ease;">
+        <img id="rostro-yeshua" src="assets/icons/rostro-yeshua.png" alt="Rostro de Yeshúa" class="rostro-imagen-estatica" style="opacity: 03; transition: opacity 0.8s ease, filter 0.8s ease;">
       `;
 
       actualizarRostroVisual();
@@ -219,24 +220,16 @@ function actualizarRostroVisual() {
   const rostroImg = document.getElementById('rostro-yeshua');
   if (!rostroImg) return;
 
-  // Lógica de aparición gradual: 
-  // - Si estamos antes de la pregunta 9 (es decir, indiceActual < 9), el rostro permanece prácticamente oculto (opacidad 0 o un sombreado muy difuso).
-  // - A partir de la pregunta 9/10 en adelante, empieza a revelarse de forma real en función del puntaje acumulado.
-  
   if (indiceActual < 9) {
     rostroImg.style.opacity = '0.03';
     rostroImg.style.filter = 'drop-shadow(0 0 4px rgba(0, 0, 0, 0.9)) grayscale(100%) contrast(1.8) brightness(0.4)';
     return;
   }
 
-  // Calculamos el porcentaje en base al progreso real y respuestas positivas
   const porcentaje = (puntajeAcumulado / puntajeMaximo) * 100;
-  
-  // Curva de opacidad más suave y gradual desde la pregunta 9 en adelante
   let opacidadCalculada = 0.15 + (Math.pow(porcentaje / 100, 1.8) * 0.85);
   rostroImg.style.opacity = Math.min(opacidadCalculada, 1);
 
-  // Niveles de brillo, color y resplandor según el puntaje positivo acumulado
   if (porcentaje >= 75) {
     rostroImg.style.filter = 'drop-shadow(0 0 20px rgba(242, 201, 76, 0.9)) grayscale(0%) contrast(1.2) brightness(1.18)';
   } else if (porcentaje >= 45) {
@@ -275,10 +268,23 @@ function mostrarHuellaYeshua() {
   preguntasDiv.innerHTML = `
     <div class="resultado-final">
       <h2>${t.resultadoTitulo}</h2>
+      
       <div class="tarjeta-resumen">
         <p class="puntaje-final">${t.etiquetaAlineacion}: <strong>${porcentajeTotal}%</strong></p>
         <p class="mensaje-evolutivo">${mensajeReflexivo}</p>
       </div>
+
+      <!-- Contenedor de la Huella Incompleta Proporcional con máscara y borroneado -->
+      <div class="contenedor-huella-usuario" style="position: relative; width: 180px; height: 180px; margin: 16px auto; display: flex; align-items: center; justify-content: center;">
+        <div style="position: relative; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 12}%); mask-image: linear-gradient(to top, black ${porcentajeTotal}%, transparent ${porcentajeTotal + 12}%);">
+          <img src="assets/huella-usuario.png" alt="Huella de usuario" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.4));">
+        </div>
+        <!-- Número de porcentaje flotando sobre la huella con legibilidad garantizada -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: #f2c94c; text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.8); pointer-events: none;">
+          ${porcentajeTotal}%
+        </div>
+      </div>
+
       <p class="texto-invitacion">${t.textoInvitacion}</p>
       <button id="btn-reiniciar" style="background: transparent; color: #f2c94c; border: 1px solid #c29b38; padding: 7px 16px; font-size: 0.82rem; border-radius: 25px; cursor: pointer; letter-spacing: 1px;">${t.btnReiniciar}</button>
     </div>
